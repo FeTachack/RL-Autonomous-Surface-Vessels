@@ -1,0 +1,166 @@
+
+
+#############   This is the configuration for the commonocean simulator   #######################
+#                                                                                               #
+#         Note that the simulator uses the commonocean-rules repository                         #
+#         for detecting collision encounters found in /install/commonocean_rules.               #
+#         That repo has additional configuration which affects the behaviour of this simulator  #     
+#                                                                                               #
+#################################################################################################
+
+
+# General scenario configuration
+general_simulator:
+
+  # General simulator configs:
+
+  dt: 1.0 # Delta t used for one simulation step. Note that we overwrite the dt of any imported scenario with the dt given by the sim configuration yaml
+  using_collision_avoider: True    # Using avoider
+  using_collision_detection: True  # Flagging vessels which collide
+
+  # Displayer settings
+  using_displayer: True # Using the renderer of the simulator. A graphical interface needs to be available.
+  mark_mpc_states: True # In the renderer of the simulation, also mark the predicted MPC states of vessels controlled by the MPC. 
+                        # These marking (in green hexagons) will mark the predicted positions of the prediction horizon.
+                        # Requires using_displayer=True 
+  
+
+  # Export path:
+  
+  export_to: ""  # By default, the simulation exports happen in the /results folder which will be created in /src. Fill in here an alternative export path.
+                 # In that path, the <benchmark-id>_simulation.xml file will be written, which is a commonocean format of a marine scenario, which recorded all the vessel movements in the simulation run.
+  
+
+
+  plotting:      # In the path, specified by the export_to parameter, additionally plots will be exported. 
+    do_plotting: True      # If True, the plots will be rendered. If possible, they will be shown with plt.show().
+    write_plot_graphs_to_file: True # Graphs will be exported to the folder ./results. Otherwise, we only do plt.show().
+    listofplots: [          # A list of plots which should be printed. See the Documentation.md for the string-codes to pass to this list to select plots
+                            # If this parameters is not filled (meaning "listofplots:  ") then all plots are plotted. To have no plots plotted, set do_plotting: False
+                            # This list encompasses all the plots mentioned in the RSS paper 
+                  "list_times",
+                  "output_time_stats",
+                  "plot_rainbow_spur_with_waypoint_path_connections",  # (TAW)
+                  "plot_velocities",  # (VA)
+                  "plot_cross_error_control_waypointpath",  # (EA)
+                  "plot_control_signal",  # (CI)
+                  "plot_yaw_control_signal_forall_vessels" #(CA)
+                  ]
+                   
+
+  # Size settings for the Displayer. (A warning when modifying these values: Certain ratios do not work with the displayer; currently not clear why)
+
+  height_m: 300 # Default height the displayer will display of the scenario
+  width_m:  300 # Default width the displayer will display of the scenario
+
+  # Misc
+
+  maximum_runtime: 2000  # After maximum_runtime timesteps, the simulation terminates.
+  verbose: False  # If True, some logging happens to stdout
+
+
+# Scenario selection
+scenario_selection:
+
+  # Using a imported XML commonocean scenario file:
+
+  import_scenario: 
+    use_imported_scenario: True # If set to True, the scenario imported from the 'scenario_filepath' is used. Otherwise, we use a handcrafted one.
+    scenario_filepath: "./ZAM_AAA-2_20250129_T-1.xml" # The path to the scenario.
+    vessel_type: 1  # If a scenario is imported, this vessel parameter set will be used for all the simulator controlled vessels. Possible values are 1,2,3. (see Documentation.md)
+    vessel_type_by_id: #{"2": 1, "4": 2, "6": 1, "8": 1, "10": 1, "12": 1}
+    controller_type: "mpc"
+  
+  # Using a predefined internal scenario:
+
+  handcrafted_scenario_selection:
+    handcrafted_scenario_id: 10 # Put the id of the handcrafted scenario. A list of possible scenarios to choose from can be found in path /documentation
+    input_angle: 0.0005 # Relevant for scenario selection 4. If the angle is 0 then the two colliding vessels encounter each other head-on. The higher the angle, the more a crossing scenario this will be
+
+# Additional settings regarding preprocessing of the scenario
+scenario_pre_processing:
+  expected_maximum_ts_per_wp : 60 # Add intermediate waypoints such that we can expect at most expected_maximum_ts_per_wp number of timesteps to happen per reached target waypoint (calculated with v_desired and dt)
+  
+
+###################################################################################################
+#                                                                                                 #
+#   Below you can configure the detailed behaviour of vessels and specific simulator objects.     #
+#   Usually things do not have to be modified there.                                              #
+#   Bear in mind that (after installation) there is additional configuration                      #
+#   placed in install/commonocean_rules/ regarding the commonocean-rules library which handles    #
+#   the marine traffic rules predicates for the collision avoider                                 #
+#                                                                                                 #
+###################################################################################################
+
+# Controller
+controller:
+  # General MPC controller 
+  splinedmpccontroller:
+    
+    # --- Desired velocity ---
+    scaling_for_desired_v: 0.5    #  (v_max of the used parameterset) * scaling_for_desired_v = desired velocity the controller aims to keep
+                                  #  If left empty, this value is set to "0.5" for vesselparameterset 1 and "1" for vesselparameterset 2 and 3
+
+    # --- Setting the mpc delta t ---
+    mpc_dt: 20                 # As explained in Documentation.md, there is motivation for using a different delta t for MPC prediction than for the actual simulation of the system.
+                               # If not empty, the delta t for the internal mpc delta t used is mpc_dt, except if overwritten (see fail_save_mpc_dt)
+                               # If empty, then mpc_dt will be automatically set to satisfy the condition associated with the coverage_over_next_wp parameter.
+                               # The mpc-dt is then updated for every newly reached waypoint.
+
+    coverage_over_next_wp: 0.8 # Upon reaching a waypoint, it will be tested if the total range of the prediction horizon (length along the desired path) covers at least "coverage_over_next_wp" times into the waypoint segment following after the current target waypoint.
+                               # This does not happen if the following target waypoint is an unreachable waypoint.
+                               # If this test evaluates to True, then, depending on the value of fail_save_mpc_dt and warn_save_mpc_dt, the internal dt will be overwritten or a warning will be printed.
+                               # This test checks, if the MPC horizon is sufficient to predict the necessity for early break or turning maneuvers so as to not overshoot over waypoints.
+
+    fail_save_mpc_dt: False    # If set to True, then, whenever the condition associated with the coverage_over_next_wp parameter is violated, the mpc_dt will be overwritten
+                               # to a value that satisfies the condition. At the earliest possible moment, the defined mpc_dt parameter will be restored (as long as the condition is not violated)
+    
+    warn_save_mpc_dt: True     # If set to True, a warning will be printed in the console when the condition associated with the coverage_over_next_wp parameter is violated
+
+    # --- Setting the prediction horizon size (meaning T) ----
+    horizonT: 9                # Is the number of discrete prediction steps the MPC horizon encompasses. Has to be at least 1. Has been shown to sometimes cause crashes with cvxpy when beyond 10 steps. 
+
+    # --- How much of the MPC is used
+    countdown_to_mpc_prediction_base:  30  # = number of times, the MPC control sequence is reused = maximum number of times the MPC is NOT recalculated: 
+                                           # As discussed in the Documentation.md and at the mpc_dt parameter, there is incentive to use a larger mpc delta t. 
+                                           # If done so, the controller then has, after a MPC prediction, more control signals stored at his disposal for the upcoming simulation cycles then the horizon size T (as the same control signals can be reused for consecutive timesteps)  
+                                           # So the actual number of future simulation cycles to which the controller can answer with a stored signal is/may be higher than horizonT. 
+                                           # However, note that with a larger internal delta t, the accuracy of the predicted states also decreases; hence one may not actually want to use all the signals (especially not the last ones)
+                                           # This parameter is the number of times, the controller is allowed to pull from the stored control signals instead of re-calculating the MPC problem.
+                                           # Must be smaller than floor(horizonT*mpc_dt / dt).
+                                           # Example: If set to 0, then the MPC problem is always recalculated. If set to 1, then only for every second timestep the MPC is recalculated.
+                                           # Note that even if countdown_to_mpc_prediction_base>0, the controller will only use multiple entries from a generated control-sequence
+                                           # if generated control sequences are found to be similar. This is to check, if the control signals can be trusted: It has been empirically shown that under some conditions,
+                                           # the generated control-sequences differ drastically between subsequent simulation states, in which case the MPC problem should be recalculated at every step.  
+
+
+# Avoider
+colavoid:
+
+  # Collision avoidance parameters (see ISM paper)
+  headon_evading_angle : -0.80 # The minimum angle change for the head on avoidance                                                       | \alpha_{ho,1} 
+  crossing_evading_angle: 0.785398  # The minimum angle change for the crossing avoidance. np.pi / 4                                      | \alpha_{c,1}
+  overtaking_evading_angle: 0.2617993  # The minimum angle change for the overtaking avoidance.                                           | \alpha_{o,1}
+  convergent_on_line_angle: 0.04   # Angle difference to the waypoint path considered to be close enough to be 'on the waypoint path'     | \alpha_{ho,2} 
+  angle_stability_t: 10 # Number of times it takes for the deviation angle to be smaller than convergent_on_line_angle                    | t_h = t_c
+                        # If left empty this value is self.convergent_on_line_angle / (wmax*0.1)
+  headon_behind_distance:  # Per default 2*l                                                                                              | d_ho,2
+  last_divein_angle_threshold: 1.571   # pi/2                                                                                             | \beta_{terminal}
+  divein_angle_threshold:  2.09  # 120 deg                                                                                                | \beta_r
+  crossing_right_distance:  # Per default 2*l                                                                                             | \d_{c,2}
+  crossing_last_segment:   # Per default 2*l                                                                                              | \d_{c,3}
+
+  # First wrapper for co-rules (ramp-up)
+  activate_colavoid_after: 20  # Minimum number of simulation steps before commonocean rules is used
+  ramp_up_co_rules: 10 # Number of "ramp-up" timesteps. If co-rules detects a specific avoidance type "ramp_up_co_rules"-number of times then the SIM acknowledges the specific avoidance type and (if no other precondition applies) reacts to it.  
+  reactivate_colavoid_after: 2  # Cooldown for the commonocean rules predicate after it triggers
+                                                                        
+  # Second wrapper for co-rules (delay)
+  delayed_countdown_base: 20 # After the SIM acknowledges a specific avoidance scenario, it will react after "delayed_countdown_base" number of timesteps
+
+  # Avoider edge case detection:
+  check_eligible_for_avoiding: False  # If True, then additional checks preceed the commonocean-rules call. These additional checks reduce the chance that co-rules returns false negatives. 
+                                      # However, this also sometimes prevents a commonocean-rules call which then (may) result in some false negatives.  
+
+  # Misc. code-wise parameters
+  avoid_only_once: True # If True, each vessel only avoids once per scenario; meaning that after completing one avoidance, in subsequent avoidance encounters, the SIM vessel will not react

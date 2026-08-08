@@ -1,0 +1,54 @@
+antlr4-python3-runtime==4.9.3
+cffi==2.1.1
+clarabel==0.11.1
+click==8.4.2
+-e git+https://gitlab.lrz.de/tum-cps/commonocean-drivability-checker.git@515563d2518db7b9170b0cc27b83d9ca1a0fd681#egg=commonocean_drivability_checker&subdirectory=../../../install/commonocean-drivability-checker
+commonocean-io==2025.1
+-e git+https://github.com/CommonOcean/commonocean-sim.git@edcccc67db32dad2f54ea11e22110566b25648eb#egg=commonocean_rules&subdirectory=install/commonocean_rules
+commonocean-vessel-models==1.0.0
+-e git+https://github.com/CommonOcean/commonocean-sim.git@edcccc67db32dad2f54ea11e22110566b25648eb#egg=commonocean_sim&subdirectory=src
+commonroad-drivability-checker==2023.1
+commonroad-io==2023.1
+commonroad-vehicle-models==3.0.2
+contourpy==1.3.2
+cvxpy==1.5.4
+cycler==0.12.1
+ecos==2.0.14
+fonttools==4.63.0
+gurobipy==11.0.3
+imageio==2.9.0
+iso3166==2.1.1
+Jinja2==3.1.6
+joblib==1.5.3
+kiwisolver==1.5.0
+lxml==6.1.1
+MarkupSafe==3.0.3
+matplotlib==3.6.3
+networkx==3.4.2
+numpy==1.24.4
+omegaconf==2.3.1
+osqp==1.1.3
+packaging==26.3
+pandas==2.2.3
+pillow==12.3.0
+Polygon3 @ file:///home/conda/feedstock_root/build_artifacts/polygon3_1762167187352/work
+protobuf==3.20.1
+pycparser==3.0
+pyglet==1.5.31
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+pytz==2026.3.post1
+PyYAML==6.0.3
+rtree==1.4.1
+ruamel.yaml==0.17.40
+ruamel.yaml.clib==0.2.15
+scipy==1.10.1
+scs==3.2.11
+Shapely==1.8.5.post1
+simple-pid==2.0.0
+six==1.17.0
+svgwrite==1.4.3
+tqdm==4.70.0
+Tree==0.2.4
+triangle @ file:///home/conda/feedstock_root/build_artifacts/py-triangle_1756903282034/work
+tzdata==2026.3

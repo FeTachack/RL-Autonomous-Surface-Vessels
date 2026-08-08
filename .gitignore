@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Conda
+.conda/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Tests
+.pytest_cache/
+.coverage
+
+# Training results
+runs/
+logs/
+checkpoints/
+models/
+tensorboard/
+
+# Generated figures
+figures/
+plots/
+
+# OS
+.DS_Store
+
+# Secrets / credentials
+*.lic
+*.key
+*.pem
+.env
+
+# Temporary
+*.tmp
+*.bak
