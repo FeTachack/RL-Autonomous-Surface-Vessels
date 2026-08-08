@@ -40,6 +40,7 @@ The action for the YP vessel model is:
 Other vessels remain controlled by the simulator or follow predefined
 dynamic-obstacle trajectories.
 
+
 ## Current status
 
 Validated:
@@ -48,21 +49,23 @@ Validated:
 - OSQP as experimental MPC solver
 - External controller for ego vessel
 - Independent control of ego vessel
-- Fixed longitudinal acceleration experiment
+- Fixed longitudinal acceleration
+- Positive yaw-rate control
+- Negative yaw-rate control
+- Symmetric steering response
+- One external action applied per simulator step
 
-Test result:
-
-- initial velocity: 0.0 m/s
-- acceleration: 0.024 m/s²
-- simulation time: 100 s
-- final velocity: 2.4 m/s
-- displacement: 120 m
 
 ## Next steps
 
-1. Validate yaw-rate control.
-2. Create a scenario with one planningProblem for the ego vessel.
-3. Represent surrounding traffic using dynamicObstacle.
-4. Implement Gymnasium environment.
-5. Define observations, actions and reward.
-6. Train RL baseline.
+1. Create a scenario with one planningProblem for the ego vessel.
+2. Represent surrounding traffic using dynamicObstacle.
+3. Implement Gymnasium environment.
+4. Define observations, action normalization and reward.
+5. Train RL baseline.
+
+
+
+
+
+
