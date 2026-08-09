@@ -1,7 +1,6 @@
 antlr4-python3-runtime==4.9.3
 cffi==2.1.1
 clarabel==0.11.1
-click==8.4.2
 -e git+https://gitlab.lrz.de/tum-cps/commonocean-drivability-checker.git@515563d2518db7b9170b0cc27b83d9ca1a0fd681#egg=commonocean_drivability_checker&subdirectory=../../../install/commonocean-drivability-checker
 commonocean-io==2025.1
 -e git+https://github.com/CommonOcean/commonocean-sim.git@edcccc67db32dad2f54ea11e22110566b25648eb#egg=commonocean_rules&subdirectory=install/commonocean_rules
@@ -47,8 +46,6 @@ scs==3.2.11
 Shapely==1.8.5.post1
 simple-pid==2.0.0
 six==1.17.0
-svgwrite==1.4.3
 tqdm==4.70.0
-Tree==0.2.4
 triangle @ file:///home/conda/feedstock_root/build_artifacts/py-triangle_1756903282034/work
 tzdata==2026.3
