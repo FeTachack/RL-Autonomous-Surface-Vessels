@@ -150,7 +150,7 @@ def build_simulation():
 
     configuration["general_simulator"][
         "using_displayer"
-    ] = False
+    ] = True
 
     configuration["general_simulator"][
         "plotting"
@@ -170,7 +170,7 @@ def build_simulation():
         current_configuration_input=configuration
     )
 
-    force_collision_scenario(factory)
+    #force_collision_scenario(factory)
 
     print("\nDespués de importar XML:")
     print(
@@ -266,7 +266,7 @@ def install_external_controller(simulator):
 
     action = np.array(
         [
-            0.05 * float(ego.parameters.a_max),
+            0.0, #0.05 * float(ego.parameters.a_max),
             0.0,
         ],
         dtype=np.float64,
@@ -339,7 +339,7 @@ def main():
 
     executed_steps = 0
     collision_step = None
-    for step in range(100):
+    for step in range(220):
         if not simulator.is_running:
             break
 
@@ -361,10 +361,34 @@ def main():
         if (
             step == 0
             or (step + 1) % 10 == 0
+            or simulator.rl_collision_occurred
         ):
+            traffic = simulator.dynamic_obstacles[0]
+
+            traffic_state = traffic.state_at_time(
+                    step + 1
+            )
+
+            if traffic_state is not None:
+                traffic_position = np.asarray(
+                        traffic_state.position
+                        )
+            else:
+                traffic_position = None
+
+            if traffic_position is not None:
+                distance = np.linalg.norm(
+                        traffic_position
+                        - np.asarray(ego.position)
+                        )
+            else:
+                distance = np.nan
+            
             print(
                 f"step={step + 1:04d} "
                 f"ego={np.asarray(ego.position)}"
+                f"traffic={traffic_position} "
+                f"ditance={distance:.2f}"
             )
 
     print("\nResumen:")
