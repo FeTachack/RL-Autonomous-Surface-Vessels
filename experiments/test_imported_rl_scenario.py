@@ -339,10 +339,44 @@ def main():
 
     executed_steps = 0
     collision_step = None
+    min_distance = float("inf")
+    min_distance_step = None
+
     for step in range(220):
         if not simulator.is_running:
             break
+    
+    # ---------------------------------------------------------
+    # PRUEBA B: maniobra evasiva fija
+    #
+    # 0-89 s:
+    #     mantener rumbo
+    #
+    # 90-119 s:
+    #     giro a estribor
+    #
+    # >=120 s:
+    #     mantener el nuevo rumbo
+    # ---------------------------------------------------------
 
+        if 60 <= step < 100:
+            action = np.array(
+                [
+                    0.0,
+                    -0.8 * float(ego.maximum_yaw_rate),
+                ],
+                dtype=np.float64,
+            )
+        else:
+            action = np.array(
+                [
+                    0.0,
+                    0.0,
+                ],
+                dtype=np.float64,
+            )
+
+        controller.set_action(action)
         simulator.compute_next_state()
         executed_steps += 1
 
@@ -388,8 +422,14 @@ def main():
                 f"step={step + 1:04d} "
                 f"ego={np.asarray(ego.position)}"
                 f"traffic={traffic_position} "
-                f"ditance={distance:.2f}"
+                f"ditance={distance:.2f} "
+                f"heading={ego.heading:.4f} "
+                f"yaw={action[1]:+.6f}"
             )
+
+            if distance < min_distance:
+                min_distance = distance
+                min_distance_step = step + 1
 
     print("\nResumen:")
     print(f"  steps ejecutados    = {executed_steps}")
@@ -403,6 +443,8 @@ def main():
         f"  collision detected = "
         f"{simulator.rl_collision_occurred}"
     )
+    print (f" min distance = {min_distance:.2f}")
+    print (f" min disntace step = {min_distance_step}")
 
 if __name__ == "__main__":
     main()
