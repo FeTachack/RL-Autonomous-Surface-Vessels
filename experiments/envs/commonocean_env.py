@@ -7,16 +7,31 @@ import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 
-from CollisionHandling.CollisionDetector import CollisionDetector
-from Pipeline.SimulationIO import SimulationIO
-from Simulator.SimulatorFactory import SimulatorFactory
+from CollisionHandling.CollisionDetector import (
+    CollisionDetector,
+)
+from Pipeline.SimulationIO import (
+    SimulationIO,
+)
+from Simulator.SimulatorFactory import (
+    SimulatorFactory,
+)
 
-from commonocean.common.solution import VesselModel
+from commonocean.common.solution import (
+    VesselModel,
+)
 
-from rules.common.helper import load_yaml
+from rules.common.helper import (
+    load_yaml,
+)
 
 from experiments.controllers.external_action_controller import (
     ExternalActionController,
+)
+
+from experiments.scenarios.randomize_crossing_scenario import (
+    RandomizedCrossingConfig,
+    generate_randomized_crossing_scenario,
 )
 
 
@@ -32,7 +47,6 @@ CONFIGURATION_PATH = (
     / "configuration.yaml"
 )
 
-# SimulationIO construye internamente la ruta al escenario.
 SCENARIO_PATH = (
     "/experiments/scenarios/one_ego_one_traffic.xml"
 )
@@ -45,62 +59,25 @@ SCENARIO_PATH = (
 
 class CommonOceanEnv(gym.Env):
     """
-    Entorno Gymnasium para navegación de una embarcación ego
-    usando CommonOcean-Sim.
+    Entorno Gymnasium para navegación autónoma con CommonOcean-Sim.
 
-    Arquitectura
-    ------------
-    planningProblem
-        -> SurfaceVessel ego
-        -> ExternalActionController
-        -> política RL
+    Arquitectura:
+        RL policy
+            -> acción normalizada [-1, 1]^2
+            -> ExternalActionController
+            -> SurfaceVessel ego, VesselModel.YP
+            -> CommonOcean dynamics
 
-    dynamicObstacle
-        -> tráfico marítimo
-        -> trayectoria predefinida
-
-    CollisionDetector
-        -> detección de colisiones
-
-    CollisionAvoider
-        -> desactivado
-
-    Acción
-    ------
-    action[0] ∈ [-1, 1]
-        aceleración longitudinal normalizada
-
-    action[1] ∈ [-1, 1]
-        yaw rate normalizado
-
-    Observación
-    -----------
-    Vector de 13 variables:
-
-    0   ego_speed
-    1   goal_distance
-    2   sin(goal_bearing)
-    3   cos(goal_bearing)
-
-    4   traffic_distance
-    5   sin(traffic_bearing)
-    6   cos(traffic_bearing)
-
-    7   relative_velocity_x
-    8   relative_velocity_y
-
-    9   sin(relative_heading)
-    10  cos(relative_heading)
-
-    11  DCPA
-    12  TCPA
-
-    Todas las variables entregadas a la política son
-    normalizadas/clipped en [-1, 1].
+    El tráfico se modela como DynamicObstacle con trayectoria
+    predefinida. CollisionDetector está activo y CollisionAvoider
+    está desactivado.
     """
 
     metadata = {
-        "render_modes": [],
+        "render_modes": [
+            "human",
+        ],
+        "render_fps": 30,
     }
 
     # ========================================================
@@ -114,12 +91,28 @@ class CommonOceanEnv(gym.Env):
         goal_reward: float = 100.0,
         distance_scale: float = 2500.0,
         tcpa_scale: float = 300.0,
+        render_mode: str | None = None,
+        scenario_path: str = SCENARIO_PATH,
+        randomize_scenario: bool = False,
+        randomization_config: (
+            RandomizedCrossingConfig
+            | dict[str, float]
+            | None
+        ) = None,
+        randomized_scenario_dir: str | Path | None = None,
     ) -> None:
         super().__init__()
 
-        # ----------------------------------------------------
-        # Episode configuration
-        # ----------------------------------------------------
+        if render_mode not in (
+            None,
+            "human",
+        ):
+            raise ValueError(
+                "render_mode debe ser None o 'human', "
+                f"pero se recibió {render_mode!r}."
+            )
+
+        self.render_mode = render_mode
 
         self.max_episode_steps = int(
             max_episode_steps
@@ -133,10 +126,6 @@ class CommonOceanEnv(gym.Env):
             goal_reward
         )
 
-        # ----------------------------------------------------
-        # Normalization scales
-        # ----------------------------------------------------
-
         self.distance_scale = float(
             distance_scale
         )
@@ -145,9 +134,46 @@ class CommonOceanEnv(gym.Env):
             tcpa_scale
         )
 
-        # ----------------------------------------------------
-        # Gymnasium action space
-        # ----------------------------------------------------
+        # ====================================================
+        # Scenario configuration
+        # ====================================================
+
+        self.base_scenario_path = str(
+            scenario_path
+        )
+
+        self.scenario_path = str(
+            scenario_path
+        )
+
+        self.randomize_scenario = bool(
+            randomize_scenario
+        )
+
+        self.randomization_config = (
+            randomization_config
+        )
+
+        if randomized_scenario_dir is None:
+            self.randomized_scenario_dir = (
+                PROJECT_ROOT
+                / "experiments"
+                / "scenarios"
+                / "generated"
+            )
+        else:
+            self.randomized_scenario_dir = Path(
+                randomized_scenario_dir
+            )
+
+        self.scenario_metadata = {
+            "randomized": False,
+            "scenario_path": self.scenario_path,
+        }
+
+        # ====================================================
+        # Gymnasium spaces
+        # ====================================================
 
         self.action_space = spaces.Box(
             low=-1.0,
@@ -156,10 +182,6 @@ class CommonOceanEnv(gym.Env):
             dtype=np.float32,
         )
 
-        # ----------------------------------------------------
-        # Gymnasium observation space
-        # ----------------------------------------------------
-
         self.observation_space = spaces.Box(
             low=-1.0,
             high=1.0,
@@ -167,9 +189,9 @@ class CommonOceanEnv(gym.Env):
             dtype=np.float32,
         )
 
-        # ----------------------------------------------------
+        # ====================================================
         # CommonOcean runtime objects
-        # ----------------------------------------------------
+        # ====================================================
 
         self.factory = None
         self.simulation_io = None
@@ -183,9 +205,9 @@ class CommonOceanEnv(gym.Env):
 
         self.goal_position = None
 
-        # ----------------------------------------------------
+        # ====================================================
         # Episode state
-        # ----------------------------------------------------
+        # ====================================================
 
         self._elapsed_steps = 0
         self._episode_done = False
@@ -195,7 +217,6 @@ class CommonOceanEnv(gym.Env):
             dtype=np.float64,
         )
 
-        # Necesaria para calcular progreso hacia el objetivo.
         self._previous_distance_to_goal = None
 
     # ========================================================
@@ -209,30 +230,28 @@ class CommonOceanEnv(gym.Env):
         options: dict[str, Any] | None = None,
     ):
         """
-        Reinicia completamente CommonOcean y crea un nuevo
-        episodio.
+        Reinicia completamente CommonOcean y crea un nuevo episodio.
         """
 
-        super().reset(seed=seed)
+        super().reset(
+            seed=seed
+        )
 
-        # Limpiar simulación anterior.
         self.close()
 
         self._elapsed_steps = 0
         self._episode_done = False
 
-        # El episodio siempre comienza sin acción previa.
         self._last_physical_action = np.zeros(
             2,
             dtype=np.float64,
         )
 
-        # Crear nuevamente CommonOcean.
-        self._build_simulator()
+        self._prepare_scenario_for_reset(
+            seed=seed
+        )
 
-        # ----------------------------------------------------
-        # Inicializar distancia anterior al objetivo
-        # ----------------------------------------------------
+        self._build_simulator()
 
         self._previous_distance_to_goal = float(
             np.linalg.norm(
@@ -275,13 +294,9 @@ class CommonOceanEnv(gym.Env):
 
         if self._episode_done:
             raise RuntimeError(
-                "El episodio ya terminó. "
-                "Debe llamar env.reset() antes de continuar."
+                "El episodio ya terminó. Debe llamar env.reset() "
+                "antes de continuar."
             )
-
-        # ====================================================
-        # Validate action
-        # ====================================================
 
         normalized_action = np.asarray(
             action,
@@ -291,12 +306,13 @@ class CommonOceanEnv(gym.Env):
         if normalized_action.shape != (2,):
             raise ValueError(
                 "La acción debe tener shape (2,), "
-                f"pero se recibió "
-                f"{normalized_action.shape}."
+                f"pero se recibió {normalized_action.shape}."
             )
 
         if not np.all(
-            np.isfinite(normalized_action)
+            np.isfinite(
+                normalized_action
+            )
         ):
             raise ValueError(
                 "La acción contiene valores no finitos."
@@ -307,10 +323,6 @@ class CommonOceanEnv(gym.Env):
             -1.0,
             1.0,
         )
-
-        # ====================================================
-        # RL action -> physical action
-        # ====================================================
 
         physical_action = (
             self._map_action_to_physical(
@@ -326,17 +338,9 @@ class CommonOceanEnv(gym.Env):
             physical_action
         )
 
-        # ====================================================
-        # CommonOcean step
-        # ====================================================
-
         self.simulator.compute_next_state()
 
         self._elapsed_steps += 1
-
-        # ====================================================
-        # Termination
-        # ====================================================
 
         collision = bool(
             self.simulator.rl_collision_occurred
@@ -346,30 +350,19 @@ class CommonOceanEnv(gym.Env):
             self.ego.journey_finished
         )
 
-        # Final natural del problema.
         terminated = bool(
             collision
             or goal_reached
         )
 
-        # Final por horizonte temporal.
         truncated = bool(
             self._elapsed_steps
             >= self.max_episode_steps
             and not terminated
         )
 
-        # ====================================================
-        # Observation and info
-        # ====================================================
-
         observation = self._get_observation()
-
         info = self._get_info()
-
-        # ====================================================
-        # Reward
-        # ====================================================
 
         reward, reward_components = (
             self._compute_reward(
@@ -382,10 +375,6 @@ class CommonOceanEnv(gym.Env):
         info["reward_components"] = (
             reward_components
         )
-
-        # ====================================================
-        # Episode status
-        # ====================================================
 
         self._episode_done = bool(
             terminated
@@ -411,7 +400,21 @@ class CommonOceanEnv(gym.Env):
 
     # --------------------------------------------------------
 
-    def close(self):
+    def render(
+        self,
+    ):
+        """
+        En modo human, CommonOcean actualiza su Displayer como listener
+        durante compute_next_state().
+        """
+
+        return None
+
+    # --------------------------------------------------------
+
+    def close(
+        self,
+    ):
         """
         Libera referencias de la simulación actual.
         """
@@ -444,6 +447,100 @@ class CommonOceanEnv(gym.Env):
         self._previous_distance_to_goal = None
 
     # ========================================================
+    # Scenario preparation
+    # ========================================================
+
+    def _prepare_scenario_for_reset(
+        self,
+        seed: int | None,
+    ) -> None:
+        """
+        Selecciona el XML que se usará en este episodio.
+
+        Si randomize_scenario=False:
+            usa el escenario nominal.
+
+        Si randomize_scenario=True:
+            genera un XML nuevo a partir del escenario nominal.
+        """
+
+        self.scenario_path = (
+            self.base_scenario_path
+        )
+
+        self.scenario_metadata = {
+            "randomized": False,
+            "scenario_path": self.scenario_path,
+        }
+
+        if not self.randomize_scenario:
+            return
+
+        if seed is None:
+            effective_seed = int(
+                self.np_random.integers(
+                    0,
+                    np.iinfo(
+                        np.uint32
+                    ).max,
+                )
+            )
+        else:
+            effective_seed = int(
+                seed
+            )
+
+        base_xml_path = (
+            PROJECT_ROOT
+            / self.base_scenario_path.lstrip(
+                "/"
+            )
+        )
+
+        output_xml_path = (
+            self.randomized_scenario_dir
+            / (
+                "randomized_crossing_seed_"
+                f"{effective_seed}.xml"
+            )
+        )
+
+        metadata = (
+            generate_randomized_crossing_scenario(
+                base_xml_path=base_xml_path,
+                output_xml_path=output_xml_path,
+                seed=effective_seed,
+                config=self.randomization_config,
+            )
+        )
+
+        try:
+            relative_output_path = (
+                output_xml_path
+                .resolve()
+                .relative_to(
+                    PROJECT_ROOT.resolve()
+                )
+                .as_posix()
+            )
+        except ValueError as exc:
+            raise RuntimeError(
+                "randomized_scenario_dir debe estar dentro "
+                f"de PROJECT_ROOT={PROJECT_ROOT}"
+            ) from exc
+
+        self.scenario_path = (
+            "/"
+            + relative_output_path
+        )
+
+        metadata["scenario_path"] = (
+            self.scenario_path
+        )
+
+        self.scenario_metadata = metadata
+
+    # ========================================================
     # CommonOcean setup
     # ========================================================
 
@@ -451,21 +548,20 @@ class CommonOceanEnv(gym.Env):
         self,
     ) -> None:
         """
-        Construye una simulación CommonOcean nueva para el
-        episodio.
+        Construye una simulación CommonOcean nueva.
         """
 
         configuration = load_yaml(
-            str(CONFIGURATION_PATH)
+            str(
+                CONFIGURATION_PATH
+            )
         )
-
-        # ====================================================
-        # Imported scenario
-        # ====================================================
 
         import_config = configuration[
             "scenario_selection"
-        ]["import_scenario"]
+        ][
+            "import_scenario"
+        ]
 
         import_config[
             "use_imported_scenario"
@@ -473,7 +569,7 @@ class CommonOceanEnv(gym.Env):
 
         import_config[
             "scenario_filepath"
-        ] = SCENARIO_PATH
+        ] = self.scenario_path
 
         import_config[
             "vessel_type"
@@ -483,41 +579,52 @@ class CommonOceanEnv(gym.Env):
             "vessel_type_by_id"
         ] = None
 
-        # Se crea inicialmente con MPC, pero inmediatamente
-        # después lo sustituimos por ExternalActionController.
         import_config[
             "controller_type"
         ] = "mpc"
 
-        # ====================================================
-        # Simulator configuration
-        # ====================================================
-
-        configuration["general_simulator"][
+        configuration[
+            "general_simulator"
+        ][
             "using_collision_avoider"
         ] = False
 
-        configuration["general_simulator"][
+        configuration[
+            "general_simulator"
+        ][
             "using_collision_detection"
         ] = True
 
-        configuration["general_simulator"][
+        configuration[
+            "general_simulator"
+        ][
             "using_displayer"
+        ] = (
+            self.render_mode
+            == "human"
+        )
+
+        configuration[
+            "general_simulator"
+        ][
+            "mark_mpc_states"
         ] = False
 
-        configuration["general_simulator"][
+        configuration[
+            "general_simulator"
+        ][
             "plotting"
-        ]["do_plotting"] = False
+        ][
+            "do_plotting"
+        ] = False
 
         dt = float(
             configuration[
                 "general_simulator"
-            ]["dt"]
+            ][
+                "dt"
+            ]
         )
-
-        # ====================================================
-        # Factory
-        # ====================================================
 
         factory = SimulatorFactory(
             dt
@@ -530,10 +637,6 @@ class CommonOceanEnv(gym.Env):
         factory.current_configuration = (
             configuration
         )
-
-        # ====================================================
-        # Collision callback for RL
-        # ====================================================
 
         def mark_collision(
             vehicle,
@@ -550,35 +653,25 @@ class CommonOceanEnv(gym.Env):
             mark_collision
         )
 
-        # ====================================================
-        # Load scenario
-        # ====================================================
-
         simulation_io.configure_simfac_from_config_dict(
             current_configuration_input=configuration
         )
 
-        # ====================================================
-        # Validate architecture
-        # ====================================================
-
-        if len(factory.models) != 1:
+        if len(
+            factory.models
+        ) != 1:
             raise RuntimeError(
-                "El entorno espera exactamente "
-                "1 SurfaceVessel ego, pero encontró "
-                f"{len(factory.models)}."
+                "El entorno espera exactamente 1 SurfaceVessel ego, "
+                f"pero encontró {len(factory.models)}."
             )
 
-        if len(factory.dynamic_obstacles) != 1:
+        if len(
+            factory.dynamic_obstacles
+        ) != 1:
             raise RuntimeError(
-                "Esta versión espera exactamente "
-                "1 DynamicObstacle, pero encontró "
-                f"{len(factory.dynamic_obstacles)}."
+                "Esta versión espera exactamente 1 DynamicObstacle, "
+                f"pero encontró {len(factory.dynamic_obstacles)}."
             )
-
-        # ====================================================
-        # Generate simulator
-        # ====================================================
 
         simulator = (
             factory.generate_scenario()
@@ -588,10 +681,6 @@ class CommonOceanEnv(gym.Env):
         simulator.rl_collision_vehicle = None
         simulator.rl_collision_object = None
 
-        # ====================================================
-        # Ego
-        # ====================================================
-
         ego = simulator.models[0]
 
         if (
@@ -599,17 +688,14 @@ class CommonOceanEnv(gym.Env):
             != VesselModel.YP
         ):
             raise RuntimeError(
-                "La embarcación ego debe utilizar "
-                "VesselModel.YP."
+                "La embarcación ego debe utilizar VesselModel.YP."
             )
-
-        # ====================================================
-        # Goal
-        # ====================================================
 
         if (
             ego.waypoints is None
-            or len(ego.waypoints) == 0
+            or len(
+                ego.waypoints
+            ) == 0
         ):
             raise RuntimeError(
                 "La embarcación ego no tiene waypoints."
@@ -619,10 +705,6 @@ class CommonOceanEnv(gym.Env):
             ego.waypoints[-1],
             dtype=np.float64,
         ).copy()
-
-        # ====================================================
-        # Replace MPC controller
-        # ====================================================
 
         original_controller = (
             ego.get_controller()
@@ -649,29 +731,21 @@ class CommonOceanEnv(gym.Env):
                     2,
                     dtype=np.float64,
                 ),
-                desired_velocity=(
-                    desired_velocity
-                ),
+                desired_velocity=desired_velocity,
             )
         )
 
         external_controller.sim = simulator
-
         external_controller.initialise()
 
         ego.set_controller(
             external_controller
         )
 
-        # ====================================================
-        # Collision detector
-        # ====================================================
-
         collision_detector = next(
             (
                 listener
-                for listener
-                in simulator.listeners
+                for listener in simulator.listeners
                 if isinstance(
                     listener,
                     CollisionDetector,
@@ -685,18 +759,11 @@ class CommonOceanEnv(gym.Env):
                 "CollisionDetector no fue instalado."
             )
 
-        # ====================================================
-        # Traffic
-        # ====================================================
-
-        traffic = (
-            simulator.dynamic_obstacles[0]
-        )
+        traffic = simulator.dynamic_obstacles[0]
 
         if traffic.prediction is None:
             raise RuntimeError(
-                "El DynamicObstacle no tiene "
-                "una trayectoria prediction."
+                "El DynamicObstacle no tiene una trayectoria prediction."
             )
 
         traffic_states = (
@@ -708,16 +775,24 @@ class CommonOceanEnv(gym.Env):
 
         if not traffic_states:
             raise RuntimeError(
-                "La trayectoria del DynamicObstacle "
-                "está vacía."
+                "La trayectoria del DynamicObstacle está vacía."
             )
+
+        first_traffic_time_step = int(
+            traffic_states[0].time_step
+        )
 
         last_traffic_time_step = int(
             traffic_states[-1].time_step
         )
 
-        # No permitimos que el episodio continúe después
-        # de que termine la trayectoria conocida del tráfico.
+        if first_traffic_time_step > 1:
+            raise RuntimeError(
+                "La trayectoria del DynamicObstacle comienza "
+                "demasiado tarde: "
+                f"primer time_step={first_traffic_time_step}."
+            )
+
         if (
             self.max_episode_steps
             > last_traffic_time_step
@@ -729,33 +804,17 @@ class CommonOceanEnv(gym.Env):
                 f"{last_traffic_time_step}"
             )
 
-        # ====================================================
-        # Save references
-        # ====================================================
-
         self.factory = factory
-
-        self.simulation_io = (
-            simulation_io
-        )
-
+        self.simulation_io = simulation_io
         self.simulator = simulator
 
         self.ego = ego
-
         self.traffic = traffic
 
-        self.controller = (
-            external_controller
-        )
+        self.controller = external_controller
+        self.collision_detector = collision_detector
 
-        self.collision_detector = (
-            collision_detector
-        )
-
-        self.goal_position = (
-            goal_position
-        )
+        self.goal_position = goal_position
 
     # ========================================================
     # Actions
@@ -766,24 +825,25 @@ class CommonOceanEnv(gym.Env):
         action: np.ndarray,
     ) -> np.ndarray:
         """
-        Convierte la acción RL normalizada a unidades físicas.
+        Convierte acción normalizada a unidades físicas:
 
-        action[0]
-            -> aceleración longitudinal [m/s²]
-
-        action[1]
-            -> yaw rate [rad/s]
+            action[0] -> aceleración longitudinal [m/s²]
+            action[1] -> yaw rate [rad/s]
         """
 
         acceleration = (
-            float(action[0])
+            float(
+                action[0]
+            )
             * float(
                 self.ego.parameters.a_max
             )
         )
 
         yaw_rate = (
-            float(action[1])
+            float(
+                action[1]
+            )
             * float(
                 self.ego.maximum_yaw_rate
             )
@@ -798,7 +858,7 @@ class CommonOceanEnv(gym.Env):
         )
 
     # ========================================================
-    # Coordinate transformations
+    # Geometry
     # ========================================================
 
     def _global_to_ego_frame(
@@ -808,33 +868,43 @@ class CommonOceanEnv(gym.Env):
         """
         Transforma un vector global al marco local de ego.
 
-        Marco local:
-
-            +x = delante de la embarcación
-            +y = babor
+            +x local = delante
+            +y local = babor
         """
 
         psi = float(
             self.ego.heading
         )
 
-        c = np.cos(psi)
-        s = np.sin(psi)
+        c = np.cos(
+            psi
+        )
+
+        s = np.sin(
+            psi
+        )
 
         rotation = np.array(
             [
-                [c, s],
-                [-s, c],
+                [
+                    c,
+                    s,
+                ],
+                [
+                    -s,
+                    c,
+                ],
             ],
             dtype=np.float64,
         )
 
-        vector = np.asarray(
-            vector,
-            dtype=np.float64,
+        return (
+            rotation
+            @ np.asarray(
+                vector,
+                dtype=np.float64,
+            )
         )
-
-        return rotation @ vector
 
     # ========================================================
     # CPA / TCPA
@@ -846,10 +916,7 @@ class CommonOceanEnv(gym.Env):
         relative_velocity: np.ndarray,
     ) -> tuple[float, float]:
         """
-        Calcula Distance at Closest Point of Approach (DCPA)
-        y Time to Closest Point of Approach (TCPA).
-
-        Se asume velocidad constante instantánea.
+        Calcula DCPA y TCPA con velocidad instantánea constante.
         """
 
         relative_position = np.asarray(
@@ -869,7 +936,6 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        # Velocidad relativa prácticamente nula.
         if relative_speed_squared < 1e-8:
             return (
                 float(
@@ -880,16 +946,20 @@ class CommonOceanEnv(gym.Env):
                 0.0,
             )
 
-        tcpa = -float(
-            np.dot(
-                relative_position,
-                relative_velocity,
+        tcpa = (
+            -float(
+                np.dot(
+                    relative_position,
+                    relative_velocity,
+                )
             )
-        ) / relative_speed_squared
+            / relative_speed_squared
+        )
 
         closest_position = (
             relative_position
-            + tcpa * relative_velocity
+            + tcpa
+            * relative_velocity
         )
 
         dcpa = float(
@@ -898,7 +968,10 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        return dcpa, tcpa
+        return (
+            dcpa,
+            tcpa,
+        )
 
     # ========================================================
     # Traffic
@@ -908,11 +981,7 @@ class CommonOceanEnv(gym.Env):
         self,
     ):
         """
-        Obtiene el estado del DynamicObstacle correspondiente
-        al time_step actual.
-
-        No congelamos artificialmente el tráfico si la
-        trayectoria se termina.
+        Obtiene el estado del DynamicObstacle para el time_step actual.
         """
 
         time_step = int(
@@ -945,33 +1014,26 @@ class CommonOceanEnv(gym.Env):
 
         if not states:
             raise RuntimeError(
-                "La trayectoria del DynamicObstacle "
-                "está vacía."
+                "La trayectoria del DynamicObstacle está vacía."
             )
 
         raise RuntimeError(
-            "La simulación alcanzó un time_step "
-            "para el cual el DynamicObstacle no "
-            "tiene trayectoria. "
+            "La simulación alcanzó un time_step para el cual "
+            "el DynamicObstacle no tiene trayectoria. "
             f"time_step={time_step}, "
-            f"último time_step="
-            f"{states[-1].time_step}"
+            f"último time_step={states[-1].time_step}"
         )
 
     # ========================================================
-    # Observations
+    # Observation
     # ========================================================
 
     def _get_observation(
         self,
     ) -> np.ndarray:
         """
-        Construye la observación egocéntrica de 13 variables.
+        Construye la observación egocéntrica normalizada de 13 variables.
         """
-
-        # ====================================================
-        # Ego state
-        # ====================================================
 
         ego_position = np.asarray(
             self.ego.position,
@@ -985,10 +1047,6 @@ class CommonOceanEnv(gym.Env):
         ego_speed = float(
             self.ego.velocity
         )
-
-        # ====================================================
-        # Traffic state
-        # ====================================================
 
         traffic_state = (
             self._get_traffic_state()
@@ -1007,9 +1065,9 @@ class CommonOceanEnv(gym.Env):
             traffic_state.velocity
         )
 
-        # ====================================================
+        # ----------------------------------------------------
         # Goal relative to ego
-        # ====================================================
+        # ----------------------------------------------------
 
         goal_vector_global = (
             self.goal_position
@@ -1035,9 +1093,9 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        # ====================================================
-        # Traffic relative position
-        # ====================================================
+        # ----------------------------------------------------
+        # Traffic relative to ego
+        # ----------------------------------------------------
 
         relative_position_global = (
             traffic_position
@@ -1063,9 +1121,9 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        # ====================================================
-        # Global velocity vectors
-        # ====================================================
+        # ----------------------------------------------------
+        # Velocities
+        # ----------------------------------------------------
 
         ego_velocity_global = np.array(
             [
@@ -1073,7 +1131,6 @@ class CommonOceanEnv(gym.Env):
                 * np.cos(
                     ego_heading
                 ),
-
                 ego_speed
                 * np.sin(
                     ego_heading
@@ -1088,7 +1145,6 @@ class CommonOceanEnv(gym.Env):
                 * np.cos(
                     traffic_heading
                 ),
-
                 traffic_speed
                 * np.sin(
                     traffic_heading
@@ -1108,18 +1164,12 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        # ====================================================
-        # CPA / TCPA
-        # ====================================================
-
-        dcpa, tcpa = self._compute_cpa(
-            relative_position_global,
-            relative_velocity_global,
+        dcpa, tcpa = (
+            self._compute_cpa(
+                relative_position_global,
+                relative_velocity_global,
+            )
         )
-
-        # ====================================================
-        # Relative heading
-        # ====================================================
 
         relative_heading = float(
             np.arctan2(
@@ -1134,10 +1184,6 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        # ====================================================
-        # Normalization
-        # ====================================================
-
         speed_scale = max(
             float(
                 self.ego.parameters.v_max
@@ -1146,68 +1192,39 @@ class CommonOceanEnv(gym.Env):
         )
 
         relative_speed_scale = (
-            2.0 * speed_scale
+            2.0
+            * speed_scale
         )
 
         observation = np.array(
             [
-                # 0 - ego speed
-                ego_speed
-                / speed_scale,
-
-                # 1 - goal distance
-                goal_distance
-                / self.distance_scale,
-
-                # 2
+                ego_speed / speed_scale,
+                goal_distance / self.distance_scale,
                 np.sin(
                     goal_bearing
                 ),
-
-                # 3
                 np.cos(
                     goal_bearing
                 ),
-
-                # 4 - traffic distance
-                traffic_distance
-                / self.distance_scale,
-
-                # 5
+                traffic_distance / self.distance_scale,
                 np.sin(
                     traffic_bearing
                 ),
-
-                # 6
                 np.cos(
                     traffic_bearing
                 ),
-
-                # 7
                 relative_velocity_local[0]
                 / relative_speed_scale,
-
-                # 8
                 relative_velocity_local[1]
                 / relative_speed_scale,
-
-                # 9
                 np.sin(
                     relative_heading
                 ),
-
-                # 10
                 np.cos(
                     relative_heading
                 ),
-
-                # 11
-                dcpa
-                / self.distance_scale,
-
-                # 12
-                tcpa
-                / self.tcpa_scale,
+                dcpa / self.distance_scale,
+                tcpa / self.tcpa_scale,
             ],
             dtype=np.float64,
         )
@@ -1233,26 +1250,22 @@ class CommonOceanEnv(gym.Env):
         info: dict[str, Any],
     ) -> tuple[float, dict[str, float]]:
         """
-        Primera recompensa funcional.
+        Recompensa inicial:
 
-        Componentes:
+        - progreso hacia el objetivo,
+        - penalización por riesgo DCPA/TCPA,
+        - coste temporal,
+        - penalización por colisión,
+        - recompensa por llegada.
 
-        1. Progreso hacia el objetivo
-        2. Riesgo DCPA/TCPA
-        3. Coste temporal
-        4. Colisión
-        5. Llegada al objetivo
-
-        Todavía NO incluye COLREGs.
+        Todavía no incluye COLREGs explícitos.
         """
 
         current_distance = float(
-            info["distance_to_goal"]
+            info[
+                "distance_to_goal"
+            ]
         )
-
-        # ====================================================
-        # 1. Progress reward
-        # ====================================================
 
         if self._previous_distance_to_goal is None:
             progress_m = 0.0
@@ -1262,50 +1275,46 @@ class CommonOceanEnv(gym.Env):
                 - current_distance
             )
 
-        # Un progreso de aproximadamente 10 m produce
-        # reward ≈ +1.
         progress_reward = (
-            progress_m / 10.0
+            progress_m
+            / 10.0
         )
 
         self._previous_distance_to_goal = (
             current_distance
         )
 
-        # ====================================================
-        # 2. Collision-risk penalty
-        # ====================================================
-
         dcpa = float(
-            info["dcpa"]
+            info[
+                "dcpa"
+            ]
         )
 
         tcpa = float(
-            info["tcpa"]
+            info[
+                "tcpa"
+            ]
         )
 
-        # Escalas iniciales.
-        #
-        # Posteriormente las ajustaremos con experimentación.
         dcpa_safe = 300.0
         tcpa_safe = 180.0
 
         dcpa_risk = float(
             np.clip(
                 1.0
-                - dcpa / dcpa_safe,
+                - dcpa
+                / dcpa_safe,
                 0.0,
                 1.0,
             )
         )
 
-        # TCPA <= 0 significa que el CPA ya ocurrió
-        # según la aproximación cinemática actual.
         if tcpa > 0.0:
             tcpa_risk = float(
                 np.clip(
                     1.0
-                    - tcpa / tcpa_safe,
+                    - tcpa
+                    / tcpa_safe,
                     0.0,
                     1.0,
                 )
@@ -1319,15 +1328,7 @@ class CommonOceanEnv(gym.Env):
             * tcpa_risk
         )
 
-        # ====================================================
-        # 3. Time penalty
-        # ====================================================
-
         time_penalty = -0.01
-
-        # ====================================================
-        # 4. Collision
-        # ====================================================
 
         collision_reward = (
             self.collision_penalty
@@ -1335,19 +1336,11 @@ class CommonOceanEnv(gym.Env):
             else 0.0
         )
 
-        # ====================================================
-        # 5. Goal
-        # ====================================================
-
         terminal_goal_reward = (
             self.goal_reward
             if goal_reached
             else 0.0
         )
-
-        # ====================================================
-        # Total
-        # ====================================================
 
         reward = (
             progress_reward
@@ -1361,26 +1354,24 @@ class CommonOceanEnv(gym.Env):
             "progress": float(
                 progress_reward
             ),
-
             "risk": float(
                 risk_penalty
             ),
-
             "time": float(
                 time_penalty
             ),
-
             "collision": float(
                 collision_reward
             ),
-
             "goal": float(
                 terminal_goal_reward
             ),
         }
 
         return (
-            float(reward),
+            float(
+                reward
+            ),
             components,
         )
 
@@ -1392,20 +1383,8 @@ class CommonOceanEnv(gym.Env):
         self,
     ) -> dict[str, Any]:
         """
-        Información física no normalizada.
-
-        No forma parte de la observación entregada al agente.
-        Se utiliza para:
-
-        - debugging
-        - evaluación
-        - plots
-        - diseño de reward
+        Información física no normalizada para evaluación y depuración.
         """
-
-        # ====================================================
-        # Ego
-        # ====================================================
 
         ego_position = np.asarray(
             self.ego.position,
@@ -1419,10 +1398,6 @@ class CommonOceanEnv(gym.Env):
         ego_speed = float(
             self.ego.velocity
         )
-
-        # ====================================================
-        # Traffic
-        # ====================================================
 
         traffic_state = (
             self._get_traffic_state()
@@ -1440,10 +1415,6 @@ class CommonOceanEnv(gym.Env):
         traffic_speed = float(
             traffic_state.velocity
         )
-
-        # ====================================================
-        # Relative position
-        # ====================================================
 
         relative_position = (
             traffic_position
@@ -1463,17 +1434,12 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        # ====================================================
-        # Velocity vectors
-        # ====================================================
-
         ego_velocity = np.array(
             [
                 ego_speed
                 * np.cos(
                     ego_heading
                 ),
-
                 ego_speed
                 * np.sin(
                     ego_heading
@@ -1488,7 +1454,6 @@ class CommonOceanEnv(gym.Env):
                 * np.cos(
                     traffic_heading
                 ),
-
                 traffic_speed
                 * np.sin(
                     traffic_heading
@@ -1502,80 +1467,63 @@ class CommonOceanEnv(gym.Env):
             - ego_velocity
         )
 
-        # ====================================================
-        # CPA
-        # ====================================================
-
-        dcpa, tcpa = self._compute_cpa(
-            relative_position,
-            relative_velocity,
+        dcpa, tcpa = (
+            self._compute_cpa(
+                relative_position,
+                relative_velocity,
+            )
         )
 
-        # ====================================================
-        # Return
-        # ====================================================
-
         return {
-            "step": self._elapsed_steps,
-
+            "step": int(
+                self._elapsed_steps
+            ),
             "simulation_time": float(
                 self.simulator.time
             ),
-
             "collision": bool(
-                self.simulator
-                .rl_collision_occurred
+                self.simulator.rl_collision_occurred
             ),
-
             "goal_reached": bool(
                 self.ego.journey_finished
             ),
-
             "simulator_running": bool(
                 self.simulator.is_running
             ),
-
             "distance_to_goal": float(
                 distance_to_goal
             ),
-
             "distance_to_traffic": float(
                 distance_to_traffic
             ),
-
             "dcpa": float(
                 dcpa
             ),
-
             "tcpa": float(
                 tcpa
             ),
-
             "ego_position": (
                 ego_position.copy()
             ),
-
             "ego_velocity": float(
                 ego_speed
             ),
-
             "ego_heading": float(
                 ego_heading
             ),
-
             "traffic_position": (
                 traffic_position.copy()
             ),
-
             "traffic_velocity": float(
                 traffic_speed
             ),
-
             "traffic_heading": float(
                 traffic_heading
             ),
-
             "physical_action": (
                 self._last_physical_action.copy()
+            ),
+            "scenario": dict(
+                self.scenario_metadata
             ),
         }

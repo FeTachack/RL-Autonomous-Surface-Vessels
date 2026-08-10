@@ -46,3 +46,8 @@ plots/
 # Temporary
 *.tmp
 *.bak
+
+# Generated RL artifacts
+experiments/checkpoints/
+experiments/scenarios/generated/
+*.pt

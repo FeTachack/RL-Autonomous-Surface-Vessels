@@ -1,0 +1,3730 @@
+{
+  "summary": {
+    "episodes": 100,
+    "reward_mean": 258.4491982713799,
+    "reward_std": 14.785982258968325,
+    "reward_min": 222.72712747262244,
+    "reward_max": 283.47547139396113,
+    "collision_rate": 0.0,
+    "goal_rate": 1.0,
+    "min_distance_mean": 187.27108655825288,
+    "min_distance_std": 37.1361906618914,
+    "min_distance_min": 107.47248675082686,
+    "min_distance_p05": 128.3016036720419,
+    "min_distance_p10": 142.8504261483797,
+    "min_distance_p25": 162.13017024613066,
+    "min_dcpa_mean": 37.2721093448926,
+    "min_dcpa_min": 0.18411156203504947,
+    "final_goal_distance_mean": 164.51134740751488,
+    "episode_length_mean": 204.69
+  },
+  "results": [
+    {
+      "seed": 70000,
+      "reward": 256.5494997711617,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 177.64819864891422,
+      "min_dcpa": 2.7073725535499857,
+      "final_goal_distance": 111.96338724476985,
+      "scenario": {
+        "randomized": true,
+        "seed": 70000,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70000.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 112.65765859409254,
+          "traffic_y0": -11.894938186138212,
+          "traffic_speed": 5.340643610899917,
+          "traffic_heading": 3.1724018778909233,
+          "ego_speed": 4.560240922392114
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70000.xml"
+      }
+    },
+    {
+      "seed": 70001,
+      "reward": 251.05814629200836,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 175.47822366239163,
+      "min_dcpa": 6.032284087134858,
+      "final_goal_distance": 169.66297812570818,
+      "scenario": {
+        "randomized": true,
+        "seed": 70001,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70001.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 151.18925412607132,
+          "traffic_y0": -28.155660369846096,
+          "traffic_speed": 5.170382220176628,
+          "traffic_heading": 3.12821632134794,
+          "ego_speed": 4.580479125203277
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70001.xml"
+      }
+    },
+    {
+      "seed": 70002,
+      "reward": 273.2819604395825,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 215.47543410838273,
+      "min_dcpa": 72.86410810057178,
+      "final_goal_distance": 166.30752221849608,
+      "scenario": {
+        "randomized": true,
+        "seed": 70002,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70002.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 84.29400923584757,
+          "traffic_y0": 31.573685539690942,
+          "traffic_speed": 4.730768018444305,
+          "traffic_heading": 3.130778796351415,
+          "ego_speed": 4.118948718411091
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70002.xml"
+      }
+    },
+    {
+      "seed": 70003,
+      "reward": 222.72712747262244,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 107.47248675082686,
+      "min_dcpa": 2.0223413088019218,
+      "final_goal_distance": 133.43631864641665,
+      "scenario": {
+        "randomized": true,
+        "seed": 70003,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70003.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 138.2461236551399,
+          "traffic_y0": -29.342538872248443,
+          "traffic_speed": 4.619814857681071,
+          "traffic_heading": 3.2366915302432018,
+          "ego_speed": 4.44536829229107
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70003.xml"
+      }
+    },
+    {
+      "seed": 70004,
+      "reward": 262.3991329145452,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 196.20257297866024,
+      "min_dcpa": 27.46484122900834,
+      "final_goal_distance": 154.83170191269866,
+      "scenario": {
+        "randomized": true,
+        "seed": 70004,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70004.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 112.41808426714974,
+          "traffic_y0": -58.786259325017674,
+          "traffic_speed": 5.251721500442121,
+          "traffic_heading": 3.0852878695874733,
+          "ego_speed": 4.491056635193208
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70004.xml"
+      }
+    },
+    {
+      "seed": 70005,
+      "reward": 249.40604346011523,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 169.68623454568547,
+      "min_dcpa": 0.260448730127402,
+      "final_goal_distance": 167.97525781362648,
+      "scenario": {
+        "randomized": true,
+        "seed": 70005,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70005.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 129.71262626276737,
+          "traffic_y0": 5.615646865221436,
+          "traffic_speed": 4.872445957963309,
+          "traffic_heading": 3.164471737067149,
+          "ego_speed": 4.507726481802526
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70005.xml"
+      }
+    },
+    {
+      "seed": 70006,
+      "reward": 254.14180893146872,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 182.14979755147877,
+      "min_dcpa": 4.474625785999175,
+      "final_goal_distance": 178.08058438763848,
+      "scenario": {
+        "randomized": true,
+        "seed": 70006,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70006.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 153.76729156747928,
+          "traffic_y0": -23.195141627878797,
+          "traffic_speed": 5.175262754001351,
+          "traffic_heading": 3.1203954136346392,
+          "ego_speed": 4.565246043755004
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70006.xml"
+      }
+    },
+    {
+      "seed": 70007,
+      "reward": 248.72271467415243,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 162.37751426742742,
+      "min_dcpa": 6.0623342151530775,
+      "final_goal_distance": 154.25157584054978,
+      "scenario": {
+        "randomized": true,
+        "seed": 70007,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70007.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 133.98243181562492,
+          "traffic_y0": 50.933327127652106,
+          "traffic_speed": 4.729368156513239,
+          "traffic_heading": 3.2183610040908333,
+          "ego_speed": 4.362958150879636
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70007.xml"
+      }
+    },
+    {
+      "seed": 70008,
+      "reward": 252.66998329997773,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 178.63862220040528,
+      "min_dcpa": 0.8780005803531074,
+      "final_goal_distance": 186.8120806127125,
+      "scenario": {
+        "randomized": true,
+        "seed": 70008,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70008.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 113.32749260412422,
+          "traffic_y0": 34.59796246280378,
+          "traffic_speed": 4.626555419316332,
+          "traffic_heading": 3.1608503758092263,
+          "ego_speed": 4.55285395135504
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70008.xml"
+      }
+    },
+    {
+      "seed": 70009,
+      "reward": 279.1324156458895,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 255.48691482148473,
+      "min_dcpa": 110.18857781695505,
+      "final_goal_distance": 238.7198155876107,
+      "scenario": {
+        "randomized": true,
+        "seed": 70009,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70009.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 122.3143309754391,
+          "traffic_y0": 50.7075146985886,
+          "traffic_speed": 4.929261994646324,
+          "traffic_heading": 3.057615427043836,
+          "ego_speed": 4.334518585609512
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70009.xml"
+      }
+    },
+    {
+      "seed": 70010,
+      "reward": 273.0455262080334,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 240.3782811983945,
+      "min_dcpa": 59.48978039392089,
+      "final_goal_distance": 264.304255206022,
+      "scenario": {
+        "randomized": true,
+        "seed": 70010,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70010.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 148.6279288461218,
+          "traffic_y0": 33.45611152759686,
+          "traffic_speed": 4.946547622245527,
+          "traffic_heading": 3.0483673260091595,
+          "ego_speed": 4.534376280831888
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70010.xml"
+      }
+    },
+    {
+      "seed": 70011,
+      "reward": 260.06000522699895,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 190.81587988306393,
+      "min_dcpa": 15.798304968263318,
+      "final_goal_distance": 161.4621199025596,
+      "scenario": {
+        "randomized": true,
+        "seed": 70011,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70011.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 99.70298035335408,
+          "traffic_y0": -44.057803386634646,
+          "traffic_speed": 4.9043811514163975,
+          "traffic_heading": 3.0962293539808527,
+          "ego_speed": 4.364237169810866
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70011.xml"
+      }
+    },
+    {
+      "seed": 70012,
+      "reward": 265.6257165604119,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 194.5269344147475,
+      "min_dcpa": 45.951916844257234,
+      "final_goal_distance": 128.85803321573886,
+      "scenario": {
+        "randomized": true,
+        "seed": 70012,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70012.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 129.33827612556775,
+          "traffic_y0": 37.72764111462591,
+          "traffic_speed": 5.212053616978427,
+          "traffic_heading": 3.18795911944979,
+          "ego_speed": 4.242763989008429
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70012.xml"
+      }
+    },
+    {
+      "seed": 70013,
+      "reward": 272.51094121281034,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 206.40157743383403,
+      "min_dcpa": 71.13991483100966,
+      "final_goal_distance": 121.79897561910425,
+      "scenario": {
+        "randomized": true,
+        "seed": 70013,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70013.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 94.95152926689246,
+          "traffic_y0": 42.66822429153096,
+          "traffic_speed": 5.068842017473423,
+          "traffic_heading": 3.179997998624225,
+          "ego_speed": 4.172502519020442
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70013.xml"
+      }
+    },
+    {
+      "seed": 70014,
+      "reward": 263.2709409725953,
+      "steps": 209,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 201.73457773424857,
+      "min_dcpa": 32.939397519466226,
+      "final_goal_distance": 213.93506487180468,
+      "scenario": {
+        "randomized": true,
+        "seed": 70014,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70014.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 153.84649710193744,
+          "traffic_y0": -30.348897407371254,
+          "traffic_speed": 4.806648558410203,
+          "traffic_heading": 3.069289622246048,
+          "ego_speed": 4.141606891623222
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70014.xml"
+      }
+    },
+    {
+      "seed": 70015,
+      "reward": 249.99854022933607,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 168.16434606130727,
+      "min_dcpa": 1.0964437897363426,
+      "final_goal_distance": 181.05128587558895,
+      "scenario": {
+        "randomized": true,
+        "seed": 70015,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70015.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 161.92936712196428,
+          "traffic_y0": -40.50761547865272,
+          "traffic_speed": 4.9297825435411795,
+          "traffic_heading": 3.128137109398528,
+          "ego_speed": 4.211390992477063
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70015.xml"
+      }
+    },
+    {
+      "seed": 70016,
+      "reward": 282.7624258924811,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 237.95492660686608,
+      "min_dcpa": 121.9775253636667,
+      "final_goal_distance": 154.01329404236665,
+      "scenario": {
+        "randomized": true,
+        "seed": 70016,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70016.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 103.39147202552996,
+          "traffic_y0": 48.77545203352126,
+          "traffic_speed": 5.270350068514063,
+          "traffic_heading": 3.135321068180809,
+          "ego_speed": 4.206836148414623
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70016.xml"
+      }
+    },
+    {
+      "seed": 70017,
+      "reward": 252.18239039534532,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 171.40295612105518,
+      "min_dcpa": 1.1632361776976852,
+      "final_goal_distance": 167.32812963353194,
+      "scenario": {
+        "randomized": true,
+        "seed": 70017,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70017.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 130.02804263383052,
+          "traffic_y0": -26.338414759363246,
+          "traffic_speed": 4.736310764936383,
+          "traffic_heading": 3.1337819516421592,
+          "ego_speed": 4.231905467113686
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70017.xml"
+      }
+    },
+    {
+      "seed": 70018,
+      "reward": 249.17786608156837,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 158.62789739483378,
+      "min_dcpa": 2.847006213477134,
+      "final_goal_distance": 139.58180822985958,
+      "scenario": {
+        "randomized": true,
+        "seed": 70018,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70018.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 165.3595367445967,
+          "traffic_y0": 8.590850712049303,
+          "traffic_speed": 4.980643237079563,
+          "traffic_heading": 3.203032122428043,
+          "ego_speed": 4.088112137939823
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70018.xml"
+      }
+    },
+    {
+      "seed": 70019,
+      "reward": 281.8232757668046,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 236.57984832076588,
+      "min_dcpa": 118.39844154595507,
+      "final_goal_distance": 160.21551942997715,
+      "scenario": {
+        "randomized": true,
+        "seed": 70019,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70019.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 87.00542887554326,
+          "traffic_y0": -9.516994404837973,
+          "traffic_speed": 5.1300966476665035,
+          "traffic_heading": 3.0773050861446074,
+          "ego_speed": 4.168587658144185
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70019.xml"
+      }
+    },
+    {
+      "seed": 70020,
+      "reward": 250.52551510414418,
+      "steps": 209,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 157.82323043548,
+      "min_dcpa": 4.54088867282865,
+      "final_goal_distance": 120.59359665387174,
+      "scenario": {
+        "randomized": true,
+        "seed": 70020,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70020.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 154.75075142674314,
+          "traffic_y0": -49.70923500847385,
+          "traffic_speed": 5.128268816685515,
+          "traffic_heading": 3.1656871364194115,
+          "ego_speed": 4.063817526851789
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70020.xml"
+      }
+    },
+    {
+      "seed": 70021,
+      "reward": 252.48496615553927,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 160.42916755391,
+      "min_dcpa": 4.4606227875885525,
+      "final_goal_distance": 113.0796755166178,
+      "scenario": {
+        "randomized": true,
+        "seed": 70021,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70021.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 95.5030939096878,
+          "traffic_y0": -8.685985758389137,
+          "traffic_speed": 4.6595233392123445,
+          "traffic_heading": 3.193490099937562,
+          "ego_speed": 4.089249105961733
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70021.xml"
+      }
+    },
+    {
+      "seed": 70022,
+      "reward": 262.34864058439354,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 187.1877203649936,
+      "min_dcpa": 37.158491928743956,
+      "final_goal_distance": 120.7938029789542,
+      "scenario": {
+        "randomized": true,
+        "seed": 70022,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70022.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 136.20873379119539,
+          "traffic_y0": 43.00626466064632,
+          "traffic_speed": 5.342352810731931,
+          "traffic_heading": 3.211238817017804,
+          "ego_speed": 4.276307302718556
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70022.xml"
+      }
+    },
+    {
+      "seed": 70023,
+      "reward": 273.7945451987104,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 210.727441254871,
+      "min_dcpa": 85.50020899789368,
+      "final_goal_distance": 125.01096631684958,
+      "scenario": {
+        "randomized": true,
+        "seed": 70023,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70023.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 81.27054574793331,
+          "traffic_y0": -41.42400826493938,
+          "traffic_speed": 5.120522065457648,
+          "traffic_heading": 3.099619632715335,
+          "ego_speed": 4.122412472433951
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70023.xml"
+      }
+    },
+    {
+      "seed": 70024,
+      "reward": 255.67867971921254,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 181.2859041673707,
+      "min_dcpa": 4.753381306233133,
+      "final_goal_distance": 148.3977450621978,
+      "scenario": {
+        "randomized": true,
+        "seed": 70024,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70024.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 81.83308666184429,
+          "traffic_y0": -16.541228103199963,
+          "traffic_speed": 4.826663747665401,
+          "traffic_heading": 3.136004594648731,
+          "ego_speed": 4.5540509606119635
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70024.xml"
+      }
+    },
+    {
+      "seed": 70025,
+      "reward": 275.2315334122505,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 237.59890552006354,
+      "min_dcpa": 84.26347733448887,
+      "final_goal_distance": 239.49933530310213,
+      "scenario": {
+        "randomized": true,
+        "seed": 70025,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70025.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 141.81190285246157,
+          "traffic_y0": 52.40157507182974,
+          "traffic_speed": 4.812666899521112,
+          "traffic_heading": 3.080946255178015,
+          "ego_speed": 4.223993638450448
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70025.xml"
+      }
+    },
+    {
+      "seed": 70026,
+      "reward": 250.9484193264268,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 167.1560523953823,
+      "min_dcpa": 1.0101312567349416,
+      "final_goal_distance": 149.80560839185495,
+      "scenario": {
+        "randomized": true,
+        "seed": 70026,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70026.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 172.518551940318,
+          "traffic_y0": -32.307441165761475,
+          "traffic_speed": 5.267424155387832,
+          "traffic_heading": 3.1599111225024403,
+          "ego_speed": 4.183708257701913
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70026.xml"
+      }
+    },
+    {
+      "seed": 70027,
+      "reward": 271.2684131113748,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 215.74612258966675,
+      "min_dcpa": 81.95806761356944,
+      "final_goal_distance": 192.33370926149283,
+      "scenario": {
+        "randomized": true,
+        "seed": 70027,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70027.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 130.25553492913457,
+          "traffic_y0": -36.8470315584678,
+          "traffic_speed": 4.995505529751238,
+          "traffic_heading": 3.0666603317473946,
+          "ego_speed": 4.046842258534475
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70027.xml"
+      }
+    },
+    {
+      "seed": 70028,
+      "reward": 234.5118231509931,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 128.546281024361,
+      "min_dcpa": 4.866268031314878,
+      "final_goal_distance": 129.74882487006212,
+      "scenario": {
+        "randomized": true,
+        "seed": 70028,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70028.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 163.5794214788879,
+          "traffic_y0": -29.85356699644258,
+          "traffic_speed": 4.975571660065544,
+          "traffic_heading": 3.221062932571325,
+          "ego_speed": 4.1713922725397605
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70028.xml"
+      }
+    },
+    {
+      "seed": 70029,
+      "reward": 279.53524072821267,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 266.66778844768737,
+      "min_dcpa": 121.47200306417766,
+      "final_goal_distance": 251.8232763874294,
+      "scenario": {
+        "randomized": true,
+        "seed": 70029,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70029.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 151.45976613027233,
+          "traffic_y0": 47.44425391443343,
+          "traffic_speed": 5.296413103447867,
+          "traffic_heading": 3.0439242245967795,
+          "ego_speed": 4.509857222310255
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70029.xml"
+      }
+    },
+    {
+      "seed": 70030,
+      "reward": 274.14388439709774,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 226.87195918977866,
+      "min_dcpa": 64.06084926144757,
+      "final_goal_distance": 204.07982563095698,
+      "scenario": {
+        "randomized": true,
+        "seed": 70030,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70030.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 86.31174676772753,
+          "traffic_y0": -7.055683749205606,
+          "traffic_speed": 4.7554449447360145,
+          "traffic_heading": 3.0555407807374166,
+          "ego_speed": 4.343657062005508
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70030.xml"
+      }
+    },
+    {
+      "seed": 70031,
+      "reward": 233.22843725656185,
+      "steps": 209,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 128.57529967289332,
+      "min_dcpa": 4.52477624952752,
+      "final_goal_distance": 148.33390602350062,
+      "scenario": {
+        "randomized": true,
+        "seed": 70031,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70031.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 163.1017020777869,
+          "traffic_y0": -36.47372201413865,
+          "traffic_speed": 4.793898037908747,
+          "traffic_heading": 3.1986691634640723,
+          "ego_speed": 4.234307203335666
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70031.xml"
+      }
+    },
+    {
+      "seed": 70032,
+      "reward": 245.42687619417893,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 163.49557465908526,
+      "min_dcpa": 2.220345621373421,
+      "final_goal_distance": 183.0324128211178,
+      "scenario": {
+        "randomized": true,
+        "seed": 70032,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70032.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 157.3933835978985,
+          "traffic_y0": -19.560373713155343,
+          "traffic_speed": 4.95250889228565,
+          "traffic_heading": 3.140741159090962,
+          "ego_speed": 4.5775788074253585
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70032.xml"
+      }
+    },
+    {
+      "seed": 70033,
+      "reward": 259.88510905982463,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 198.31553301604472,
+      "min_dcpa": 9.915839983810807,
+      "final_goal_distance": 204.53458755480145,
+      "scenario": {
+        "randomized": true,
+        "seed": 70033,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70033.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 97.66524714754752,
+          "traffic_y0": -25.710762904919726,
+          "traffic_speed": 4.609530338525947,
+          "traffic_heading": 3.0645166017774508,
+          "ego_speed": 4.535638541648285
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70033.xml"
+      }
+    },
+    {
+      "seed": 70034,
+      "reward": 236.12469174301486,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 129.42667818352376,
+      "min_dcpa": 0.8459630287022001,
+      "final_goal_distance": 89.40002852751385,
+      "scenario": {
+        "randomized": true,
+        "seed": 70034,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70034.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 82.58812325329069,
+          "traffic_y0": -25.484237569741993,
+          "traffic_speed": 4.717490781070421,
+          "traffic_heading": 3.2292309858899197,
+          "ego_speed": 4.500695293285316
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70034.xml"
+      }
+    },
+    {
+      "seed": 70035,
+      "reward": 266.99294366353683,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 196.67466185059158,
+      "min_dcpa": 62.24316062014821,
+      "final_goal_distance": 128.26538415059355,
+      "scenario": {
+        "randomized": true,
+        "seed": 70035,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70035.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 125.26482958269823,
+          "traffic_y0": -20.598040710727602,
+          "traffic_speed": 5.261737227203801,
+          "traffic_heading": 3.1394879718922253,
+          "ego_speed": 4.121969001481984
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70035.xml"
+      }
+    },
+    {
+      "seed": 70036,
+      "reward": 250.80030407529506,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 166.23138018168086,
+      "min_dcpa": 3.221981446420598,
+      "final_goal_distance": 138.1432470985205,
+      "scenario": {
+        "randomized": true,
+        "seed": 70036,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70036.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 81.14094623446226,
+          "traffic_y0": -58.04858322128664,
+          "traffic_speed": 4.643075738250206,
+          "traffic_heading": 3.1185961421941224,
+          "ego_speed": 4.382833912520104
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70036.xml"
+      }
+    },
+    {
+      "seed": 70037,
+      "reward": 270.1458394398152,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 210.3085666779052,
+      "min_dcpa": 72.61505584880511,
+      "final_goal_distance": 165.46197041956947,
+      "scenario": {
+        "randomized": true,
+        "seed": 70037,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70037.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 149.5719337010586,
+          "traffic_y0": 11.171875653594483,
+          "traffic_speed": 5.3287748658649505,
+          "traffic_heading": 3.1339214859586715,
+          "ego_speed": 4.206561850693675
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70037.xml"
+      }
+    },
+    {
+      "seed": 70038,
+      "reward": 255.57246775429576,
+      "steps": 209,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 171.25598381962698,
+      "min_dcpa": 27.47555359915544,
+      "final_goal_distance": 132.2738323549482,
+      "scenario": {
+        "randomized": true,
+        "seed": 70038,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70038.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 175.76273952831554,
+          "traffic_y0": -45.84928844632146,
+          "traffic_speed": 5.349798851193016,
+          "traffic_heading": 3.1537114813514355,
+          "ego_speed": 4.006072843463584
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70038.xml"
+      }
+    },
+    {
+      "seed": 70039,
+      "reward": 281.5197637289135,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 250.5002815962643,
+      "min_dcpa": 116.81998683952395,
+      "final_goal_distance": 201.91647878973367,
+      "scenario": {
+        "randomized": true,
+        "seed": 70039,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70039.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 100.94081491654138,
+          "traffic_y0": 56.95797381439465,
+          "traffic_speed": 4.951709793490279,
+          "traffic_heading": 3.0889907089049844,
+          "ego_speed": 4.275453822181532
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70039.xml"
+      }
+    },
+    {
+      "seed": 70040,
+      "reward": 272.4553199751996,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 235.05877768569752,
+      "min_dcpa": 81.47702820568787,
+      "final_goal_distance": 264.57620185415806,
+      "scenario": {
+        "randomized": true,
+        "seed": 70040,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70040.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 153.75078856745765,
+          "traffic_y0": 59.31539289814921,
+          "traffic_speed": 4.617080064173473,
+          "traffic_heading": 3.0770273573397176,
+          "ego_speed": 4.079461421395165
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70040.xml"
+      }
+    },
+    {
+      "seed": 70041,
+      "reward": 231.80346866525207,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 128.90636590482177,
+      "min_dcpa": 1.2832261973167833,
+      "final_goal_distance": 130.34485951615767,
+      "scenario": {
+        "randomized": true,
+        "seed": 70041,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70041.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 160.98532299589084,
+          "traffic_y0": -30.56637525615278,
+          "traffic_speed": 5.14447207337489,
+          "traffic_heading": 3.210395155300362,
+          "ego_speed": 4.567355205437596
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70041.xml"
+      }
+    },
+    {
+      "seed": 70042,
+      "reward": 231.31703174763567,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 121.4356881178666,
+      "min_dcpa": 2.7617522961075465,
+      "final_goal_distance": 108.69001352614063,
+      "scenario": {
+        "randomized": true,
+        "seed": 70042,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70042.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 167.1079795944023,
+          "traffic_y0": -50.063736965516384,
+          "traffic_speed": 5.236416707318924,
+          "traffic_heading": 3.214701602435071,
+          "ego_speed": 4.466965365258426
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70042.xml"
+      }
+    },
+    {
+      "seed": 70043,
+      "reward": 249.80966194786043,
+      "steps": 200,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 156.8059788886672,
+      "min_dcpa": 0.8788613055806174,
+      "final_goal_distance": 73.86418264316119,
+      "scenario": {
+        "randomized": true,
+        "seed": 70043,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70043.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 89.83289933016775,
+          "traffic_y0": -5.827064397934912,
+          "traffic_speed": 5.274231788416729,
+          "traffic_heading": 3.231382380418054,
+          "ego_speed": 4.462448238142697
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70043.xml"
+      }
+    },
+    {
+      "seed": 70044,
+      "reward": 252.68649511367292,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 178.2001357949036,
+      "min_dcpa": 2.929947564222572,
+      "final_goal_distance": 175.59111811359256,
+      "scenario": {
+        "randomized": true,
+        "seed": 70044,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70044.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 159.76957224045648,
+          "traffic_y0": 37.28662694744514,
+          "traffic_speed": 5.14930579229146,
+          "traffic_heading": 3.1811978152547313,
+          "ego_speed": 4.578934748901858
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70044.xml"
+      }
+    },
+    {
+      "seed": 70045,
+      "reward": 283.47547139396113,
+      "steps": 199,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 244.53764947468756,
+      "min_dcpa": 109.43744604403832,
+      "final_goal_distance": 163.24917823201466,
+      "scenario": {
+        "randomized": true,
+        "seed": 70045,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70045.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 87.02670674665524,
+          "traffic_y0": 55.49576606061906,
+          "traffic_speed": 5.21957820811534,
+          "traffic_heading": 3.119958625959267,
+          "ego_speed": 4.446206130966677
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70045.xml"
+      }
+    },
+    {
+      "seed": 70046,
+      "reward": 247.40553681871697,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 152.4723446319797,
+      "min_dcpa": 3.0704863536861198,
+      "final_goal_distance": 128.34359230614305,
+      "scenario": {
+        "randomized": true,
+        "seed": 70046,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70046.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 127.6185896012335,
+          "traffic_y0": 8.19048170036875,
+          "traffic_speed": 4.703841438851217,
+          "traffic_heading": 3.2130988003314775,
+          "ego_speed": 4.095367161112195
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70046.xml"
+      }
+    },
+    {
+      "seed": 70047,
+      "reward": 276.3631306534297,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 227.83823763362832,
+      "min_dcpa": 100.05130482263542,
+      "final_goal_distance": 190.539954517689,
+      "scenario": {
+        "randomized": true,
+        "seed": 70047,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70047.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 95.44389630569927,
+          "traffic_y0": -26.642894823749735,
+          "traffic_speed": 4.881819454250803,
+          "traffic_heading": 3.0569426775267945,
+          "ego_speed": 4.0662932306687
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70047.xml"
+      }
+    },
+    {
+      "seed": 70048,
+      "reward": 247.8846028227196,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 148.14639674305644,
+      "min_dcpa": 0.9749861301960258,
+      "final_goal_distance": 83.73656848073306,
+      "scenario": {
+        "randomized": true,
+        "seed": 70048,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70048.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 94.86524200848879,
+          "traffic_y0": -19.513146478747586,
+          "traffic_speed": 4.957497655772046,
+          "traffic_heading": 3.230003149313917,
+          "ego_speed": 4.103804339763132
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70048.xml"
+      }
+    },
+    {
+      "seed": 70049,
+      "reward": 279.3988771044479,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 259.6355592064144,
+      "min_dcpa": 159.49585109975357,
+      "final_goal_distance": 243.49413044673162,
+      "scenario": {
+        "randomized": true,
+        "seed": 70049,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70049.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 168.49973587581883,
+          "traffic_y0": 29.956843238698042,
+          "traffic_speed": 5.243093857330048,
+          "traffic_heading": 3.0564782365981062,
+          "ego_speed": 4.0108985046529
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70049.xml"
+      }
+    },
+    {
+      "seed": 70050,
+      "reward": 254.00780998469418,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 187.89993220935352,
+      "min_dcpa": 1.7699957177485601,
+      "final_goal_distance": 239.72520885523406,
+      "scenario": {
+        "randomized": true,
+        "seed": 70050,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70050.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 160.80104725801988,
+          "traffic_y0": 7.486914283216095,
+          "traffic_speed": 4.609663941888601,
+          "traffic_heading": 3.1024909393511084,
+          "ego_speed": 4.339854542999058
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70050.xml"
+      }
+    },
+    {
+      "seed": 70051,
+      "reward": 277.5457610182189,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 247.31991580144742,
+      "min_dcpa": 128.69859528249427,
+      "final_goal_distance": 238.87171148729612,
+      "scenario": {
+        "randomized": true,
+        "seed": 70051,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70051.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 158.9643877447627,
+          "traffic_y0": 50.18501191788759,
+          "traffic_speed": 5.005305193659938,
+          "traffic_heading": 3.0807155315873214,
+          "ego_speed": 4.030255328843897
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70051.xml"
+      }
+    },
+    {
+      "seed": 70052,
+      "reward": 269.755681004978,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 230.4156408216625,
+      "min_dcpa": 60.649308089408,
+      "final_goal_distance": 277.09096522846255,
+      "scenario": {
+        "randomized": true,
+        "seed": 70052,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70052.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 158.09884618034147,
+          "traffic_y0": 25.042487434310473,
+          "traffic_speed": 4.660140586049578,
+          "traffic_heading": 3.048756527192412,
+          "ego_speed": 4.192054655931556
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70052.xml"
+      }
+    },
+    {
+      "seed": 70053,
+      "reward": 255.4590302009114,
+      "steps": 200,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 164.69231037687734,
+      "min_dcpa": 33.50315096230414,
+      "final_goal_distance": 79.81596393329687,
+      "scenario": {
+        "randomized": true,
+        "seed": 70053,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70053.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 85.43746629494845,
+          "traffic_y0": -10.802901384828559,
+          "traffic_speed": 5.345861256732183,
+          "traffic_heading": 3.238895734230363,
+          "ego_speed": 4.077526505656451
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70053.xml"
+      }
+    },
+    {
+      "seed": 70054,
+      "reward": 266.94131154974593,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 201.0623297768981,
+      "min_dcpa": 45.70343755910359,
+      "final_goal_distance": 127.02055157523196,
+      "scenario": {
+        "randomized": true,
+        "seed": 70054,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70054.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 88.57237989540806,
+          "traffic_y0": -16.645545817198638,
+          "traffic_speed": 5.208404499296083,
+          "traffic_heading": 3.130240657606702,
+          "ego_speed": 4.436048530091033
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70054.xml"
+      }
+    },
+    {
+      "seed": 70055,
+      "reward": 239.71141175093715,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 149.08254163644747,
+      "min_dcpa": 6.080694118931722,
+      "final_goal_distance": 158.27352532880016,
+      "scenario": {
+        "randomized": true,
+        "seed": 70055,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70055.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 132.02886653853966,
+          "traffic_y0": -39.17211272162893,
+          "traffic_speed": 4.898780222848316,
+          "traffic_heading": 3.1572928057615397,
+          "ego_speed": 4.591311164784143
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70055.xml"
+      }
+    },
+    {
+      "seed": 70056,
+      "reward": 236.62966262882162,
+      "steps": 209,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 123.6527339779788,
+      "min_dcpa": 2.5170975980032577,
+      "final_goal_distance": 87.45776858684557,
+      "scenario": {
+        "randomized": true,
+        "seed": 70056,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70056.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 148.78094042950184,
+          "traffic_y0": -59.52687516197082,
+          "traffic_speed": 5.109472567081541,
+          "traffic_heading": 3.2223471324098747,
+          "ego_speed": 4.094705360773909
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70056.xml"
+      }
+    },
+    {
+      "seed": 70057,
+      "reward": 264.8866277759026,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 188.7710100410958,
+      "min_dcpa": 54.78623063018469,
+      "final_goal_distance": 118.97723437591179,
+      "scenario": {
+        "randomized": true,
+        "seed": 70057,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70057.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 133.9048308639089,
+          "traffic_y0": 8.110379446530743,
+          "traffic_speed": 5.168285864418627,
+          "traffic_heading": 3.1768504752063893,
+          "ego_speed": 4.0222351864341945
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70057.xml"
+      }
+    },
+    {
+      "seed": 70058,
+      "reward": 282.68010376868983,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 237.90671091178717,
+      "min_dcpa": 132.0044916692154,
+      "final_goal_distance": 158.52770160210295,
+      "scenario": {
+        "randomized": true,
+        "seed": 70058,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70058.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 82.27998339535556,
+          "traffic_y0": 17.042642538328195,
+          "traffic_speed": 5.0126505235532095,
+          "traffic_heading": 3.102472959085742,
+          "ego_speed": 4.0192079796851745
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70058.xml"
+      }
+    },
+    {
+      "seed": 70059,
+      "reward": 271.8199541225649,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 204.28092212863058,
+      "min_dcpa": 77.41368730306442,
+      "final_goal_distance": 107.60052341060114,
+      "scenario": {
+        "randomized": true,
+        "seed": 70059,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70059.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 98.2643569449533,
+          "traffic_y0": 1.9516338897520242,
+          "traffic_speed": 5.252588713145341,
+          "traffic_heading": 3.1575077748747464,
+          "ego_speed": 4.150892141401186
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70059.xml"
+      }
+    },
+    {
+      "seed": 70060,
+      "reward": 268.9194566231705,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 208.4600109346302,
+      "min_dcpa": 53.49324777345052,
+      "final_goal_distance": 163.49267975957045,
+      "scenario": {
+        "randomized": true,
+        "seed": 70060,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70060.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 95.92959939647396,
+          "traffic_y0": -44.89973451781353,
+          "traffic_speed": 5.0109028656197845,
+          "traffic_heading": 3.073585883539482,
+          "ego_speed": 4.309047992148656
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70060.xml"
+      }
+    },
+    {
+      "seed": 70061,
+      "reward": 240.23255133086678,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 144.23994237994253,
+      "min_dcpa": 2.8444439499739906,
+      "final_goal_distance": 135.7037132133998,
+      "scenario": {
+        "randomized": true,
+        "seed": 70061,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70061.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 113.72650573798869,
+          "traffic_y0": -17.63927827057377,
+          "traffic_speed": 4.737705669605068,
+          "traffic_heading": 3.189515961665289,
+          "ego_speed": 4.5258084729993255
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70061.xml"
+      }
+    },
+    {
+      "seed": 70062,
+      "reward": 282.13076718822356,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 241.8577247800936,
+      "min_dcpa": 135.92919950577647,
+      "final_goal_distance": 178.98535585865136,
+      "scenario": {
+        "randomized": true,
+        "seed": 70062,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70062.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 117.92617543878012,
+          "traffic_y0": 14.046131754405891,
+          "traffic_speed": 5.129628666381765,
+          "traffic_heading": 3.085350300832397,
+          "ego_speed": 4.020136732006622
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70062.xml"
+      }
+    },
+    {
+      "seed": 70063,
+      "reward": 247.58870300572272,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 159.08883202791694,
+      "min_dcpa": 6.430488133036975,
+      "final_goal_distance": 124.19869187681942,
+      "scenario": {
+        "randomized": true,
+        "seed": 70063,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70063.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 152.1136893664592,
+          "traffic_y0": -51.96184713022561,
+          "traffic_speed": 5.306326507367366,
+          "traffic_heading": 3.156132833769294,
+          "ego_speed": 4.396498062162014
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70063.xml"
+      }
+    },
+    {
+      "seed": 70064,
+      "reward": 277.970348354407,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 219.31737884169934,
+      "min_dcpa": 97.6399733868252,
+      "final_goal_distance": 114.33782050712543,
+      "scenario": {
+        "randomized": true,
+        "seed": 70064,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70064.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 89.10632697617659,
+          "traffic_y0": 20.493531521637763,
+          "traffic_speed": 5.324902446226559,
+          "traffic_heading": 3.1531594267762935,
+          "ego_speed": 4.229385437689436
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70064.xml"
+      }
+    },
+    {
+      "seed": 70065,
+      "reward": 245.2218759833005,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 155.84623586203523,
+      "min_dcpa": 6.473105628781786,
+      "final_goal_distance": 181.12031593122006,
+      "scenario": {
+        "randomized": true,
+        "seed": 70065,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70065.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 175.63358212031034,
+          "traffic_y0": 56.01101236891576,
+          "traffic_speed": 4.7243470067530176,
+          "traffic_heading": 3.222762476603373,
+          "ego_speed": 4.19413980765322
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70065.xml"
+      }
+    },
+    {
+      "seed": 70066,
+      "reward": 238.9771485286495,
+      "steps": 209,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 130.34478006431414,
+      "min_dcpa": 3.5064303564220913,
+      "final_goal_distance": 103.80312232207277,
+      "scenario": {
+        "randomized": true,
+        "seed": 70066,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70066.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 128.46137025718707,
+          "traffic_y0": -59.24106275670661,
+          "traffic_speed": 4.822842746633579,
+          "traffic_heading": 3.1991042158602188,
+          "ego_speed": 4.103334440047908
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70066.xml"
+      }
+    },
+    {
+      "seed": 70067,
+      "reward": 274.87580170923724,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 237.60186903244417,
+      "min_dcpa": 67.58543941259178,
+      "final_goal_distance": 239.7626661161608,
+      "scenario": {
+        "randomized": true,
+        "seed": 70067,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70067.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 102.92771933756758,
+          "traffic_y0": 34.762030980058114,
+          "traffic_speed": 4.645769728256933,
+          "traffic_heading": 3.057893145321505,
+          "ego_speed": 4.356784291838897
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70067.xml"
+      }
+    },
+    {
+      "seed": 70068,
+      "reward": 247.80295764680324,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 163.76632221673697,
+      "min_dcpa": 1.6580632411492187,
+      "final_goal_distance": 144.32904293299853,
+      "scenario": {
+        "randomized": true,
+        "seed": 70068,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70068.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 149.55572892840127,
+          "traffic_y0": -38.73086963121894,
+          "traffic_speed": 5.273974297488171,
+          "traffic_heading": 3.149860795038663,
+          "ego_speed": 4.561973086199227
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70068.xml"
+      }
+    },
+    {
+      "seed": 70069,
+      "reward": 266.9854191684693,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 203.33372231172055,
+      "min_dcpa": 48.64786411930584,
+      "final_goal_distance": 175.65419417186962,
+      "scenario": {
+        "randomized": true,
+        "seed": 70069,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70069.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 103.4728133111185,
+          "traffic_y0": -7.0276193560154425,
+          "traffic_speed": 4.687695307519452,
+          "traffic_heading": 3.104487581072386,
+          "ego_speed": 4.090873415520731
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70069.xml"
+      }
+    },
+    {
+      "seed": 70070,
+      "reward": 275.82444870305704,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 222.7216385112157,
+      "min_dcpa": 85.28705243726994,
+      "final_goal_distance": 185.16944165596632,
+      "scenario": {
+        "randomized": true,
+        "seed": 70070,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70070.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 89.75369353384598,
+          "traffic_y0": 45.503502767954345,
+          "traffic_speed": 4.621552034491034,
+          "traffic_heading": 3.122552284820747,
+          "ego_speed": 4.029958601516298
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70070.xml"
+      }
+    },
+    {
+      "seed": 70071,
+      "reward": 243.04964533993987,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 144.83129837857692,
+      "min_dcpa": 5.271569219391106,
+      "final_goal_distance": 104.63470308362173,
+      "scenario": {
+        "randomized": true,
+        "seed": 70071,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70071.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 137.7731834034964,
+          "traffic_y0": -56.857959052408724,
+          "traffic_speed": 5.214427676981909,
+          "traffic_heading": 3.1839495009241343,
+          "ego_speed": 4.313579771507699
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70071.xml"
+      }
+    },
+    {
+      "seed": 70072,
+      "reward": 231.6744386043789,
+      "steps": 211,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 122.25903272083092,
+      "min_dcpa": 4.736265488300297,
+      "final_goal_distance": 151.35759348833588,
+      "scenario": {
+        "randomized": true,
+        "seed": 70072,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70072.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 179.5234541200368,
+          "traffic_y0": -22.127565981309495,
+          "traffic_speed": 4.727838075164828,
+          "traffic_heading": 3.223068035577974,
+          "ego_speed": 4.049176456747421
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70072.xml"
+      }
+    },
+    {
+      "seed": 70073,
+      "reward": 263.81251136905746,
+      "steps": 202,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 202.32482770530476,
+      "min_dcpa": 20.181787628441892,
+      "final_goal_distance": 178.97486703639592,
+      "scenario": {
+        "randomized": true,
+        "seed": 70073,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70073.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 136.0614317826463,
+          "traffic_y0": 13.578848234233732,
+          "traffic_speed": 5.161293614079537,
+          "traffic_heading": 3.1244864279179145,
+          "ego_speed": 4.568361784553833
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70073.xml"
+      }
+    },
+    {
+      "seed": 70074,
+      "reward": 277.5605705995683,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 227.387339732058,
+      "min_dcpa": 90.7614857242518,
+      "final_goal_distance": 166.72725016780424,
+      "scenario": {
+        "randomized": true,
+        "seed": 70074,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70074.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 132.57525830241735,
+          "traffic_y0": 52.54681900222981,
+          "traffic_speed": 5.363383149528688,
+          "traffic_heading": 3.144919959432774,
+          "ego_speed": 4.346083724088644
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70074.xml"
+      }
+    },
+    {
+      "seed": 70075,
+      "reward": 249.37180341563231,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 168.0392808275983,
+      "min_dcpa": 2.6215761249153786,
+      "final_goal_distance": 146.34565656263513,
+      "scenario": {
+        "randomized": true,
+        "seed": 70075,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70075.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 82.57778732855344,
+          "traffic_y0": -56.291596470808535,
+          "traffic_speed": 4.7533318109411224,
+          "traffic_heading": 3.114833178791989,
+          "ego_speed": 4.550225106561079
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70075.xml"
+      }
+    },
+    {
+      "seed": 70076,
+      "reward": 244.20479404620784,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 154.75002270512834,
+      "min_dcpa": 2.9045328881456443,
+      "final_goal_distance": 186.04711157987367,
+      "scenario": {
+        "randomized": true,
+        "seed": 70076,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70076.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 178.05475353062383,
+          "traffic_y0": 54.01746798636694,
+          "traffic_speed": 4.663148209346722,
+          "traffic_heading": 3.2243734741927703,
+          "ego_speed": 4.061353237585042
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70076.xml"
+      }
+    },
+    {
+      "seed": 70077,
+      "reward": 260.4252323997967,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 198.3489590352153,
+      "min_dcpa": 8.125168829805753,
+      "final_goal_distance": 201.69154103405523,
+      "scenario": {
+        "randomized": true,
+        "seed": 70077,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70077.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 157.29421763298706,
+          "traffic_y0": 10.369323506360686,
+          "traffic_speed": 5.0647013638059875,
+          "traffic_heading": 3.11504695883533,
+          "ego_speed": 4.505656915979878
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70077.xml"
+      }
+    },
+    {
+      "seed": 70078,
+      "reward": 277.59226713860687,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 245.561534512267,
+      "min_dcpa": 116.98814612870483,
+      "final_goal_distance": 234.10748783607195,
+      "scenario": {
+        "randomized": true,
+        "seed": 70078,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70078.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 155.22090818620836,
+          "traffic_y0": 53.6716746380215,
+          "traffic_speed": 5.034577289775478,
+          "traffic_heading": 3.0859716774398334,
+          "ego_speed": 4.1315849990933
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70078.xml"
+      }
+    },
+    {
+      "seed": 70079,
+      "reward": 253.9096561233377,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 166.8876914922792,
+      "min_dcpa": 7.522039376175147,
+      "final_goal_distance": 113.18685464610225,
+      "scenario": {
+        "randomized": true,
+        "seed": 70079,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70079.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 100.40553255254252,
+          "traffic_y0": 22.90849797728751,
+          "traffic_speed": 4.854818033264451,
+          "traffic_heading": 3.2144563463378466,
+          "ego_speed": 4.27213112687554
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70079.xml"
+      }
+    },
+    {
+      "seed": 70080,
+      "reward": 256.87713560626884,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 186.38133594160618,
+      "min_dcpa": 10.10762124645157,
+      "final_goal_distance": 156.73843669417295,
+      "scenario": {
+        "randomized": true,
+        "seed": 70080,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70080.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 133.4885604529078,
+          "traffic_y0": -52.42217901668219,
+          "traffic_speed": 5.34376288779149,
+          "traffic_heading": 3.1068924292287154,
+          "ego_speed": 4.5257168139968
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70080.xml"
+      }
+    },
+    {
+      "seed": 70081,
+      "reward": 249.24994898168222,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 166.22547748816345,
+      "min_dcpa": 6.054723835197109,
+      "final_goal_distance": 175.1161777893152,
+      "scenario": {
+        "randomized": true,
+        "seed": 70081,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70081.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 160.93984001432585,
+          "traffic_y0": -35.66365597736181,
+          "traffic_speed": 4.918289699882344,
+          "traffic_heading": 3.134082687673313,
+          "ego_speed": 4.251336134135
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70081.xml"
+      }
+    },
+    {
+      "seed": 70082,
+      "reward": 266.29672307634866,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 199.44582548925555,
+      "min_dcpa": 43.23697036645388,
+      "final_goal_distance": 141.31746745721628,
+      "scenario": {
+        "randomized": true,
+        "seed": 70082,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70082.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 132.5468442578255,
+          "traffic_y0": 54.008093477570995,
+          "traffic_speed": 5.2920115458794506,
+          "traffic_heading": 3.1910893848557738,
+          "ego_speed": 4.386403994563345
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70082.xml"
+      }
+    },
+    {
+      "seed": 70083,
+      "reward": 282.38064296506144,
+      "steps": 201,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 263.4681461145746,
+      "min_dcpa": 138.19151844901066,
+      "final_goal_distance": 220.60824165806702,
+      "scenario": {
+        "randomized": true,
+        "seed": 70083,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70083.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 84.85523171061347,
+          "traffic_y0": 49.83445311304885,
+          "traffic_speed": 4.907533876650064,
+          "traffic_heading": 3.060696271970124,
+          "ego_speed": 4.258840364068697
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70083.xml"
+      }
+    },
+    {
+      "seed": 70084,
+      "reward": 240.05526388182597,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 150.21597820336947,
+      "min_dcpa": 2.3389720359211488,
+      "final_goal_distance": 173.55086979622962,
+      "scenario": {
+        "randomized": true,
+        "seed": 70084,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70084.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 137.02818193437847,
+          "traffic_y0": 46.04818757997728,
+          "traffic_speed": 4.638889559143748,
+          "traffic_heading": 3.2200576624964707,
+          "ego_speed": 4.529031558996621
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70084.xml"
+      }
+    },
+    {
+      "seed": 70085,
+      "reward": 261.899658781302,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 195.83548791678845,
+      "min_dcpa": 23.291385108339078,
+      "final_goal_distance": 157.94877187965423,
+      "scenario": {
+        "randomized": true,
+        "seed": 70085,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70085.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 120.31231369118319,
+          "traffic_y0": -31.302848011044574,
+          "traffic_speed": 5.19012181528508,
+          "traffic_heading": 3.1063663303672056,
+          "ego_speed": 4.4833533816971896
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70085.xml"
+      }
+    },
+    {
+      "seed": 70086,
+      "reward": 260.51397950977463,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 198.83876170661352,
+      "min_dcpa": 18.538669698989544,
+      "final_goal_distance": 200.21835435152087,
+      "scenario": {
+        "randomized": true,
+        "seed": 70086,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70086.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 162.11012021035063,
+          "traffic_y0": -48.62932457571243,
+          "traffic_speed": 5.213951766321706,
+          "traffic_heading": 3.069038164537477,
+          "ego_speed": 4.452034978769058
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70086.xml"
+      }
+    },
+    {
+      "seed": 70087,
+      "reward": 247.9602270329995,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 171.0332517472955,
+      "min_dcpa": 5.7731644608303885,
+      "final_goal_distance": 212.90193317455692,
+      "scenario": {
+        "randomized": true,
+        "seed": 70087,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70087.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 160.0714427145839,
+          "traffic_y0": 4.65093628599891,
+          "traffic_speed": 4.64099454888268,
+          "traffic_heading": 3.136051385316996,
+          "ego_speed": 4.3510646479402535
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70087.xml"
+      }
+    },
+    {
+      "seed": 70088,
+      "reward": 258.916618579271,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 179.69727239758006,
+      "min_dcpa": 22.363980634963802,
+      "final_goal_distance": 136.7482536380027,
+      "scenario": {
+        "randomized": true,
+        "seed": 70088,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70088.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 153.4772533271549,
+          "traffic_y0": 44.07739012304164,
+          "traffic_speed": 5.12601077398797,
+          "traffic_heading": 3.208739932382062,
+          "ego_speed": 4.153708312800738
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70088.xml"
+      }
+    },
+    {
+      "seed": 70089,
+      "reward": 268.6013195736129,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 207.6759750144385,
+      "min_dcpa": 54.20865692185724,
+      "final_goal_distance": 179.58439922713876,
+      "scenario": {
+        "randomized": true,
+        "seed": 70089,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70089.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 91.16146963005666,
+          "traffic_y0": -43.06355403098595,
+          "traffic_speed": 4.652474163361523,
+          "traffic_heading": 3.0610743610442315,
+          "ego_speed": 4.0868765736440675
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70089.xml"
+      }
+    },
+    {
+      "seed": 70090,
+      "reward": 249.40690544099294,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 168.8742554427356,
+      "min_dcpa": 0.6333754008797757,
+      "final_goal_distance": 159.83981611357308,
+      "scenario": {
+        "randomized": true,
+        "seed": 70090,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70090.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 172.60993420926556,
+          "traffic_y0": -0.8011054795610946,
+          "traffic_speed": 5.311226233522561,
+          "traffic_heading": 3.1758133077898196,
+          "ego_speed": 4.437833725505116
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70090.xml"
+      }
+    },
+    {
+      "seed": 70091,
+      "reward": 252.1339884286537,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 185.7221440790139,
+      "min_dcpa": 5.35162407968617,
+      "final_goal_distance": 248.60852173650287,
+      "scenario": {
+        "randomized": true,
+        "seed": 70091,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70091.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 175.84906438867068,
+          "traffic_y0": 8.656652997933975,
+          "traffic_speed": 4.608424070388284,
+          "traffic_heading": 3.0980335211950565,
+          "ego_speed": 4.391063716067803
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70091.xml"
+      }
+    },
+    {
+      "seed": 70092,
+      "reward": 270.45637691836487,
+      "steps": 205,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 214.01898395657997,
+      "min_dcpa": 63.24491471993652,
+      "final_goal_distance": 185.03267571012555,
+      "scenario": {
+        "randomized": true,
+        "seed": 70092,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70092.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 144.14823546063985,
+          "traffic_y0": -7.7664283379449515,
+          "traffic_speed": 5.174440653124832,
+          "traffic_heading": 3.0949192470767297,
+          "ego_speed": 4.274651175398659
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70092.xml"
+      }
+    },
+    {
+      "seed": 70093,
+      "reward": 243.1149732822722,
+      "steps": 203,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 150.0090929979285,
+      "min_dcpa": 1.9653425946382221,
+      "final_goal_distance": 136.87179398162561,
+      "scenario": {
+        "randomized": true,
+        "seed": 70093,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70093.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 142.2226804458485,
+          "traffic_y0": 35.31757532167612,
+          "traffic_speed": 4.954640667091021,
+          "traffic_heading": 3.23103417772271,
+          "ego_speed": 4.5308485997518995
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70093.xml"
+      }
+    },
+    {
+      "seed": 70094,
+      "reward": 254.21093366434354,
+      "steps": 206,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 181.09419613422037,
+      "min_dcpa": 0.18411156203504947,
+      "final_goal_distance": 183.2024823302705,
+      "scenario": {
+        "randomized": true,
+        "seed": 70094,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70094.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 164.2514524908505,
+          "traffic_y0": -36.64553937056106,
+          "traffic_speed": 5.157026620327064,
+          "traffic_heading": 3.1154349642085117,
+          "ego_speed": 4.351082137039193
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70094.xml"
+      }
+    },
+    {
+      "seed": 70095,
+      "reward": 252.11386560623794,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 171.0688262868476,
+      "min_dcpa": 2.8171806290792802,
+      "final_goal_distance": 152.77146969906292,
+      "scenario": {
+        "randomized": true,
+        "seed": 70095,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70095.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 135.62797542226966,
+          "traffic_y0": 2.101217632987499,
+          "traffic_speed": 4.9861081214652385,
+          "traffic_heading": 3.1726241814299256,
+          "ego_speed": 4.360276526191864
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70095.xml"
+      }
+    },
+    {
+      "seed": 70096,
+      "reward": 265.52088600081436,
+      "steps": 204,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 191.49817477743218,
+      "min_dcpa": 41.89566023504272,
+      "final_goal_distance": 133.90761973305914,
+      "scenario": {
+        "randomized": true,
+        "seed": 70096,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70096.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 82.62114794969872,
+          "traffic_y0": 40.35059799870895,
+          "traffic_speed": 4.620173467401205,
+          "traffic_heading": 3.1857809470263097,
+          "ego_speed": 4.023403705573638
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70096.xml"
+      }
+    },
+    {
+      "seed": 70097,
+      "reward": 251.57697858650096,
+      "steps": 208,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 180.96290954537275,
+      "min_dcpa": 2.7626287315338725,
+      "final_goal_distance": 233.53476172554923,
+      "scenario": {
+        "randomized": true,
+        "seed": 70097,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70097.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 162.6457590866815,
+          "traffic_y0": -10.632168780437802,
+          "traffic_speed": 4.6044343812194235,
+          "traffic_heading": 3.0954868369567476,
+          "ego_speed": 4.371413660007666
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70097.xml"
+      }
+    },
+    {
+      "seed": 70098,
+      "reward": 225.86384499481113,
+      "steps": 210,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 116.53703926136689,
+      "min_dcpa": 5.991979606853988,
+      "final_goal_distance": 167.5914475280859,
+      "scenario": {
+        "randomized": true,
+        "seed": 70098,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70098.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 169.77226382496806,
+          "traffic_y0": -47.93955029097632,
+          "traffic_speed": 4.650544694939363,
+          "traffic_heading": 3.1968943992621557,
+          "ego_speed": 4.25621033930306
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70098.xml"
+      }
+    },
+    {
+      "seed": 70099,
+      "reward": 246.88765364834944,
+      "steps": 207,
+      "collision": false,
+      "goal_reached": true,
+      "truncated": false,
+      "min_distance": 161.3881381822404,
+      "min_dcpa": 6.4790403215675685,
+      "final_goal_distance": 168.502260196233,
+      "scenario": {
+        "randomized": true,
+        "seed": 70099,
+        "base_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/one_ego_one_traffic.xml",
+        "output_xml_path": "/home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/scenarios/generated/randomized_crossing_seed_70099.xml",
+        "config": {
+          "traffic_x0_min": 80.0,
+          "traffic_x0_max": 180.0,
+          "traffic_y0_min": -60.0,
+          "traffic_y0_max": 60.0,
+          "traffic_speed_min": 4.6,
+          "traffic_speed_max": 5.4,
+          "traffic_heading_center": 3.141592653589793,
+          "traffic_heading_delta": 0.1,
+          "ego_speed_min": 4.0,
+          "ego_speed_max": 4.6
+        },
+        "parameters": {
+          "traffic_x0": 125.18049916934848,
+          "traffic_y0": -42.376656299309026,
+          "traffic_speed": 4.661596489442898,
+          "traffic_heading": 3.127887323595912,
+          "ego_speed": 4.342913778646244
+        },
+        "scenario_path": "/experiments/scenarios/generated/randomized_crossing_seed_70099.xml"
+      }
+    }
+  ],
+  "worst_seeds": [
+    70003,
+    70098,
+    70042,
+    70072,
+    70056
+  ]
+}
