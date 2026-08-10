@@ -152,6 +152,13 @@ def main():
             rewards=rewards,
             terminated=terminated,
             next_states=next_states,
+            
+            episode_ends=np.zeros(
+            agent.num_envs,
+            dtype=np.float32,
+            ),
+
+
         )
 
         current_states = (
