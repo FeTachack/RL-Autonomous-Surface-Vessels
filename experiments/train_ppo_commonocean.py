@@ -17,10 +17,6 @@ from experiments.envs.commonocean_env import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 SEED = 42
 
 STATE_SIZE = 13
@@ -30,8 +26,7 @@ NUM_ENVS = 1
 ROLLOUT_STEPS = 256
 MAX_EPISODE_STEPS = 220
 
-# Para prueba rápida usa 10.
-# Para una primera curva útil de informe, usa 50 o 100.
+
 NUM_UPDATES = 50
 
 TOTAL_TIMESTEPS = (
@@ -80,20 +75,11 @@ FINAL_MODEL_PATH = (
 )
 
 
-# ============================================================
-# Baseline values measured previously
-# ============================================================
-
 BASELINES = {
     "collision": -174.643,
     "random": -71.932,
     "fixed_evasive": 19.636,
 }
-
-
-# ============================================================
-# Reproducibility
-# ============================================================
 
 
 def set_seed(
@@ -105,11 +91,6 @@ def set_seed(
 
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
-
-
-# ============================================================
-# Utility
-# ============================================================
 
 
 def moving_average(
@@ -206,11 +187,6 @@ def to_serializable(
     return obj
 
 
-# ============================================================
-# Deterministic evaluation
-# ============================================================
-
-
 def evaluate_policy(
     agent: PPOContinuousAgent,
     max_episode_steps: int,
@@ -218,14 +194,14 @@ def evaluate_policy(
     render_mode=None,
     record_trajectory: bool = False,
 ):
-    """
-    Evalúa la política determinista:
+\
+\
+\
+\
+\
+\
+\
 
-        action = tanh(mu(s))
-
-    Si record_trajectory=True, guarda la trayectoria completa
-    de ego, tráfico, acciones, DCPA/TCPA y rewards.
-    """
 
     env = CommonOceanEnv(
         max_episode_steps=max_episode_steps,
@@ -470,11 +446,6 @@ def evaluate_policy(
     return result
 
 
-# ============================================================
-# Plotting
-# ============================================================
-
-
 def plot_training_curves(
     history: dict,
 ):
@@ -526,9 +497,6 @@ def plot_training_curves(
 
     axes = axes.ravel()
 
-    # --------------------------------------------------------
-    # 1. Eval reward
-    # --------------------------------------------------------
 
     axes[0].plot(
         global_steps,
@@ -571,9 +539,6 @@ def plot_training_curves(
 
     axes[0].legend()
 
-    # --------------------------------------------------------
-    # 2. Collision
-    # --------------------------------------------------------
 
     axes[1].plot(
         global_steps,
@@ -604,9 +569,6 @@ def plot_training_curves(
         alpha=0.3,
     )
 
-    # --------------------------------------------------------
-    # 3. Minimum distance
-    # --------------------------------------------------------
 
     axes[2].plot(
         global_steps,
@@ -641,9 +603,6 @@ def plot_training_curves(
 
     axes[2].legend()
 
-    # --------------------------------------------------------
-    # 4. Final goal distance
-    # --------------------------------------------------------
 
     axes[3].plot(
         global_steps,
@@ -678,9 +637,6 @@ def plot_training_curves(
 
     axes[3].legend()
 
-    # --------------------------------------------------------
-    # 5. PPO loss
-    # --------------------------------------------------------
 
     axes[4].plot(
         global_steps,
@@ -706,9 +662,6 @@ def plot_training_curves(
         alpha=0.3,
     )
 
-    # --------------------------------------------------------
-    # 6. Entropy
-    # --------------------------------------------------------
 
     axes[5].plot(
         global_steps,
@@ -967,11 +920,6 @@ def plot_policy_comparison(
     plt.close(fig)
 
 
-# ============================================================
-# Training
-# ============================================================
-
-
 def train():
     set_seed(
         SEED
@@ -1005,18 +953,12 @@ def train():
         f"Results dir     : {RESULTS_DIR}"
     )
 
-    # ========================================================
-    # Environment
-    # ========================================================
 
     env = CommonOceanEnv(
         max_episode_steps=MAX_EPISODE_STEPS,
         render_mode=None,
     )
 
-    # ========================================================
-    # PPO agent
-    # ========================================================
 
     agent = PPOContinuousAgent(
         state_size=STATE_SIZE,
@@ -1029,17 +971,11 @@ def train():
         f"Device          : {agent.device}"
     )
 
-    # ========================================================
-    # Initial state
-    # ========================================================
 
     observation, info = env.reset(
         seed=SEED
     )
 
-    # ========================================================
-    # Statistics
-    # ========================================================
 
     global_step = 0
     episode_count = 0
@@ -1073,9 +1009,6 @@ def train():
         "eval_goal_distance": [],
     }
 
-    # ========================================================
-    # PPO updates
-    # ========================================================
 
     for update_index in range(
         1,
@@ -1084,9 +1017,6 @@ def train():
         rollout_collisions = 0
         rollout_episodes = 0
 
-        # ----------------------------------------------------
-        # Collect rollout
-        # ----------------------------------------------------
 
         for _ in range(
             ROLLOUT_STEPS
@@ -1213,9 +1143,6 @@ def train():
                 episode_reward = 0.0
                 episode_length = 0
 
-        # ----------------------------------------------------
-        # PPO update
-        # ----------------------------------------------------
 
         metrics = agent.update()
 
@@ -1224,9 +1151,6 @@ def train():
                 "PPO update no fue ejecutado."
             )
 
-        # ----------------------------------------------------
-        # Deterministic evaluation
-        # ----------------------------------------------------
 
         eval_result = evaluate_policy(
             agent=agent,
@@ -1236,9 +1160,6 @@ def train():
             record_trajectory=False,
         )
 
-        # ----------------------------------------------------
-        # Save best
-        # ----------------------------------------------------
 
         if (
             eval_result["reward"]
@@ -1259,9 +1180,6 @@ def train():
                 },
             )
 
-        # ----------------------------------------------------
-        # Log history
-        # ----------------------------------------------------
 
         if rollout_episodes > 0:
             rollout_collision_rate = (
@@ -1399,9 +1317,6 @@ def train():
             "-" * 72
         )
 
-    # ========================================================
-    # Save final checkpoint
-    # ========================================================
 
     agent.save(
         str(
@@ -1419,9 +1334,6 @@ def train():
 
     env.close()
 
-    # ========================================================
-    # Save history
-    # ========================================================
 
     history_path = (
         RESULTS_DIR
@@ -1443,9 +1355,6 @@ def train():
         f"Saved history: {history_path}"
     )
 
-    # ========================================================
-    # Load best model for final report trajectory
-    # ========================================================
 
     best_agent = PPOContinuousAgent(
         state_size=STATE_SIZE,
@@ -1468,9 +1377,6 @@ def train():
         record_trajectory=True,
     )
 
-    # ========================================================
-    # Save trajectory raw data
-    # ========================================================
 
     trajectory_npz_path = (
         RESULTS_DIR
@@ -1488,9 +1394,6 @@ def train():
         f"Saved trajectory data: {trajectory_npz_path}"
     )
 
-    # ========================================================
-    # Generate figures
-    # ========================================================
 
     plot_training_curves(
         history
@@ -1506,9 +1409,6 @@ def train():
         ]
     )
 
-    # ========================================================
-    # Summary
-    # ========================================================
 
     print()
     print(
@@ -1559,11 +1459,6 @@ def train():
     print(
         f"Results directory  : {RESULTS_DIR}"
     )
-
-
-# ============================================================
-# Main
-# ============================================================
 
 
 if __name__ == "__main__":

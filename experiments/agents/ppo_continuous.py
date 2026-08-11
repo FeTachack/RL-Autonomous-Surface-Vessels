@@ -7,29 +7,20 @@ import torch.nn.functional as F
 from torch.distributions import Normal
 
 
-# ============================================================
-# Numerical constants
-# ============================================================
-
 LOG_STD_MIN = -5.0
 LOG_STD_MAX = 2.0
 TANH_EPS = 1e-6
 
 
-# ============================================================
-# Actor
-# ============================================================
-
-
 class Actor(nn.Module):
-    """
-    Política Gaussiana continua con squashing tanh.
+\
+\
+\
+\
+\
+\
+\
 
-        z ~ Normal(mu(s), sigma)
-        action = tanh(z)
-
-    La acción queda acotada naturalmente en (-1, 1).
-    """
 
     def __init__(
         self,
@@ -46,8 +37,7 @@ class Actor(nn.Module):
             nn.Linear(128, action_size),
         )
 
-        # Desviación estándar aprendible e independiente
-        # del estado en esta primera implementación.
+
         self.log_std = nn.Parameter(
             torch.zeros(
                 action_size,
@@ -72,15 +62,10 @@ class Actor(nn.Module):
         return mean, std
 
 
-# ============================================================
-# Critic
-# ============================================================
-
-
 class Critic(nn.Module):
-    """
-    Aproximador de V(s).
-    """
+\
+\
+
 
     def __init__(
         self,
@@ -103,26 +88,21 @@ class Critic(nn.Module):
         return self.net(states)
 
 
-# ============================================================
-# PPO Continuous Agent
-# ============================================================
-
-
 class PPOContinuousAgent:
-    """
-    PPO continuo para CommonOceanEnv.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    Observación:
-        shape = (13,)
-
-    Acción:
-        shape = (2,)
-
-        action[0] -> aceleración longitudinal normalizada
-        action[1] -> yaw rate normalizado
-
-    Ambas dimensiones pertenecen a [-1, 1].
-    """
 
     def __init__(
         self,
@@ -131,18 +111,13 @@ class PPOContinuousAgent:
         num_steps: int = 256,
         num_envs: int = 1,
     ):
-        # ====================================================
-        # Dimensions
-        # ====================================================
+
 
         self.state_size = int(state_size)
         self.action_size = int(action_size)
         self.num_steps = int(num_steps)
         self.num_envs = int(num_envs)
 
-        # ====================================================
-        # Device
-        # ====================================================
 
         self.device = torch.device(
             "cuda"
@@ -150,9 +125,6 @@ class PPOContinuousAgent:
             else "cpu"
         )
 
-        # ====================================================
-        # PPO hyperparameters
-        # ====================================================
 
         self.gamma = 0.99
         self.gae_lambda = 0.95
@@ -169,9 +141,6 @@ class PPOContinuousAgent:
 
         self.max_grad_norm = 0.5
 
-        # ====================================================
-        # Networks
-        # ====================================================
 
         self.actor = Actor(
             state_size=self.state_size,
@@ -182,9 +151,6 @@ class PPOContinuousAgent:
             state_size=self.state_size,
         ).to(self.device)
 
-        # ====================================================
-        # Optimizer
-        # ====================================================
 
         self.optimizer = optim.Adam(
             list(self.actor.parameters())
@@ -193,15 +159,9 @@ class PPOContinuousAgent:
             eps=1e-5,
         )
 
-        # ====================================================
-        # Rollout buffer
-        # ====================================================
 
         self.reset_rollout_buffer()
 
-    # ========================================================
-    # Rollout buffer
-    # ========================================================
 
     def reset_rollout_buffer(
         self,
@@ -228,7 +188,7 @@ class PPOContinuousAgent:
             device=self.device,
         )
 
-        # Acción antes de aplicar tanh.
+
         self.pre_tanh_actions = torch.zeros(
             (
                 self.num_steps,
@@ -257,17 +217,6 @@ class PPOContinuousAgent:
             device=self.device,
         )
 
-        # ----------------------------------------------------
-        # terminated
-        # ----------------------------------------------------
-        #
-        # Solo terminales verdaderos del MDP:
-        #
-        #   - collision
-        #   - goal reached
-        #
-        # Una truncación temporal NO se marca aquí.
-        # ----------------------------------------------------
 
         self.terminated = torch.zeros(
             (
@@ -278,17 +227,6 @@ class PPOContinuousAgent:
             device=self.device,
         )
 
-        # ----------------------------------------------------
-        # episode_ends
-        # ----------------------------------------------------
-        #
-        # Marca cualquier final de episodio:
-        #
-        #   terminated OR truncated
-        #
-        # Se utiliza para evitar que la recursión GAE cruce
-        # desde un episodio hacia el siguiente.
-        # ----------------------------------------------------
 
         self.episode_ends = torch.zeros(
             (
@@ -317,9 +255,6 @@ class PPOContinuousAgent:
             device=self.device,
         )
 
-    # ========================================================
-    # Distribution
-    # ========================================================
 
     def _distribution(
         self,
@@ -332,9 +267,6 @@ class PPOContinuousAgent:
             std,
         )
 
-    # ========================================================
-    # Squashed Gaussian log probability
-    # ========================================================
 
     def _squashed_log_prob(
         self,
@@ -342,14 +274,14 @@ class PPOContinuousAgent:
         pre_tanh_action: torch.Tensor,
         action: torch.Tensor,
     ):
-        """
-        Calcula log pi(a|s) para:
+\
+\
+\
+\
+\
+\
+\
 
-            z ~ Normal(mu, sigma)
-            a = tanh(z)
-
-        incluyendo la corrección del Jacobiano.
-        """
 
         gaussian_log_prob = (
             dist.log_prob(
@@ -369,21 +301,18 @@ class PPOContinuousAgent:
             - correction
         )
 
-    # ========================================================
-    # Stochastic action
-    # ========================================================
 
     @torch.no_grad()
     def sample_action(
         self,
         states,
     ):
-        """
-        Muestrea una acción de la política.
+\
+\
+\
+\
+\
 
-        Se evita Tensor.numpy() debido a la incompatibilidad
-        observada entre PyTorch y NumPy en este entorno.
-        """
 
         states_np = np.asarray(
             states,
@@ -433,9 +362,6 @@ class PPOContinuousAgent:
             .squeeze(-1)
         )
 
-        # ====================================================
-        # Safe conversion PyTorch -> Python -> NumPy
-        # ====================================================
 
         action_np = np.asarray(
             action
@@ -488,20 +414,17 @@ class PPOContinuousAgent:
             value_np,
         )
 
-    # ========================================================
-    # Deterministic action
-    # ========================================================
 
     @torch.no_grad()
     def deterministic_action(
         self,
         states,
     ):
-        """
-        Acción para evaluación:
+\
+\
+\
+\
 
-            action = tanh(mu(s))
-        """
 
         states_np = np.asarray(
             states,
@@ -545,9 +468,6 @@ class PPOContinuousAgent:
 
         return action_np
 
-    # ========================================================
-    # Value prediction
-    # ========================================================
 
     @torch.no_grad()
     def predict_value(
@@ -597,9 +517,6 @@ class PPOContinuousAgent:
 
         return values_np
 
-    # ========================================================
-    # Store transition
-    # ========================================================
 
     def store_transition(
         self,
@@ -612,30 +529,27 @@ class PPOContinuousAgent:
         episode_ends,
         next_states,
     ):
-        """
-        Guarda una transición.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-        terminated:
-            terminal real del MDP.
-
-        episode_ends:
-            terminated OR truncated.
-
-        Esta separación permite:
-
-        - bootstrap en truncaciones temporales;
-        - cortar correctamente la recursión de GAE al cambiar
-          de episodio.
-        """
 
         if self.ptr >= self.num_steps:
             raise RuntimeError(
                 "El rollout buffer está lleno."
             )
 
-        # ====================================================
-        # Convert inputs
-        # ====================================================
 
         states_t = torch.as_tensor(
             np.asarray(
@@ -709,9 +623,6 @@ class PPOContinuousAgent:
             device=self.device,
         )
 
-        # ====================================================
-        # Values
-        # ====================================================
 
         with torch.no_grad():
 
@@ -729,9 +640,6 @@ class PPOContinuousAgent:
                 .squeeze(-1)
             )
 
-        # ====================================================
-        # Store
-        # ====================================================
 
         self.states[
             self.ptr
@@ -771,44 +679,41 @@ class PPOContinuousAgent:
 
         self.ptr += 1
 
-    # ========================================================
-    # GAE
-    # ========================================================
 
     def compute_gae(
         self,
     ):
-        """
-        Generalized Advantage Estimation con separación entre
-        terminales reales y truncaciones temporales.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-        TD error:
-
-            delta_t =
-                r_t
-                + gamma * bootstrap_mask * V(s_{t+1})
-                - V(s_t)
-
-        donde:
-
-            bootstrap_mask = 1 - terminated_t
-
-        La recursión:
-
-            A_t =
-                delta_t
-                + gamma * lambda
-                * trace_mask
-                * A_{t+1}
-
-        usa:
-
-            trace_mask = 1 - episode_end_t
-
-        Así, una truncación temporal puede bootstrappear
-        V(s_{t+1}), pero la ventaja del episodio siguiente
-        nunca se propaga hacia el episodio anterior.
-        """
 
         if self.ptr != self.num_steps:
             raise RuntimeError(
@@ -829,16 +734,7 @@ class PPOContinuousAgent:
         for t in reversed(
             range(self.num_steps)
         ):
-            # ------------------------------------------------
-            # Bootstrap mask
-            # ------------------------------------------------
-            #
-            # terminated:
-            #     no bootstrap.
-            #
-            # truncated:
-            #     sí bootstrap.
-            # ------------------------------------------------
+
 
             bootstrap_mask = (
                 1.0
@@ -853,12 +749,6 @@ class PPOContinuousAgent:
                 - self.values[t]
             )
 
-            # ------------------------------------------------
-            # Trace mask
-            # ------------------------------------------------
-            #
-            # Cualquier final de episodio corta GAE.
-            # ------------------------------------------------
 
             trace_mask = (
                 1.0
@@ -887,23 +777,17 @@ class PPOContinuousAgent:
             returns,
         )
 
-    # ========================================================
-    # PPO update
-    # ========================================================
 
     def update(
         self,
     ):
-        """
-        Ejecuta una actualización PPO con el rollout completo.
-        """
+\
+\
+
 
         if self.ptr < self.num_steps:
             return None
 
-        # ====================================================
-        # GAE / returns
-        # ====================================================
 
         with torch.no_grad():
             (
@@ -916,9 +800,6 @@ class PPOContinuousAgent:
             * self.num_envs
         )
 
-        # ====================================================
-        # Flatten rollout
-        # ====================================================
 
         b_states = (
             self.states.reshape(
@@ -959,9 +840,6 @@ class PPOContinuousAgent:
             )
         )
 
-        # ====================================================
-        # Normalize advantages
-        # ====================================================
 
         b_advantages = (
             b_advantages
@@ -982,9 +860,6 @@ class PPOContinuousAgent:
 
         total_updates = 0
 
-        # ====================================================
-        # PPO optimization epochs
-        # ====================================================
 
         for _ in range(
             self.update_epochs
@@ -1016,9 +891,6 @@ class PPOContinuousAgent:
                     device=self.device,
                 )
 
-                # ============================================
-                # Current policy
-                # ============================================
 
                 dist = self._distribution(
                     b_states[
@@ -1042,9 +914,6 @@ class PPOContinuousAgent:
                     )
                 )
 
-                # ============================================
-                # Approximate entropy
-                # ============================================
 
                 entropy = (
                     dist.entropy()
@@ -1052,9 +921,6 @@ class PPOContinuousAgent:
                     .mean()
                 )
 
-                # ============================================
-                # Current value estimates
-                # ============================================
 
                 new_values = (
                     self.critic(
@@ -1065,9 +931,6 @@ class PPOContinuousAgent:
                     .squeeze(-1)
                 )
 
-                # ============================================
-                # Probability ratio
-                # ============================================
 
                 ratio = torch.exp(
                     new_log_probs
@@ -1076,9 +939,6 @@ class PPOContinuousAgent:
                     ]
                 )
 
-                # ============================================
-                # PPO clipped objective
-                # ============================================
 
                 pg_loss_unclipped = (
                     -b_advantages[
@@ -1108,9 +968,6 @@ class PPOContinuousAgent:
                     .mean()
                 )
 
-                # ============================================
-                # Critic
-                # ============================================
 
                 critic_loss = (
                     F.mse_loss(
@@ -1121,9 +978,6 @@ class PPOContinuousAgent:
                     )
                 )
 
-                # ============================================
-                # Total loss
-                # ============================================
 
                 loss = (
                     actor_loss
@@ -1133,9 +987,6 @@ class PPOContinuousAgent:
                     * entropy
                 )
 
-                # ============================================
-                # Optimization
-                # ============================================
 
                 self.optimizer.zero_grad()
 
@@ -1153,9 +1004,6 @@ class PPOContinuousAgent:
 
                 self.optimizer.step()
 
-                # ============================================
-                # Metrics
-                # ============================================
 
                 total_loss += float(
                     loss.item()
@@ -1206,9 +1054,6 @@ class PPOContinuousAgent:
 
         return metrics
 
-    # ========================================================
-    # Save checkpoint
-    # ========================================================
 
     def save(
         self,
@@ -1291,9 +1136,6 @@ class PPOContinuousAgent:
             path,
         )
 
-    # ========================================================
-    # Load checkpoint
-    # ========================================================
 
     def load(
         self,

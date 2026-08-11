@@ -88,12 +88,12 @@ def print_controllers(simulator, title: str) -> None:
         )
 
 def detach_ego_from_builtin_collision_avoider(ego) -> bool:
-    """Evita que el CollisionAvoider interno modifique la ruta de ego.
+\
+\
+\
+\
+\
 
-    La embarcación permanece en el escenario y puede seguir siendo
-    observada por las demás embarcaciones. Únicamente deja de recibir
-    maniobras automáticas de evasión.
-    """
 
     collision_state = getattr(
         ego,
@@ -175,12 +175,11 @@ def main() -> None:
         desired_velocity=desired_velocity,
     )
 
-    # SimulatorFactory asigna esta referencia a los controladores originales.
-    # Como este controlador se añade después, debemos hacerlo manualmente.
+
     external_controller.sim = simulator
     external_controller.initialise()
 
-    # Solo se cambia el controlador de la embarcación ego.
+
     ego.set_controller(external_controller)
     detached_from_avoider = (
         detach_ego_from_builtin_collision_avoider(ego)

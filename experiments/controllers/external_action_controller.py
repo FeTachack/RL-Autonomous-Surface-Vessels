@@ -10,16 +10,16 @@ from Environment.SurfaceVessel import SurfaceVessel
 
 
 class ExternalActionController(VesselController):
-    """Controlador puente para recibir acciones externas.
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    No calcula internamente la acción. La acción se establece mediante
-    ``set_action()`` y se devuelve cuando CommonOcean-Sim llama
-    ``control_input()``.
-
-    Para el modelo YP, la acción tiene la forma:
-
-        [aceleración longitudinal, yaw rate]
-    """
 
     def __init__(
         self,
@@ -27,10 +27,8 @@ class ExternalActionController(VesselController):
         initial_action: np.ndarray | None = None,
         desired_velocity: float | None = None,
         ) -> None:
-        # VesselController.__init__ recibe únicamente la embarcación.
-        super().__init__(vessel)
 
-        
+        super().__init__(vessel)
 
 
         self.dt = float(vessel.dt)
@@ -51,11 +49,11 @@ class ExternalActionController(VesselController):
             self.set_action(initial_action)
 
     def initialise(self) -> None:
-        """Finalización opcional de la inicialización."""
+
         return None
 
     def set_action(self, action: np.ndarray) -> None:
-        """Guardar la acción que se aplicará en el siguiente paso."""
+
         array = np.asarray(action, dtype=np.float64)
 
         if array.shape != (2,):
@@ -70,18 +68,18 @@ class ExternalActionController(VesselController):
         self._action = array.copy()
 
     def control_input(self, *args: Any, **kwargs: Any) -> np.ndarray:
-        """Entregar a CommonOcean-Sim la última acción externa."""
+
         del args, kwargs
 
         self.stepped += 1
         return self._action.copy()
 
     def update_after_waypoint(self) -> None:
-        """CommonOcean llama este método cuando cambia el waypoint."""
+
         return None
 
     def set_waypoints(self, waypoints: Any) -> None:
-        """Guardar la referencia a los waypoints sin planificar internamente."""
+
         self.waypoints = waypoints
 
     def equals(self, controller: Any) -> bool:
@@ -92,7 +90,7 @@ class ExternalActionController(VesselController):
         )
 
     def deep_copy(self) -> "ExternalActionController":
-        """Crear una copia sin duplicar recursivamente SurfaceVessel."""
+
         controlled_vessel = self.controlled_vessel
         self.controlled_vessel = None
 

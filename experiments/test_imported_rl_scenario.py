@@ -29,18 +29,17 @@ SCENARIO_PATH = (
 )
 
 
-
 def force_collision_scenario(
     factory,
     trajectory_steps: int = 100,
 ) -> None:
-    """
-    Sustituye temporalmente el tráfico importado por un
-    DynamicObstacle estacionario situado sobre la posición
-    inicial de ego.
+\
+\
+\
+\
+\
+\
 
-    Se usa únicamente para validar CollisionDetector.
-    """
 
     if len(factory.models) != 1:
         raise RuntimeError(
@@ -122,9 +121,6 @@ def build_simulation():
         str(CONFIGURATION_PATH)
     )
 
-    # -----------------------------------------------------
-    # Importar nuestro escenario CommonOcean
-    # -----------------------------------------------------
 
     import_config = configuration[
         "scenario_selection"
@@ -133,17 +129,17 @@ def build_simulation():
     import_config["use_imported_scenario"] = True
     import_config["scenario_filepath"] = SCENARIO_PATH
 
-    # Usar el mismo conjunto de parámetros para ego.
+
     import_config["vessel_type"] = 1
     import_config["vessel_type_by_id"] = None
     import_config["controller_type"] = "mpc"
 
-    # RL tomará las decisiones de evasión.
+
     configuration["general_simulator"][
         "using_collision_avoider"
     ] = False
 
-    # Primero validamos únicamente importación + arquitectura.
+
     configuration["general_simulator"][
         "using_collision_detection"
     ] = True
@@ -170,7 +166,6 @@ def build_simulation():
         current_configuration_input=configuration
     )
 
-    #force_collision_scenario(factory)
 
     print("\nDespués de importar XML:")
     print(
@@ -213,13 +208,10 @@ def build_simulation():
 
     factory.collision_methods.append(mark_collision)
     simulator = factory.generate_scenario()
-    
+
     simulator.rl_collision_occurred = False
     simulator.rl_collision_vehicle = None
     simulator.rl_collision_object = None
-
-
-
 
 
     print("\nDEBUG después de generate_scenario:")
@@ -231,8 +223,6 @@ def build_simulation():
         "  dynamic obstacles =",
         len(simulator.dynamic_obstacles),
     )
-
-
 
 
     return simulator
@@ -266,7 +256,7 @@ def install_external_controller(simulator):
 
     action = np.array(
         [
-            0.0, #0.05 * float(ego.parameters.a_max),
+            0.0,
             0.0,
         ],
         dtype=np.float64,
@@ -287,7 +277,7 @@ def install_external_controller(simulator):
 
 
 def main():
-    
+
     simulator = build_simulation()
 
     ego, controller = install_external_controller(
@@ -345,19 +335,7 @@ def main():
     for step in range(220):
         if not simulator.is_running:
             break
-    
-    # ---------------------------------------------------------
-    # PRUEBA B: maniobra evasiva fija
-    #
-    # 0-89 s:
-    #     mantener rumbo
-    #
-    # 90-119 s:
-    #     giro a estribor
-    #
-    # >=120 s:
-    #     mantener el nuevo rumbo
-    # ---------------------------------------------------------
+
 
         if 60 <= step < 100:
             action = np.array(
@@ -417,7 +395,7 @@ def main():
                         )
             else:
                 distance = np.nan
-            
+
             print(
                 f"step={step + 1:04d} "
                 f"ego={np.asarray(ego.position)}"

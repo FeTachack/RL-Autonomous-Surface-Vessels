@@ -11,9 +11,9 @@ import numpy as np
 
 @dataclass(frozen=True)
 class RandomizedCrossingConfig:
-    """
-    Randomización conservadora del escenario nominal de cruce.
-    """
+\
+\
+
 
     traffic_x0_min: float = 80.0
     traffic_x0_max: float = 180.0
@@ -151,13 +151,13 @@ def sample_crossing_parameters(
         | None
     ) = None,
 ) -> dict[str, float]:
-    """
-    Muestrea parámetros cinemáticos para el escenario de cruce.
+\
+\
+\
+\
+\
+\
 
-    El tráfico se mueve como:
-
-        p(t) = p0 + v [cos(theta), sin(theta)] t
-    """
 
     cfg = _coerce_config(
         config
@@ -222,23 +222,23 @@ def generate_randomized_crossing_scenario(
         | None
     ) = None,
 ) -> dict[str, Any]:
-    """
-    Genera un XML CommonOcean randomizado a partir del escenario nominal.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    Modifica:
-
-    - estado inicial del tráfico,
-    - trayectoria completa del tráfico,
-    - velocidad inicial de ego.
-
-    Mantiene fijos:
-
-    - posición inicial de ego,
-    - orientación inicial de ego,
-    - objetivo,
-    - waypoints,
-    - geometría de las embarcaciones.
-    """
 
     cfg = _coerce_config(
         config
@@ -292,9 +292,6 @@ def generate_randomized_crossing_scenario(
         "planningProblem",
     )
 
-    # ========================================================
-    # Tráfico: estado inicial
-    # ========================================================
 
     traffic_initial = _require(
         dynamic_obstacle,
@@ -317,9 +314,6 @@ def generate_randomized_crossing_scenario(
         params["traffic_speed"],
     )
 
-    # ========================================================
-    # Tráfico: trayectoria
-    # ========================================================
 
     trajectory = _require(
         dynamic_obstacle,
@@ -376,9 +370,6 @@ def generate_randomized_crossing_scenario(
             params["traffic_speed"],
         )
 
-    # ========================================================
-    # Ego: velocidad inicial
-    # ========================================================
 
     ego_initial = _require(
         planning_problem,

@@ -54,9 +54,6 @@ def main():
             value,
         ) = agent.sample_action(observation)
 
-        # ----------------------------------------------------
-        # Sanity checks PPO output
-        # ----------------------------------------------------
 
         log_prob = float(log_prob)
         value = float(value)

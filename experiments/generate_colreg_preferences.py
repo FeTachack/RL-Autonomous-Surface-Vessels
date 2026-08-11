@@ -21,10 +21,6 @@ from experiments.preferences.colreg_preference_scorer import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 STATE_SIZE = 13
 ACTION_SIZE = 2
 ROLLOUT_STEPS = 256
@@ -71,7 +67,7 @@ SUMMARY_JSON = (
     / "summary.json"
 )
 
-# Semillas no vistas para generar preferencias.
+
 PREFERENCE_SEEDS = list(
     range(
         80000,
@@ -88,11 +84,6 @@ CANDIDATE_POLICY_NAMES = [
     "zero_action",
     "random",
 ]
-
-
-# ============================================================
-# JSON helpers
-# ============================================================
 
 
 def to_serializable(
@@ -198,11 +189,6 @@ def append_jsonl(
         )
 
 
-# ============================================================
-# Environment and agent
-# ============================================================
-
-
 def make_env() -> CommonOceanEnv:
     return CommonOceanEnv(
         max_episode_steps=MAX_EPISODE_STEPS,
@@ -232,11 +218,6 @@ def load_agent() -> PPOContinuousAgent:
     )
 
     return agent
-
-
-# ============================================================
-# Policies
-# ============================================================
 
 
 def make_policy(
@@ -299,8 +280,7 @@ def make_policy(
             dtype=np.float32,
         )
 
-        # En nuestro marco de acción, yaw negativo corresponde
-        # a giro hacia estribor para el escenario nominal.
+
         action[
             1
         ] = np.clip(
@@ -393,11 +373,6 @@ def make_policy(
     raise ValueError(
         f"Política candidata no soportada: {policy_name}"
     )
-
-
-# ============================================================
-# Rollout
-# ============================================================
 
 
 def run_episode(
@@ -668,11 +643,6 @@ def run_episode(
     env.close()
 
     return result
-
-
-# ============================================================
-# Preference generation
-# ============================================================
 
 
 def evaluate_candidates_for_seed(

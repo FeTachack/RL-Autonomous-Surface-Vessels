@@ -21,10 +21,6 @@ from experiments.preferences.colreg_reward_wrapper import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 SEED = 123
 
 STATE_SIZE = 13
@@ -116,10 +112,6 @@ TOTAL_TIMESTEPS = (
 )
 
 
-# ============================================================
-# Baseline from previous robust evaluation
-# ============================================================
-
 BASELINE_RANDOMIZED_PPO = {
     "episodes": 100,
     "reward_mean": 258.4491982713799,
@@ -139,11 +131,6 @@ BASELINE_RANDOMIZED_PPO = {
     "final_goal_distance_mean": 164.51134740751488,
     "episode_length_mean": 204.69,
 }
-
-
-# ============================================================
-# Utilities
-# ============================================================
 
 
 def set_seed(
@@ -279,11 +266,6 @@ def save_figure(
     )
 
 
-# ============================================================
-# Environment / agent
-# ============================================================
-
-
 def make_env(
     colreg_weight: float = COLREG_WEIGHT,
 ) -> ColregRewardWrapper:
@@ -331,11 +313,6 @@ def load_initial_agent() -> PPOContinuousAgent:
     )
 
     return agent
-
-
-# ============================================================
-# Evaluation
-# ============================================================
 
 
 def run_deterministic_episode(
@@ -888,11 +865,6 @@ def evaluate_agent(
         summary,
         results,
     )
-
-
-# ============================================================
-# Training
-# ============================================================
 
 
 def train() -> dict[str, Any]:
@@ -1508,11 +1480,6 @@ def train() -> dict[str, Any]:
     return final_payload
 
 
-# ============================================================
-# Plotting
-# ============================================================
-
-
 def moving_average(
     values: list[float],
     window: int = 10,
@@ -1551,9 +1518,7 @@ def plot_training_curves(
     episode_collisions: list[bool],
     episode_goals: list[bool],
 ) -> None:
-    # --------------------------------------------------------
-    # Episode reward
-    # --------------------------------------------------------
+
 
     if len(
         episode_rewards
@@ -1616,9 +1581,6 @@ def plot_training_curves(
             "colreg_finetune_episode_reward",
         )
 
-    # --------------------------------------------------------
-    # COLREG reward
-    # --------------------------------------------------------
 
     if len(
         episode_colreg_rewards
@@ -1681,9 +1643,6 @@ def plot_training_curves(
             "colreg_finetune_auxiliary_reward",
         )
 
-    # --------------------------------------------------------
-    # Safety margins
-    # --------------------------------------------------------
 
     if len(
         episode_min_distances
@@ -1749,9 +1708,6 @@ def plot_training_curves(
             "colreg_finetune_safety_margins",
         )
 
-    # --------------------------------------------------------
-    # Evaluation summaries over updates
-    # --------------------------------------------------------
 
     eval_items = [
         item
@@ -2012,11 +1968,6 @@ def plot_training_curves(
         )
 
 
-# ============================================================
-# Reporting helpers
-# ============================================================
-
-
 def print_summary(
     summary: dict[str, float],
     prefix: str = "",
@@ -2106,11 +2057,6 @@ def config_dict() -> dict[str, Any]:
         ),
         "baseline_randomized_ppo": BASELINE_RANDOMIZED_PPO,
     }
-
-
-# ============================================================
-# Entrypoint
-# ============================================================
 
 
 def main() -> None:

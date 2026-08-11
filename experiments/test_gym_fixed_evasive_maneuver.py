@@ -8,18 +8,18 @@ from experiments.envs.commonocean_env import (
 
 
 def select_action(step: int) -> np.ndarray:
-    """
-    Maniobra equivalente a la Prueba B.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    0-59:
-        mantener rumbo
-
-    60-99:
-        giro a estribor al 80 % del yaw-rate máximo
-
-    >=100:
-        mantener el nuevo rumbo
-    """
 
     if 60 <= step < 100:
         return np.array(

@@ -60,12 +60,12 @@ def make_predefined_dynamic_obstacle(
     dt: float,
     steps: int,
 ) -> DynamicObstacle:
-    """
-    Convierte la segunda SurfaceVessel únicamente en una plantilla
-    geométrica y genera para ella una trayectoria cinemática predefinida.
+\
+\
+\
+\
+\
 
-    El DynamicObstacle resultante NO tiene controlador.
-    """
 
     source_controller = source_vessel.get_controller()
 
@@ -152,13 +152,12 @@ def build_single_ego_simulation(steps: int):
         str(CONFIGURATION_PATH)
     )
 
-    # El RL será responsable de la evasión.
+
     configuration["general_simulator"][
         "using_collision_avoider"
     ] = False
 
-    # Para esta primera prueba aislamos únicamente la arquitectura.
-    # La detección de colisiones se verificará después.
+
     configuration["general_simulator"][
         "using_collision_detection"
     ] = False
@@ -201,9 +200,6 @@ def build_single_ego_simulation(steps: int):
         steps=steps,
     )
 
-    # ---------------------------------------------------------
-    # CAMBIO ARQUITECTÓNICO PRINCIPAL
-    # ---------------------------------------------------------
 
     simulation_factory.models = [
         ego_template,

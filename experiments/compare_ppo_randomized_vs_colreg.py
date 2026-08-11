@@ -19,10 +19,6 @@ from experiments.preferences.colreg_reward_wrapper import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 STATE_SIZE = 13
 ACTION_SIZE = 2
 ROLLOUT_STEPS = 256
@@ -77,11 +73,6 @@ POLICIES = {
     "ppo_randomized": RANDOMIZED_CHECKPOINT,
     "ppo_colreg_best": COLREG_CHECKPOINT,
 }
-
-
-# ============================================================
-# Utilities
-# ============================================================
 
 
 def to_serializable(
@@ -196,11 +187,6 @@ def save_figure(
     )
 
 
-# ============================================================
-# Environment / agent
-# ============================================================
-
-
 def make_env() -> ColregRewardWrapper:
     base_env = CommonOceanEnv(
         max_episode_steps=MAX_EPISODE_STEPS,
@@ -238,11 +224,6 @@ def load_agent(
     )
 
     return agent
-
-
-# ============================================================
-# Episode evaluation
-# ============================================================
 
 
 def run_episode(
@@ -446,11 +427,6 @@ def evaluate_policy(
         summary,
         results,
     )
-
-
-# ============================================================
-# Summaries
-# ============================================================
 
 
 def summarize_results(
@@ -796,11 +772,6 @@ def print_delta(
         )
 
 
-# ============================================================
-# Plotting
-# ============================================================
-
-
 def plot_metric_bars(
     summaries: dict[str, dict[str, Any]],
 ) -> None:
@@ -913,7 +884,7 @@ def plot_metric_bars(
             filename_base,
         )
 
-    # Rates together because they share scale.
+
     rate_metrics = [
         "collision_rate",
         "goal_rate",
@@ -1094,11 +1065,6 @@ def plot_histograms(
             fig,
             filename_base,
         )
-
-
-# ============================================================
-# Main
-# ============================================================
 
 
 def main() -> None:

@@ -8,23 +8,18 @@ import gymnasium as gym
 import numpy as np
 
 
-# ============================================================
-# Geometry helpers
-# ============================================================
-
-
 def global_to_ego_frame(
     vector: np.ndarray,
     heading: float,
 ) -> np.ndarray:
-    """
-    Convierte un vector global al marco local de ego.
+\
+\
+\
+\
+\
+\
+\
 
-    Convención:
-        x_local > 0  -> delante de ego
-        y_local > 0  -> babor
-        y_local < 0  -> estribor
-    """
 
     c = math.cos(
         heading
@@ -51,89 +46,78 @@ def global_to_ego_frame(
     return rotation @ vector
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
-
 @dataclass
 class ColregRewardConfig:
-    """
-    Recompensa auxiliar para fine-tuning COLREG-like.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    No reemplaza la recompensa original del entorno. Se suma como:
 
-        reward_total = reward_env + colreg_weight * reward_colreg
-
-    Esta recompensa está diseñada para el escenario principal de cruce:
-        - el tráfico aparece por estribor de ego;
-        - ego actúa como give-way vessel;
-        - se favorece acción temprana hacia estribor;
-        - se favorece pasar por popa;
-        - se penaliza baja separación y baja DCPA.
-    """
-
-    # Peso externo de la recompensa auxiliar
     colreg_weight: float = 0.10
 
-    # Umbrales de riesgo
+
     risk_distance: float = 800.0
     safe_distance: float = 300.0
     safe_dcpa: float = 200.0
 
-    # Horizonte para considerar una acción como temprana
+
     early_action_horizon_steps: int = 90
 
-    # Términos instantáneos de acción COLREG-like
+
     starboard_bonus: float = 1.50
     port_penalty: float = -1.50
     early_starboard_bonus: float = 1.00
 
-    # Términos instantáneos de separación
+
     close_distance_penalty: float = -2.50
     low_dcpa_penalty: float = -0.75
 
-    # Paso por popa / proa
+
     pass_astern_bonus: float = 0.60
     pass_ahead_penalty: float = -0.60
 
-    # Regularización de acción
+
     smoothness_penalty: float = -0.25
     action_magnitude_penalty: float = -0.05
 
-    # Términos terminales básicos
+
     goal_bonus: float = 2.00
     collision_penalty: float = -6.00
 
-    # Términos terminales de margen de seguridad
+
     terminal_min_distance_bonus: float = 80.0
     terminal_min_dcpa_bonus: float = 30.0
     terminal_low_distance_penalty: float = -60.0
     terminal_low_dcpa_penalty: float = -20.0
 
 
-# ============================================================
-# Wrapper
-# ============================================================
-
-
 class ColregRewardWrapper(
     gym.Wrapper,
 ):
-    """
-    Wrapper de recompensa auxiliar inspirada en COLREGs.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    Caso principal:
-        cruce con tráfico por estribor de ego.
-
-    Convención de acción:
-        action[0] -> aceleración longitudinal normalizada
-        action[1] -> yaw rate normalizado
-
-    En el escenario de cruce usado:
-        action[1] < 0 favorece giro hacia estribor
-        action[1] > 0 favorece giro hacia babor
-    """
 
     def __init__(
         self,
@@ -167,9 +151,6 @@ class ColregRewardWrapper(
             "inf"
         )
 
-    # ========================================================
-    # Gymnasium API
-    # ========================================================
 
     def reset(
         self,
@@ -225,7 +206,6 @@ class ColregRewardWrapper(
             info,
         )
 
-    # --------------------------------------------------------
 
     def step(
         self,
@@ -320,9 +300,6 @@ class ColregRewardWrapper(
             info,
         )
 
-    # ========================================================
-    # Reward computation
-    # ========================================================
 
     def _compute_colreg_reward(
         self,
@@ -334,9 +311,6 @@ class ColregRewardWrapper(
     ) -> tuple[float, dict[str, float | bool | str]]:
         cfg = self.config
 
-        # ----------------------------------------------------
-        # Current state information
-        # ----------------------------------------------------
 
         distance = float(
             current_info[
@@ -394,9 +368,6 @@ class ColregRewardWrapper(
             ]
         )
 
-        # ----------------------------------------------------
-        # Episode-level safety memory
-        # ----------------------------------------------------
 
         self._min_distance = min(
             self._min_distance,
@@ -408,9 +379,6 @@ class ColregRewardWrapper(
             dcpa,
         )
 
-        # ----------------------------------------------------
-        # Encounter side
-        # ----------------------------------------------------
 
         relative_position = (
             traffic_position
@@ -445,9 +413,6 @@ class ColregRewardWrapper(
         else:
             risk_factor_distance = 0.0
 
-        # ----------------------------------------------------
-        # Action direction
-        # ----------------------------------------------------
 
         yaw_action = float(
             action[
@@ -465,9 +430,6 @@ class ColregRewardWrapper(
             yaw_action,
         )
 
-        # ----------------------------------------------------
-        # Instantaneous separation terms
-        # ----------------------------------------------------
 
         if (
             tcpa > 0.0
@@ -505,9 +467,6 @@ class ColregRewardWrapper(
         else:
             low_dcpa_term = 0.0
 
-        # ----------------------------------------------------
-        # COLREG-like give-way action
-        # ----------------------------------------------------
 
         starboard_term = (
             cfg.starboard_bonus
@@ -539,9 +498,6 @@ class ColregRewardWrapper(
             * starboard_action
         )
 
-        # ----------------------------------------------------
-        # Pass astern / pass ahead approximation
-        # ----------------------------------------------------
 
         traffic_forward = np.array(
             [
@@ -581,9 +537,6 @@ class ColregRewardWrapper(
         else:
             pass_term = 0.0
 
-        # ----------------------------------------------------
-        # Smoothness and action effort
-        # ----------------------------------------------------
 
         action_delta = float(
             np.linalg.norm(
@@ -608,9 +561,6 @@ class ColregRewardWrapper(
             * action_norm
         )
 
-        # ----------------------------------------------------
-        # Terminal basic terms
-        # ----------------------------------------------------
 
         if terminated and goal_reached:
             goal_term = cfg.goal_bonus
@@ -622,9 +572,6 @@ class ColregRewardWrapper(
         else:
             collision_term = 0.0
 
-        # ----------------------------------------------------
-        # Terminal safety-margin terms
-        # ----------------------------------------------------
 
         if terminated and not collision:
             min_distance_ratio = min(
@@ -688,9 +635,6 @@ class ColregRewardWrapper(
         else:
             terminal_low_dcpa_term = 0.0
 
-        # ----------------------------------------------------
-        # Final auxiliary reward
-        # ----------------------------------------------------
 
         colreg_reward = (
             close_distance_term
@@ -796,9 +740,6 @@ class ColregRewardWrapper(
             components,
         )
 
-    # ========================================================
-    # Helpers
-    # ========================================================
 
     def config_dict(
         self,

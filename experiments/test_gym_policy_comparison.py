@@ -6,7 +6,7 @@ from experiments.envs.commonocean_env import CommonOceanEnv
 
 
 def policy_collision(step: int) -> np.ndarray:
-    """Prueba A: sin maniobra."""
+
     return np.array(
         [0.0, 0.0],
         dtype=np.float32,
@@ -14,7 +14,7 @@ def policy_collision(step: int) -> np.ndarray:
 
 
 def policy_evasive(step: int) -> np.ndarray:
-    """Prueba B: maniobra evasiva fija."""
+
 
     if 60 <= step < 100:
         return np.array(

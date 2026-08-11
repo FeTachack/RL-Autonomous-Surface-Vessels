@@ -13,10 +13,6 @@ import numpy as np
 import torch
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 PROJECT_ROOT = (
     Path(__file__)
     .resolve()
@@ -52,11 +48,6 @@ FINAL_CHECKPOINT_PATH = (
 )
 
 
-# ============================================================
-# IO
-# ============================================================
-
-
 def load_training_history(
     path: Path,
 ) -> dict:
@@ -78,14 +69,14 @@ def load_training_history(
 def load_episode_rewards_from_checkpoint(
     path: Path,
 ) -> list[float]:
-    """
-    Lee episode_rewards desde el checkpoint final.
+\
+\
+\
+\
+\
+\
+\
 
-    Soporta dos formatos posibles:
-
-    1. checkpoint["episode_rewards"]
-    2. checkpoint["extra"]["episode_rewards"]
-    """
 
     if not path.exists():
         raise FileNotFoundError(
@@ -160,13 +151,13 @@ def load_episode_rewards_from_checkpoint(
 def parse_episode_rewards_from_log(
     path: Path,
 ) -> list[float]:
-    """
-    Fallback: extrae rewards por episodio desde training_run.log.
+\
+\
+\
+\
+\
+\
 
-    Ejemplo esperado:
-
-        Episode 0001 | steps=220 | R=  +85.123 | collision=False
-    """
 
     if not path.exists():
         raise FileNotFoundError(
@@ -216,13 +207,13 @@ def parse_episode_rewards_from_log(
 
 
 def load_episode_rewards() -> tuple[list[float], str]:
-    """
-    Fuente preferida:
-        checkpoint final.
+\
+\
+\
+\
+\
+\
 
-    Fuente alternativa:
-        training_run.log.
-    """
 
     try:
         rewards = load_episode_rewards_from_checkpoint(
@@ -317,11 +308,6 @@ def save_figure(
     )
 
 
-# ============================================================
-# Plotting
-# ============================================================
-
-
 def plot_loss_curve(
     history: dict,
 ) -> None:
@@ -388,9 +374,9 @@ def plot_loss_curve(
 def plot_loss_components(
     history: dict,
 ) -> None:
-    """
-    Figura opcional con pérdida total, actor y critic.
-    """
+\
+\
+
 
     global_steps = np.asarray(
         history[
@@ -582,9 +568,9 @@ def plot_cumulative_mean_reward(
 def plot_episode_reward_with_cumulative_mean(
     episode_rewards: list[float],
 ) -> None:
-    """
-    Figura opcional: reward por episodio + promedio acumulado.
-    """
+\
+\
+
 
     rewards = np.asarray(
         episode_rewards,
@@ -664,11 +650,6 @@ def plot_episode_reward_with_cumulative_mean(
     plt.close(
         fig
     )
-
-
-# ============================================================
-# Main
-# ============================================================
 
 
 def main() -> None:

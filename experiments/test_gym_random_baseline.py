@@ -14,14 +14,14 @@ def run_random_episode(
     episode_index: int,
     seed: int,
 ) -> dict:
-    """
-    Ejecuta un episodio completo usando una política
-    completamente aleatoria.
+\
+\
+\
+\
+\
+\
+\
 
-    Las acciones se generan de forma reproducible:
-        action[0] ~ Uniform(-1, 1)
-        action[1] ~ Uniform(-1, 1)
-    """
 
     env = CommonOceanEnv(
         max_episode_steps=MAX_EPISODE_STEPS,
@@ -52,7 +52,7 @@ def run_random_episode(
 
     for step in range(MAX_EPISODE_STEPS):
 
-        # Acción Gymnasium normalizada.
+
         action = rng.uniform(
             low=-1.0,
             high=1.0,
@@ -200,9 +200,6 @@ def main():
 
         print_episode(result)
 
-    # ========================================================
-    # Aggregate statistics
-    # ========================================================
 
     rewards = np.array(
         [
@@ -259,9 +256,6 @@ def main():
         for r in results
     )
 
-    # ========================================================
-    # Summary
-    # ========================================================
 
     print()
     print("=" * 90)
@@ -356,9 +350,6 @@ def main():
         f"{np.mean(risks):+.3f}"
     )
 
-    # ========================================================
-    # Reference baselines already measured
-    # ========================================================
 
     collision_baseline_reward = -174.643
     safe_baseline_reward = 19.636

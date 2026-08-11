@@ -104,9 +104,6 @@ def main():
         "Action sampling: OK"
     )
 
-    # ========================================================
-    # Fill artificial rollout
-    # ========================================================
 
     current_states = states.copy()
 
@@ -152,7 +149,7 @@ def main():
             rewards=rewards,
             terminated=terminated,
             next_states=next_states,
-            
+
             episode_ends=np.zeros(
             agent.num_envs,
             dtype=np.float32,
@@ -242,9 +239,6 @@ def main():
         "PPO update: OK"
     )
 
-    # ========================================================
-    # Deterministic action
-    # ========================================================
 
     deterministic = (
         agent.deterministic_action(

@@ -19,10 +19,6 @@ from experiments.preferences.colreg_reward_wrapper import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 STATE_SIZE = 13
 ACTION_SIZE = 2
 ROLLOUT_STEPS = 256
@@ -74,11 +70,6 @@ OUTPUT_JSON = (
 )
 
 OUTPUT_BASENAME = "route_randomized_vs_colreg_same_seed"
-
-
-# ============================================================
-# Utilities
-# ============================================================
 
 
 def to_serializable(
@@ -193,11 +184,6 @@ def save_figure(
     )
 
 
-# ============================================================
-# Environment and agent
-# ============================================================
-
-
 def make_env() -> ColregRewardWrapper:
     base_env = CommonOceanEnv(
         max_episode_steps=MAX_EPISODE_STEPS,
@@ -235,11 +221,6 @@ def load_agent(
     )
 
     return agent
-
-
-# ============================================================
-# Episode rollout
-# ============================================================
 
 
 def run_episode(
@@ -527,11 +508,6 @@ def run_episode(
     return result
 
 
-# ============================================================
-# Seed selection
-# ============================================================
-
-
 def find_best_visual_seed(
     randomized_agent: PPOContinuousAgent,
     colreg_agent: PPOContinuousAgent,
@@ -655,8 +631,7 @@ def find_best_visual_seed(
     ) == 0:
         valid_comparisons = comparisons
 
-    # Preferimos una seed visual donde COLREG mejore separación,
-    # sin sacrificar demasiado reward.
+
     selected = max(
         valid_comparisons,
         key=lambda item: (
@@ -698,11 +673,6 @@ def find_best_visual_seed(
         "selected": selected,
         "all_comparisons": comparisons,
     }
-
-
-# ============================================================
-# Plotting
-# ============================================================
 
 
 def set_equal_limits(
@@ -789,8 +759,7 @@ def plot_comparison_route(
         dtype=np.float64,
     )
 
-    # El escenario es el mismo. Usamos la trayectoria de tráfico
-    # del episodio más largo para visualizarla completa.
+
     randomized_traffic = np.asarray(
         randomized_result[
             "traffic_positions"
@@ -1028,11 +997,6 @@ def plot_comparison_route(
         fig,
         OUTPUT_BASENAME,
     )
-
-
-# ============================================================
-# Main
-# ============================================================
 
 
 def main() -> None:

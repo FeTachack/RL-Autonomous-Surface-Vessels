@@ -15,10 +15,6 @@ from experiments.envs.commonocean_env import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 STATE_SIZE = 13
 ACTION_SIZE = 2
 
@@ -57,11 +53,6 @@ RESULTS_DIR.mkdir(
     parents=True,
     exist_ok=True,
 )
-
-
-# ============================================================
-# Utilities
-# ============================================================
 
 
 def to_serializable(
@@ -152,11 +143,6 @@ def save_figure(
     print(
         f"Saved figure: {pdf_path}"
     )
-
-
-# ============================================================
-# Environment and episode
-# ============================================================
 
 
 def make_env():
@@ -400,11 +386,6 @@ def run_episode(
     return result
 
 
-# ============================================================
-# Summary
-# ============================================================
-
-
 def summarize_results(
     results: list[dict],
 ):
@@ -532,11 +513,6 @@ def summarize_results(
             np.mean(steps)
         ),
     }
-
-
-# ============================================================
-# Plots
-# ============================================================
 
 
 def plot_histograms(
@@ -767,11 +743,6 @@ def plot_worst_trajectories(
     plt.close(fig)
 
 
-# ============================================================
-# Main
-# ============================================================
-
-
 def main():
     print("=" * 72)
     print("ROBUST PPO RANDOMIZED CROSSING EVALUATION")
@@ -845,7 +816,7 @@ def main():
         results
     )
 
-    # Peores 5 por distancia mínima.
+
     worst_base = sorted(
         results,
         key=lambda item: item[

@@ -17,10 +17,6 @@ from experiments.envs.commonocean_env import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 SEED = 123
 
 STATE_SIZE = 13
@@ -30,8 +26,7 @@ NUM_ENVS = 1
 ROLLOUT_STEPS = 256
 MAX_EPISODE_STEPS = 220
 
-# Primer entrenamiento con generalización.
-# Si tarda mucho, baja a 30.
+
 NUM_UPDATES = 50
 
 EVAL_INTERVAL = 5
@@ -80,7 +75,7 @@ RESULTS_DIR.mkdir(
     exist_ok=True,
 )
 
-# Checkpoint nominal previo, usado como inicialización.
+
 INITIAL_NOMINAL_CHECKPOINT = (
     CHECKPOINT_DIR
     / "ppo_commonocean_best.pt"
@@ -103,10 +98,6 @@ TOTAL_TIMESTEPS = (
 )
 
 
-# ============================================================
-# Baselines
-# ============================================================
-
 BASELINES = {
     "nominal_best_reward": 82.921,
     "nominal_previous_reward": 57.483,
@@ -114,11 +105,6 @@ BASELINES = {
     "random_mean_reward": -71.932,
     "collision_baseline_reward": -174.643,
 }
-
-
-# ============================================================
-# Utilities
-# ============================================================
 
 
 def set_seed(
@@ -346,11 +332,6 @@ def summarize_results(
             )
         ),
     }
-
-
-# ============================================================
-# Episode runners
-# ============================================================
 
 
 def make_randomized_env() -> CommonOceanEnv:
@@ -690,8 +671,7 @@ def evaluate_policy(
         results
     )
 
-    # Penalizamos explícitamente colisiones para elegir
-    # el mejor checkpoint de generalización.
+
     summary["score"] = float(
         summary["reward_mean"]
         - 50.0
@@ -719,11 +699,6 @@ def evaluate_zero_action_baseline(
         ),
         results,
     )
-
-
-# ============================================================
-# Plotting
-# ============================================================
 
 
 def plot_training_curves(
@@ -1248,11 +1223,6 @@ def plot_trajectory_examples(
     )
 
 
-# ============================================================
-# Training
-# ============================================================
-
-
 def train() -> None:
     set_seed(
         SEED
@@ -1760,9 +1730,6 @@ def train() -> None:
         history,
     )
 
-    # ========================================================
-    # Final evaluation using best checkpoint
-    # ========================================================
 
     best_agent = PPOContinuousAgent(
         state_size=STATE_SIZE,
@@ -1828,11 +1795,7 @@ def train() -> None:
         trajectory_results,
     )
 
-    # ========================================================
-    # Figures
-    # ========================================================
 
-    # Filtramos NaN para la curva de evaluación.
     plot_training_history = {
         key: []
         for key in history
@@ -1874,9 +1837,6 @@ def train() -> None:
         trajectory_results
     )
 
-    # ========================================================
-    # Summary
-    # ========================================================
 
     print()
     print("=" * 72)

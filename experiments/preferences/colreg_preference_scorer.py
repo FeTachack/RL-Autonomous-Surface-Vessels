@@ -7,11 +7,6 @@ import math
 import numpy as np
 
 
-# ============================================================
-# Utilities
-# ============================================================
-
-
 def angle_wrap(
     angle: float,
 ) -> float:
@@ -27,17 +22,17 @@ def global_to_body_frame(
     vector: np.ndarray,
     heading: float,
 ) -> np.ndarray:
-    """
-    Convierte un vector global al marco local de ego.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    Convención usada en CommonOceanEnv:
-        x local: dirección proa
-        y local: babor
-
-    Por lo tanto:
-        y_local < 0  -> contacto por estribor
-        y_local > 0  -> contacto por babor
-    """
 
     c = math.cos(
         heading
@@ -142,31 +137,25 @@ def safe_float(
     )
 
 
-# ============================================================
-# Data containers
-# ============================================================
-
-
 @dataclass
 class ColregPreferenceConfig:
-    """
-    Parámetros del evaluador de preferencias.
+\
+\
+\
+\
+\
+\
 
-    Estos pesos no son aún una recompensa de entrenamiento.
-    Son una función heurística para ordenar trayectorias y producir
-    pares preferidos/rechazados.
-    """
 
-    # Riesgo geométrico
     safe_distance: float = 300.0
     safe_dcpa: float = 200.0
     risk_distance: float = 800.0
 
-    # Tiempo para considerar una maniobra como temprana
+
     early_action_horizon_steps: int = 90
     substantial_yaw_threshold: float = 0.20
 
-    # Pesos de score
+
     collision_penalty: float = -1200.0
     no_goal_penalty: float = -250.0
     goal_bonus: float = 250.0
@@ -184,7 +173,7 @@ class ColregPreferenceConfig:
     smoothness_penalty: float = -35.0
     action_magnitude_penalty: float = -10.0
 
-    # Para generar pares
+
     minimum_score_margin: float = 25.0
 
 
@@ -219,29 +208,24 @@ class ColregFeatures:
     colreg_score: float
 
 
-# ============================================================
-# Main scorer
-# ============================================================
-
-
 class ColregPreferenceScorer:
-    """
-    Evaluador heurístico de preferencias inspirado en COLREGs.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
-    Caso principal cubierto:
-        encuentro de cruce donde el tráfico aparece por estribor
-        de ego. En ese caso ego es tratado como give-way vessel.
-
-    La preferencia favorece:
-        - no colisión;
-        - llegada al objetivo;
-        - mayor separación mínima;
-        - mayor DCPA;
-        - acción temprana;
-        - preferencia por pasar por popa;
-        - maniobra hacia estribor cuando aplica;
-        - menor oscilación de acciones.
-    """
 
     def __init__(
         self,
@@ -253,7 +237,6 @@ class ColregPreferenceScorer:
             else ColregPreferenceConfig()
         )
 
-    # --------------------------------------------------------
 
     def evaluate(
         self,
@@ -407,9 +390,6 @@ class ColregPreferenceScorer:
             < self.config.risk_distance
         )
 
-        # ----------------------------------------------------
-        # Pass ahead / pass astern at closest approach
-        # ----------------------------------------------------
 
         traffic_heading_at_closest = float(
             traffic_headings[
@@ -445,15 +425,11 @@ class ColregPreferenceScorer:
             )
         )
 
-        # along < 0 significa que ego está detrás del tráfico
-        # respecto a la dirección de avance del tráfico.
+
         pass_astern_at_closest = bool(
             along_track_at_closest < 0.0
         )
 
-        # ----------------------------------------------------
-        # Action features
-        # ----------------------------------------------------
 
         if actions.size == 0:
             action_norms = np.zeros(
@@ -532,7 +508,7 @@ class ColregPreferenceScorer:
             )
         )
 
-        # Alinear acciones con estados posteriores.
+
         if actions.shape[
             0
         ] > 0:
@@ -620,7 +596,6 @@ class ColregPreferenceScorer:
             colreg_score=colreg_score,
         )
 
-    # --------------------------------------------------------
 
     def _compute_score(
         self,
@@ -686,7 +661,6 @@ class ColregPreferenceScorer:
             score
         )
 
-    # --------------------------------------------------------
 
     def compare(
         self,

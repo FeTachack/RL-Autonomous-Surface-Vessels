@@ -18,10 +18,6 @@ from experiments.envs.commonocean_env import (
 )
 
 
-# ============================================================
-# Configuration
-# ============================================================
-
 STATE_SIZE = 13
 ACTION_SIZE = 2
 
@@ -53,7 +49,7 @@ RESULTS_DIR.mkdir(
     exist_ok=True,
 )
 
-# Preferimos el PPO entrenado con domain randomization.
+
 PPO_RANDOMIZED_CHECKPOINT = (
     CHECKPOINT_DIR
     / "ppo_randomized_crossing_best.pt"
@@ -72,27 +68,17 @@ RANDOM_CANDIDATE_SEEDS = list(
 )
 
 
-# ============================================================
-# Environment
-# ============================================================
-
-
 def make_nominal_env() -> CommonOceanEnv:
-    """
-    Todas las rutas se grafican sobre el escenario nominal,
-    para que la comparación visual sea justa.
-    """
+\
+\
+\
+
 
     return CommonOceanEnv(
         max_episode_steps=MAX_EPISODE_STEPS,
         render_mode=None,
         randomize_scenario=False,
     )
-
-
-# ============================================================
-# Agent
-# ============================================================
 
 
 def load_best_ppo_agent() -> tuple[PPOContinuousAgent, Path]:
@@ -125,11 +111,6 @@ def load_best_ppo_agent() -> tuple[PPOContinuousAgent, Path]:
         agent,
         checkpoint_path,
     )
-
-
-# ============================================================
-# Episode runners
-# ============================================================
 
 
 def run_episode(
@@ -385,10 +366,10 @@ def make_ppo_policy(
 
 
 def select_representative_random_route() -> dict:
-    """
-    Evalúa varias políticas aleatorias y selecciona una ruta
-    representativa: la más cercana al reward mediano.
-    """
+\
+\
+\
+
 
     random_results = []
 
@@ -454,11 +435,6 @@ def select_representative_random_route() -> dict:
     )
 
     return selected
-
-
-# ============================================================
-# Plotting
-# ============================================================
 
 
 def _set_equal_limits(
@@ -720,11 +696,6 @@ def plot_route(
     )
 
 
-# ============================================================
-# Main
-# ============================================================
-
-
 def main() -> None:
     print("=" * 72)
     print("REPORT ROUTE FIGURES")
@@ -735,17 +706,17 @@ def main() -> None:
         RESULTS_DIR,
     )
 
-    # 1. Ruta que provoca colisión.
+
     collision_result = run_episode(
         policy_name="Sin evasión",
         action_fn=zero_action_policy,
         seed=NOMINAL_SEED,
     )
 
-    # 2. Ruta aleatoria representativa.
+
     random_result = select_representative_random_route()
 
-    # 3. Mejor ruta PPO.
+
     agent, checkpoint_path = load_best_ppo_agent()
 
     print()

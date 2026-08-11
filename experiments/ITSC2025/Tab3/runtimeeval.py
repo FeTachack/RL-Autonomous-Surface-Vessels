@@ -1,21 +1,8 @@
-# run simulations for scenarios 2 -5 after each other (vessel configurations see paper)
-# scenario 2) - ZAM_...-2.xml
-# scenario 3) - USA...xml
-# scenario 4) - ZAM_...-4.xml
-# scenario 5) - ZAM_...-5.xml
 
 
-#################################################
-#   Benchmark specific configurations           #
-#                                               #
-# We perform nround simulations.                #
-# In each round we draw nvessels from the set   #
-# of vessels in testingvessels                  #
-#################################################
-
-testingvessels = [22,24,26,28,30,32]   # This is the set of vessels, from which we will draw randomly nvessels every round (from experiments/RSS_experiments/Fig4/ZAM_AAA-2_20250129_T-5.xml)
-nround = 10                          # Number of rounds = Number of simulations performed sequentially after each other
-nvessels = 6                        # Number of vessels randomly drawn each simulation round from the set testingvessels
+testingvessels = [22,24,26,28,30,32]
+nround = 10
+nvessels = 6
 
 
 assert nvessels <= len(testingvessels), "You can not draw k from n with k>n"
@@ -30,15 +17,15 @@ from Pipeline.SimulationIO import *
 from rules.common.helper import load_yaml
 import random
 
-# loading configuration yaml
+
 base_path = os.path.dirname(os.path.abspath(__name__))
 master_configuration = load_yaml(base_path + "/configuration_scenario5.yaml")
 
-# creating a simulation factory
+
 simfac = SimulatorFactory(1.0)
 
-# creating a helper IO (this IO is useful for importing/exporting scenarios)
-sim_io = SimulationIO(simfac) # Linking the factory to the IO. With the IO we will now configure the linked factory
+
+sim_io = SimulationIO(simfac)
 
 total_control_times = []
 total_colav_times = []
@@ -57,24 +44,23 @@ def dosimulation(tobetestedvessels):
     configured = simfac.is_configured()
     assert configured, "Not configured. You have probably changed the configuration.yaml to an invalid state"
 
-    
+
     allvesselmodels = []
     for i in simfac.models:
         allvesselmodels.append(i.id)
-        
-    # filter not allowed models
+
+
     for keeps in allvesselmodels:
         if not (keeps in tobetestedvessels):
-            # remove keeps
-            
-            # finding keeps in the list of models
+
+
             for model in simfac.models:
                 if model.id == keeps:
-                    # found vessel. removing it
+
                     simfac.models.remove(model)
-    
+
     def measuretime(simref):
-        
+
         total_display_time = 0
         total_colav_time = 0
         total_coldet_time = 0
@@ -88,7 +74,7 @@ def dosimulation(tobetestedvessels):
                 total_colav_time = listener.total_colav_time
             elif isinstance(listener, CollisionDetector):
                 total_coldet_time = listener.total_coldet_time
-        
+
         total_control_times.append((simref.total_control_time /  simref.n) / (10**9))
         total_colav_times.append((total_colav_time / simref.n) / (10**9))
         total_coldet_times.append((total_coldet_time / simref.n) / (10**9))
@@ -97,12 +83,12 @@ def dosimulation(tobetestedvessels):
         update_waypointtimes.append((simref.set_current_statetime / simref.n) / (10**9))
         total_simulation_times.append((simref.total_simulation_time / simref.n) / (10**9))
         total_eventlist_times.append((simref.total_listener_time / simref.n) / (10**9))
-    
+
     simfac.runner.append(measuretime)
-    
+
     sim = simfac.generate_scenario()
-    
-    # starting the simulator
+
+
     try:
         sim.display_run()
     except ValueError as ve:
@@ -110,15 +96,13 @@ def dosimulation(tobetestedvessels):
             print("OK")
         else:
             raise
-        
 
-# doing simulation rounds        
+
 for round in range(nround):
-    
+
     tobetestedvessels = random.sample(testingvessels, nvessels)
     dosimulation(tobetestedvessels)
-    
-# printing runtimes
+
 
 print("---- Result of Runtime Benchmarking ----")
 print("The configuration was: testingvessels: " +str(testingvessels) + " , nround: "+str(nround) + " , nvessels:" +str(nvessels))
@@ -134,9 +118,6 @@ print("Avoider:\t\t " + str(np.array(total_colav_times).mean()) + " , std: " + s
 print("Check state/signal:\t" + str(np.array(postprocessingtimes).mean()) + " , std: " + str(np.array(postprocessingtimes).std()))
 print("Update state:\t\t " + str(np.array(update_waypointtimes).mean()) + " , std: " + str(np.array(update_waypointtimes).std()))
 
-# CSV is Total  Controller  Displayer  Detector  Avoider Check-state/signal  Update-state
 
 sumstack = np.stack([total_simulation_times,total_control_times,total_display_times,total_coldet_times,total_colav_times,postprocessingtimes,update_waypointtimes]).T
 np.savetxt("runtime_nvessels_" +str(nvessels)+".csv", sumstack, delimiter=',')
-
-
