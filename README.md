@@ -1,71 +1,43 @@
-# Autonomous Surface Vessel Navigation with Reinforcement Learning
+# Navegación Autónoma de Embarcaciones de Superficie con Reinforcement Learning
 
-Reinforcement Learning project for autonomous navigation of surface
-vessels using CommonOcean-Sim.
+Proyecto de investigación aplicada en aprendizaje por refuerzo para la navegación autónoma de embarcaciones de superficie en entornos marítimos dinámicos, usando CommonOcean-Sim como simulador base.
 
-## Objective
+El objetivo principal es entrenar una política de control capaz de gobernar una embarcación ego, evitar colisiones con tráfico marítimo dinámico y mejorar el comportamiento de navegación mediante randomización de dominio y preferencias inspiradas en COLREGs.
 
-The objective is to develop a reinforcement learning agent capable of
-controlling an ego surface vessel while navigating in dynamic maritime
-environments.
+## Objetivo
 
-The agent controls only the ego vessel. Other vessels are considered
-part of the environment.
+Desarrollar un agente de Reinforcement Learning que controle una embarcación de superficie en escenarios marítimos con obstáculos dinámicos.
 
-## Simulator
+El agente controla únicamente la embarcación ego. Las demás embarcaciones se modelan como parte del entorno mediante trayectorias predefinidas de tipo `dynamicObstacle`.
 
-The project uses:
+El proyecto estudia tres niveles progresivos de desempeño:
 
-- CommonOcean-Sim
-- CommonOcean scenarios
-- COLREGs-based maritime environments
+1. navegación nominal sin colisión;
+2. generalización frente a variaciones del escenario mediante Domain Randomization;
+3. mejora de márgenes de seguridad mediante una recompensa auxiliar inspirada en COLREGs.
 
-Repository:
+## Simulador
+
+El proyecto utiliza:
+
+- CommonOcean-Sim;
+- escenarios CommonOcean en formato XML;
+- modelo dinámico de embarcación de superficie tipo YP;
+- obstáculos dinámicos para representar tráfico marítimo;
+- detección de colisiones del simulador;
+- entorno Gymnasium personalizado para entrenamiento RL.
+
+Repositorio base del simulador:
 
 https://github.com/CommonOcean/commonocean-sim
 
-## Control architecture
+## Arquitectura de control
 
-The original CommonOcean-Sim MPC controller of the ego vessel is
-replaced by an external controller:
+El controlador MPC original de CommonOcean-Sim para la embarcación ego fue reemplazado por un controlador externo conectado a una política RL:
 
-RL Policy
+```text
+PPO Policy
+    -> CommonOceanEnv
     -> ExternalActionController
-    -> SurfaceVessel dynamics
-
-The action for the YP vessel model is:
-
-    [longitudinal acceleration, yaw rate]
-
-Other vessels remain controlled by the simulator or follow predefined
-dynamic-obstacle trajectories.
-
-
-## Current status
-
-Validated:
-
-- CommonOcean-Sim installation
-- OSQP as experimental MPC solver
-- External controller for ego vessel
-- Independent control of ego vessel
-- Fixed longitudinal acceleration
-- Positive yaw-rate control
-- Negative yaw-rate control
-- Symmetric steering response
-- One external action applied per simulator step
-
-
-## Next steps
-
-1. Create a scenario with one planningProblem for the ego vessel.
-2. Represent surrounding traffic using dynamicObstacle.
-3. Implement Gymnasium environment.
-4. Define observations, action normalization and reward.
-5. Train RL baseline.
-
-
-
-
-
-
+    -> SurfaceVessel YP dynamics
+    -> CommonOcean-Sim
