@@ -8,17 +8,6 @@ from experiments.envs.commonocean_env import (
 
 
 def select_action(step: int) -> np.ndarray:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     if 60 <= step < 100:

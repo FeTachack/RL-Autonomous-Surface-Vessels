@@ -49,19 +49,6 @@ SCENARIO_PATH = (
 
 
 class CommonOceanEnv(gym.Env):
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     metadata = {
@@ -202,8 +189,6 @@ class CommonOceanEnv(gym.Env):
         seed: int | None = None,
         options: dict[str, Any] | None = None,
     ):
-\
-\
 
 
         super().reset(
@@ -255,8 +240,6 @@ class CommonOceanEnv(gym.Env):
         self,
         action: np.ndarray,
     ):
-\
-\
 
 
         if self.simulator is None:
@@ -374,9 +357,6 @@ class CommonOceanEnv(gym.Env):
     def render(
         self,
     ):
-\
-\
-\
 
 
         return None
@@ -385,8 +365,6 @@ class CommonOceanEnv(gym.Env):
     def close(
         self,
     ):
-\
-\
 
 
         if self.simulator is not None:
@@ -421,14 +399,6 @@ class CommonOceanEnv(gym.Env):
         self,
         seed: int | None,
     ) -> None:
-\
-\
-\
-\
-\
-\
-\
-\
 
 
         self.scenario_path = (
@@ -511,8 +481,6 @@ class CommonOceanEnv(gym.Env):
     def _build_simulator(
         self,
     ) -> None:
-\
-\
 
 
         configuration = load_yaml(
@@ -785,11 +753,6 @@ class CommonOceanEnv(gym.Env):
         self,
         action: np.ndarray,
     ) -> np.ndarray:
-\
-\
-\
-\
-\
 
 
         acceleration = (
@@ -823,11 +786,6 @@ class CommonOceanEnv(gym.Env):
         self,
         vector: np.ndarray,
     ) -> np.ndarray:
-\
-\
-\
-\
-\
 
 
         psi = float(
@@ -870,8 +828,6 @@ class CommonOceanEnv(gym.Env):
         relative_position: np.ndarray,
         relative_velocity: np.ndarray,
     ) -> tuple[float, float]:
-\
-\
 
 
         relative_position = np.asarray(
@@ -932,8 +888,6 @@ class CommonOceanEnv(gym.Env):
     def _get_traffic_state(
         self,
     ):
-\
-\
 
 
         time_step = int(
@@ -980,8 +934,6 @@ class CommonOceanEnv(gym.Env):
     def _get_observation(
         self,
     ) -> np.ndarray:
-\
-\
 
 
         ego_position = np.asarray(
@@ -1186,16 +1138,6 @@ class CommonOceanEnv(gym.Env):
         goal_reached: bool,
         info: dict[str, Any],
     ) -> tuple[float, dict[str, float]]:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
         current_distance = float(
@@ -1316,8 +1258,6 @@ class CommonOceanEnv(gym.Env):
     def _get_info(
         self,
     ) -> dict[str, Any]:
-\
-\
 
 
         ego_position = np.asarray(

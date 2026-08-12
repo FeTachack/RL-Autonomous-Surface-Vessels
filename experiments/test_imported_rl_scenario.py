@@ -33,12 +33,6 @@ def force_collision_scenario(
     factory,
     trajectory_steps: int = 100,
 ) -> None:
-\
-\
-\
-\
-\
-\
 
 
     if len(factory.models) != 1:

@@ -88,11 +88,6 @@ def print_controllers(simulator, title: str) -> None:
         )
 
 def detach_ego_from_builtin_collision_avoider(ego) -> bool:
-\
-\
-\
-\
-\
 
 
     collision_state = getattr(

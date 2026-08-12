@@ -14,13 +14,6 @@ def run_random_episode(
     episode_index: int,
     seed: int,
 ) -> dict:
-\
-\
-\
-\
-\
-\
-\
 
 
     env = CommonOceanEnv(

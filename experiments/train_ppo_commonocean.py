@@ -194,13 +194,6 @@ def evaluate_policy(
     render_mode=None,
     record_trajectory: bool = False,
 ):
-\
-\
-\
-\
-\
-\
-\
 
 
     env = CommonOceanEnv(

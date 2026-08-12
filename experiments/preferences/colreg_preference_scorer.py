@@ -22,16 +22,6 @@ def global_to_body_frame(
     vector: np.ndarray,
     heading: float,
 ) -> np.ndarray:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     c = math.cos(
@@ -139,12 +129,6 @@ def safe_float(
 
 @dataclass
 class ColregPreferenceConfig:
-\
-\
-\
-\
-\
-\
 
 
     safe_distance: float = 300.0
@@ -209,22 +193,6 @@ class ColregFeatures:
 
 
 class ColregPreferenceScorer:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     def __init__(

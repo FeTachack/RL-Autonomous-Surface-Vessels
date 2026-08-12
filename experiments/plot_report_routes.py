@@ -69,9 +69,6 @@ RANDOM_CANDIDATE_SEEDS = list(
 
 
 def make_nominal_env() -> CommonOceanEnv:
-\
-\
-\
 
 
     return CommonOceanEnv(
@@ -366,9 +363,6 @@ def make_ppo_policy(
 
 
 def select_representative_random_route() -> dict:
-\
-\
-\
 
 
     random_results = []

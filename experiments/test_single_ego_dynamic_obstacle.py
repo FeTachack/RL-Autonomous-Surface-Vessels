@@ -60,11 +60,6 @@ def make_predefined_dynamic_obstacle(
     dt: float,
     steps: int,
 ) -> DynamicObstacle:
-\
-\
-\
-\
-\
 
 
     source_controller = source_vessel.get_controller()

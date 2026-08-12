@@ -13,13 +13,6 @@ TANH_EPS = 1e-6
 
 
 class Actor(nn.Module):
-\
-\
-\
-\
-\
-\
-\
 
 
     def __init__(
@@ -63,8 +56,6 @@ class Actor(nn.Module):
 
 
 class Critic(nn.Module):
-\
-\
 
 
     def __init__(
@@ -89,19 +80,6 @@ class Critic(nn.Module):
 
 
 class PPOContinuousAgent:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     def __init__(
@@ -274,13 +252,6 @@ class PPOContinuousAgent:
         pre_tanh_action: torch.Tensor,
         action: torch.Tensor,
     ):
-\
-\
-\
-\
-\
-\
-\
 
 
         gaussian_log_prob = (
@@ -307,11 +278,6 @@ class PPOContinuousAgent:
         self,
         states,
     ):
-\
-\
-\
-\
-\
 
 
         states_np = np.asarray(
@@ -420,10 +386,6 @@ class PPOContinuousAgent:
         self,
         states,
     ):
-\
-\
-\
-\
 
 
         states_np = np.asarray(
@@ -529,20 +491,6 @@ class PPOContinuousAgent:
         episode_ends,
         next_states,
     ):
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
         if self.ptr >= self.num_steps:
@@ -683,36 +631,6 @@ class PPOContinuousAgent:
     def compute_gae(
         self,
     ):
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
         if self.ptr != self.num_steps:
@@ -781,8 +699,6 @@ class PPOContinuousAgent:
     def update(
         self,
     ):
-\
-\
 
 
         if self.ptr < self.num_steps:

@@ -11,8 +11,6 @@ import numpy as np
 
 @dataclass(frozen=True)
 class RandomizedCrossingConfig:
-\
-\
 
 
     traffic_x0_min: float = 80.0
@@ -151,12 +149,6 @@ def sample_crossing_parameters(
         | None
     ) = None,
 ) -> dict[str, float]:
-\
-\
-\
-\
-\
-\
 
 
     cfg = _coerce_config(
@@ -222,22 +214,6 @@ def generate_randomized_crossing_scenario(
         | None
     ) = None,
 ) -> dict[str, Any]:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     cfg = _coerce_config(

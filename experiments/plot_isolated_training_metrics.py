@@ -69,13 +69,6 @@ def load_training_history(
 def load_episode_rewards_from_checkpoint(
     path: Path,
 ) -> list[float]:
-\
-\
-\
-\
-\
-\
-\
 
 
     if not path.exists():
@@ -151,12 +144,6 @@ def load_episode_rewards_from_checkpoint(
 def parse_episode_rewards_from_log(
     path: Path,
 ) -> list[float]:
-\
-\
-\
-\
-\
-\
 
 
     if not path.exists():
@@ -207,12 +194,6 @@ def parse_episode_rewards_from_log(
 
 
 def load_episode_rewards() -> tuple[list[float], str]:
-\
-\
-\
-\
-\
-\
 
 
     try:
@@ -374,8 +355,6 @@ def plot_loss_curve(
 def plot_loss_components(
     history: dict,
 ) -> None:
-\
-\
 
 
     global_steps = np.asarray(
@@ -568,8 +547,6 @@ def plot_cumulative_mean_reward(
 def plot_episode_reward_with_cumulative_mean(
     episode_rewards: list[float],
 ) -> None:
-\
-\
 
 
     rewards = np.asarray(

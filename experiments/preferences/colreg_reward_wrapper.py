@@ -12,13 +12,6 @@ def global_to_ego_frame(
     vector: np.ndarray,
     heading: float,
 ) -> np.ndarray:
-\
-\
-\
-\
-\
-\
-\
 
 
     c = math.cos(
@@ -48,19 +41,6 @@ def global_to_ego_frame(
 
 @dataclass
 class ColregRewardConfig:
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     colreg_weight: float = 0.10
@@ -104,19 +84,6 @@ class ColregRewardConfig:
 class ColregRewardWrapper(
     gym.Wrapper,
 ):
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     def __init__(

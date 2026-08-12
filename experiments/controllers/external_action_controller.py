@@ -10,15 +10,6 @@ from Environment.SurfaceVessel import SurfaceVessel
 
 
 class ExternalActionController(VesselController):
-\
-\
-\
-\
-\
-\
-\
-\
-\
 
 
     def __init__(
