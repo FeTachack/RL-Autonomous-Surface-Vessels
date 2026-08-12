@@ -34,6 +34,15 @@ from experiments.scenarios.randomize_crossing_scenario import (
     generate_randomized_crossing_scenario,
 )
 
+from experiments.scenarios.randomize_conflict_scenario import (
+    ConflictPreservingConfig,
+    generate_conflict_preserving_scenario,
+)
+
+
+# ============================================================
+# Paths
+# ============================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -48,8 +57,26 @@ SCENARIO_PATH = (
 )
 
 
-class CommonOceanEnv(gym.Env):
+# ============================================================
+# Environment
+# ============================================================
 
+
+class CommonOceanEnv(gym.Env):
+    """
+    Entorno Gymnasium para navegación autónoma con CommonOcean-Sim.
+
+    Arquitectura:
+        RL policy
+            -> acción normalizada [-1, 1]^2
+            -> ExternalActionController
+            -> SurfaceVessel ego, VesselModel.YP
+            -> CommonOcean dynamics
+
+    El tráfico se modela como DynamicObstacle con trayectoria
+    predefinida. CollisionDetector está activo y CollisionAvoider
+    está desactivado.
+    """
 
     metadata = {
         "render_modes": [
@@ -58,6 +85,9 @@ class CommonOceanEnv(gym.Env):
         "render_fps": 30,
     }
 
+    # ========================================================
+    # Initialization
+    # ========================================================
 
     def __init__(
         self,
@@ -71,9 +101,11 @@ class CommonOceanEnv(gym.Env):
         randomize_scenario: bool = False,
         randomization_config: (
             RandomizedCrossingConfig
-            | dict[str, float]
+            | ConflictPreservingConfig
+            | dict[str, Any]
             | None
         ) = None,
+        randomization_mode: str = "crossing",
         randomized_scenario_dir: str | Path | None = None,
     ) -> None:
         super().__init__()
@@ -109,6 +141,9 @@ class CommonOceanEnv(gym.Env):
             tcpa_scale
         )
 
+        # ====================================================
+        # Scenario configuration
+        # ====================================================
 
         self.base_scenario_path = str(
             scenario_path
@@ -121,6 +156,20 @@ class CommonOceanEnv(gym.Env):
         self.randomize_scenario = bool(
             randomize_scenario
         )
+
+        self.randomization_mode = str(
+            randomization_mode
+        )
+
+        if self.randomization_mode not in (
+            "crossing",
+            "conflict_preserving",
+        ):
+            raise ValueError(
+                "randomization_mode debe ser 'crossing' "
+                "o 'conflict_preserving', "
+                f"pero se recibió {randomization_mode!r}."
+            )
 
         self.randomization_config = (
             randomization_config
@@ -140,9 +189,13 @@ class CommonOceanEnv(gym.Env):
 
         self.scenario_metadata = {
             "randomized": False,
+            "randomization_mode": self.randomization_mode,
             "scenario_path": self.scenario_path,
         }
 
+        # ====================================================
+        # Gymnasium spaces
+        # ====================================================
 
         self.action_space = spaces.Box(
             low=-1.0,
@@ -158,6 +211,9 @@ class CommonOceanEnv(gym.Env):
             dtype=np.float32,
         )
 
+        # ====================================================
+        # CommonOcean runtime objects
+        # ====================================================
 
         self.factory = None
         self.simulation_io = None
@@ -171,6 +227,9 @@ class CommonOceanEnv(gym.Env):
 
         self.goal_position = None
 
+        # ====================================================
+        # Episode state
+        # ====================================================
 
         self._elapsed_steps = 0
         self._episode_done = False
@@ -182,6 +241,9 @@ class CommonOceanEnv(gym.Env):
 
         self._previous_distance_to_goal = None
 
+    # ========================================================
+    # Gymnasium API
+    # ========================================================
 
     def reset(
         self,
@@ -189,7 +251,9 @@ class CommonOceanEnv(gym.Env):
         seed: int | None = None,
         options: dict[str, Any] | None = None,
     ):
-
+        """
+        Reinicia completamente CommonOcean y crea un nuevo episodio.
+        """
 
         super().reset(
             seed=seed
@@ -235,12 +299,15 @@ class CommonOceanEnv(gym.Env):
 
         return observation, info
 
+    # --------------------------------------------------------
 
     def step(
         self,
         action: np.ndarray,
     ):
-
+        """
+        Ejecuta exactamente un paso del simulador.
+        """
 
         if self.simulator is None:
             raise RuntimeError(
@@ -353,19 +420,26 @@ class CommonOceanEnv(gym.Env):
             info,
         )
 
+    # --------------------------------------------------------
 
     def render(
         self,
     ):
-
+        """
+        En modo human, CommonOcean actualiza su Displayer como listener
+        durante compute_next_state().
+        """
 
         return None
 
+    # --------------------------------------------------------
 
     def close(
         self,
     ):
-
+        """
+        Libera referencias de la simulación actual.
+        """
 
         if self.simulator is not None:
             displayer = getattr(
@@ -394,12 +468,23 @@ class CommonOceanEnv(gym.Env):
 
         self._previous_distance_to_goal = None
 
+    # ========================================================
+    # Scenario preparation
+    # ========================================================
 
     def _prepare_scenario_for_reset(
         self,
         seed: int | None,
     ) -> None:
+        """
+        Selecciona el XML que se usará en este episodio.
 
+        Si randomize_scenario=False:
+            usa el escenario nominal.
+
+        Si randomize_scenario=True:
+            genera un XML nuevo a partir del escenario nominal.
+        """
 
         self.scenario_path = (
             self.base_scenario_path
@@ -407,6 +492,7 @@ class CommonOceanEnv(gym.Env):
 
         self.scenario_metadata = {
             "randomized": False,
+            "randomization_mode": self.randomization_mode,
             "scenario_path": self.scenario_path,
         }
 
@@ -434,16 +520,36 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
-        output_xml_path = (
-            self.randomized_scenario_dir
-            / (
-                "randomized_crossing_seed_"
-                f"{effective_seed}.xml"
+        if self.randomization_mode == "crossing":
+            output_xml_path = (
+                self.randomized_scenario_dir
+                / (
+                    "randomized_crossing_seed_"
+                    f"{effective_seed}.xml"
+                )
             )
-        )
+
+            generator = generate_randomized_crossing_scenario
+
+        elif self.randomization_mode == "conflict_preserving":
+            output_xml_path = (
+                self.randomized_scenario_dir
+                / (
+                    "conflict_preserving_seed_"
+                    f"{effective_seed}.xml"
+                )
+            )
+
+            generator = generate_conflict_preserving_scenario
+
+        else:
+            raise RuntimeError(
+                "randomization_mode inválido: "
+                f"{self.randomization_mode!r}"
+            )
 
         metadata = (
-            generate_randomized_crossing_scenario(
+            generator(
                 base_xml_path=base_xml_path,
                 output_xml_path=output_xml_path,
                 seed=effective_seed,
@@ -477,11 +583,16 @@ class CommonOceanEnv(gym.Env):
 
         self.scenario_metadata = metadata
 
+    # ========================================================
+    # CommonOcean setup
+    # ========================================================
 
     def _build_simulator(
         self,
     ) -> None:
-
+        """
+        Construye una simulación CommonOcean nueva.
+        """
 
         configuration = load_yaml(
             str(
@@ -748,12 +859,20 @@ class CommonOceanEnv(gym.Env):
 
         self.goal_position = goal_position
 
+    # ========================================================
+    # Actions
+    # ========================================================
 
     def _map_action_to_physical(
         self,
         action: np.ndarray,
     ) -> np.ndarray:
+        """
+        Convierte acción normalizada a unidades físicas:
 
+            action[0] -> aceleración longitudinal [m/s²]
+            action[1] -> yaw rate [rad/s]
+        """
 
         acceleration = (
             float(
@@ -781,12 +900,20 @@ class CommonOceanEnv(gym.Env):
             dtype=np.float64,
         )
 
+    # ========================================================
+    # Geometry
+    # ========================================================
 
     def _global_to_ego_frame(
         self,
         vector: np.ndarray,
     ) -> np.ndarray:
+        """
+        Transforma un vector global al marco local de ego.
 
+            +x local = delante
+            +y local = babor
+        """
 
         psi = float(
             self.ego.heading
@@ -822,13 +949,18 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
+    # ========================================================
+    # CPA / TCPA
+    # ========================================================
 
     def _compute_cpa(
         self,
         relative_position: np.ndarray,
         relative_velocity: np.ndarray,
     ) -> tuple[float, float]:
-
+        """
+        Calcula DCPA y TCPA con velocidad instantánea constante.
+        """
 
         relative_position = np.asarray(
             relative_position,
@@ -884,11 +1016,16 @@ class CommonOceanEnv(gym.Env):
             tcpa,
         )
 
+    # ========================================================
+    # Traffic
+    # ========================================================
 
     def _get_traffic_state(
         self,
     ):
-
+        """
+        Obtiene el estado del DynamicObstacle para el time_step actual.
+        """
 
         time_step = int(
             self.ego.state.time_step
@@ -930,11 +1067,16 @@ class CommonOceanEnv(gym.Env):
             f"último time_step={states[-1].time_step}"
         )
 
+    # ========================================================
+    # Observation
+    # ========================================================
 
     def _get_observation(
         self,
     ) -> np.ndarray:
-
+        """
+        Construye la observación egocéntrica normalizada de 13 variables.
+        """
 
         ego_position = np.asarray(
             self.ego.position,
@@ -966,6 +1108,9 @@ class CommonOceanEnv(gym.Env):
             traffic_state.velocity
         )
 
+        # ----------------------------------------------------
+        # Goal relative to ego
+        # ----------------------------------------------------
 
         goal_vector_global = (
             self.goal_position
@@ -991,6 +1136,9 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
+        # ----------------------------------------------------
+        # Traffic relative to ego
+        # ----------------------------------------------------
 
         relative_position_global = (
             traffic_position
@@ -1016,6 +1164,9 @@ class CommonOceanEnv(gym.Env):
             )
         )
 
+        # ----------------------------------------------------
+        # Velocities
+        # ----------------------------------------------------
 
         ego_velocity_global = np.array(
             [
@@ -1131,6 +1282,9 @@ class CommonOceanEnv(gym.Env):
             np.float32
         )
 
+    # ========================================================
+    # Reward
+    # ========================================================
 
     def _compute_reward(
         self,
@@ -1138,7 +1292,17 @@ class CommonOceanEnv(gym.Env):
         goal_reached: bool,
         info: dict[str, Any],
     ) -> tuple[float, dict[str, float]]:
+        """
+        Recompensa inicial:
 
+        - progreso hacia el objetivo,
+        - penalización por riesgo DCPA/TCPA,
+        - coste temporal,
+        - penalización por colisión,
+        - recompensa por llegada.
+
+        Todavía no incluye COLREGs explícitos.
+        """
 
         current_distance = float(
             info[
@@ -1254,11 +1418,16 @@ class CommonOceanEnv(gym.Env):
             components,
         )
 
+    # ========================================================
+    # Info
+    # ========================================================
 
     def _get_info(
         self,
     ) -> dict[str, Any]:
-
+        """
+        Información física no normalizada para evaluación y depuración.
+        """
 
         ego_position = np.asarray(
             self.ego.position,
