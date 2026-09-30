@@ -1,0 +1,22 @@
+{
+  "python_files_checked": [
+    "tests/test_action.py",
+    "scripts/smoke_test.py",
+    "scripts/train_ppo.py",
+    "src/commonocean_rl/action.py",
+    "src/commonocean_rl/termination.py",
+    "src/commonocean_rl/config.py",
+    "src/commonocean_rl/observation.py",
+    "src/commonocean_rl/__init__.py",
+    "src/commonocean_rl/reward.py",
+    "src/commonocean_rl/env.py",
+    "src/commonocean_rl/integration/__init__.py",
+    "src/commonocean_rl/integration/simulator_builder.py",
+    "src/commonocean_rl/integration/external_action_controller.py"
+  ],
+  "file_count": 18,
+  "validation": [
+    "All Python files passed py_compile.",
+    "Environment example passed YAML parsing."
+  ]
+}

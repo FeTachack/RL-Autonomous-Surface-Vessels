@@ -1,0 +1,17 @@
+diff --git a/src/Controller/ModelPredictiveController.py b/src/Controller/ModelPredictiveController.py
+index a62b55c..c7b68ff 100644
+--- a/src/Controller/ModelPredictiveController.py
++++ b/src/Controller/ModelPredictiveController.py
+@@ -746,7 +746,11 @@ class ModelPredictiveController(VesselController):
+                     problem = cp.Problem(d_objective, constraints=crst)
+                     
+                     try:
+-                        problem.solve(solver=cp.GUROBI,verbose=False)
++                        problem.solve(
++                            solver=cp.OSQP,
++                            warm_start=True,
++                            verbose=False,
++                        )
+                     except Exception as e:
+                         # We don't case what error occurred, we are in any case left with no other choice than to try again
+                         print(str(e))

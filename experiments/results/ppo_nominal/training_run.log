@@ -1,0 +1,1145 @@
+========================================================================
+PPO COMMONOCEAN - NOMINAL TRAINING
+========================================================================
+Total timesteps : 12800
+Rollout steps   : 256
+Updates         : 50
+Results dir     : /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal
+Device          : cpu
+Importing scenario...
+Reading file.
+Created simulation
+Episode 001 | steps=220 | R=   -4.238 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 001/50
+  global step        = 256
+  loss               = +4.46085
+  actor loss         = -0.00315
+  critic loss        = +8.98476
+  entropy            = +2.83699
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +5.057
+  eval collision     = False
+  eval min distance  = 651.64
+  eval goal distance = 2027.17
+------------------------------------------------------------------------
+Episode 002 | steps=220 | R=  +29.140 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 002/50
+  global step        = 512
+  loss               = +1.71088
+  actor loss         = -0.00353
+  critic loss        = +3.48552
+  entropy            = +2.83521
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +33.620
+  eval collision     = False
+  eval min distance  = 463.19
+  eval goal distance = 1730.98
+------------------------------------------------------------------------
+Episode 003 | steps=220 | R=  -25.614 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 003/50
+  global step        = 768
+  loss               = +8.33296
+  actor loss         = -0.00197
+  critic loss        = +16.72654
+  entropy            = +2.83422
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +47.091
+  eval collision     = False
+  eval min distance  = 382.40
+  eval goal distance = 1586.86
+------------------------------------------------------------------------
+Episode 004 | steps=220 | R=  +50.512 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 004/50
+  global step        = 1024
+  loss               = +12.71383
+  actor loss         = -0.00159
+  critic loss        = +25.48752
+  entropy            = +2.83342
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +57.483
+  eval collision     = False
+  eval min distance  = 322.21
+  eval goal distance = 1458.40
+------------------------------------------------------------------------
+Episode 005 | steps=166 | R= -143.648 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 006 | steps=126 | R= -142.319 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 005/50
+  global step        = 1280
+  loss               = +410.86475
+  actor loss         = +0.00237
+  critic loss        = +821.78145
+  entropy            = +2.83372
+  rollout episodes   = 2
+  collision rate     = 1.0
+  eval reward        = +49.556
+  eval collision     = False
+  eval min distance  = 287.23
+  eval goal distance = 1423.78
+------------------------------------------------------------------------
+Episode 007 | steps=220 | R=  +55.853 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 006/50
+  global step        = 1536
+  loss               = +7.00604
+  actor loss         = -0.00153
+  critic loss        = +14.07182
+  entropy            = +2.83406
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +41.579
+  eval collision     = False
+  eval min distance  = 233.08
+  eval goal distance = 1278.23
+------------------------------------------------------------------------
+Episode 008 | steps=220 | R=   +2.346 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 007/50
+  global step        = 1792
+  loss               = +3.37975
+  actor loss         = +0.00014
+  critic loss        = +6.81589
+  entropy            = +2.83429
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +39.077
+  eval collision     = False
+  eval min distance  = 172.62
+  eval goal distance = 1063.38
+------------------------------------------------------------------------
+Episode 009 | steps=220 | R=  +27.448 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 008/50
+  global step        = 2048
+  loss               = +10.60044
+  actor loss         = -0.00036
+  critic loss        = +21.25828
+  entropy            = +2.83442
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +40.497
+  eval collision     = False
+  eval min distance  = 155.73
+  eval goal distance = 981.18
+------------------------------------------------------------------------
+Episode 010 | steps=220 | R=  +16.593 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 011 | steps=119 | R= -133.191 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 009/50
+  global step        = 2304
+  loss               = +237.79940
+  actor loss         = -0.00249
+  critic loss        = +475.66047
+  entropy            = +2.83377
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = +44.053
+  eval collision     = False
+  eval min distance  = 174.20
+  eval goal distance = 1032.14
+------------------------------------------------------------------------
+Episode 012 | steps=220 | R=  +32.755 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 013 | steps=155 | R= -126.950 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 010/50
+  global step        = 2560
+  loss               = +216.23857
+  actor loss         = -0.00261
+  critic loss        = +432.53902
+  entropy            = +2.83323
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = +47.017
+  eval collision     = False
+  eval min distance  = 198.35
+  eval goal distance = 1128.40
+------------------------------------------------------------------------
+Episode 014 | steps=149 | R= -144.382 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 011/50
+  global step        = 2816
+  loss               = +243.57701
+  actor loss         = +0.00049
+  critic loss        = +487.20969
+  entropy            = +2.83286
+  rollout episodes   = 1
+  collision rate     = 1.0
+  eval reward        = +46.965
+  eval collision     = False
+  eval min distance  = 210.01
+  eval goal distance = 1197.32
+------------------------------------------------------------------------
+Episode 015 | steps=134 | R= -146.050 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 016 | steps=220 | R=  +51.867 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 012/50
+  global step        = 3072
+  loss               = +158.20165
+  actor loss         = -0.00170
+  critic loss        = +316.46334
+  entropy            = +2.83266
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = +32.010
+  eval collision     = False
+  eval min distance  = 191.38
+  eval goal distance = 1252.35
+------------------------------------------------------------------------
+Episode 017 | steps=220 | R=  +49.635 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 013/50
+  global step        = 3328
+  loss               = +9.76370
+  actor loss         = -0.00087
+  critic loss        = +19.58582
+  entropy            = +2.83290
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +43.029
+  eval collision     = False
+  eval min distance  = 240.46
+  eval goal distance = 1437.19
+------------------------------------------------------------------------
+Episode 018 | steps=206 | R= -136.545 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 014/50
+  global step        = 3584
+  loss               = +212.11301
+  actor loss         = +0.00033
+  critic loss        = +424.28204
+  entropy            = +2.83307
+  rollout episodes   = 1
+  collision rate     = 1.0
+  eval reward        = +45.991
+  eval collision     = False
+  eval min distance  = 344.12
+  eval goal distance = 1608.26
+------------------------------------------------------------------------
+Episode 019 | steps=220 | R=  +36.190 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 015/50
+  global step        = 3840
+  loss               = +2.49725
+  actor loss         = -0.00080
+  critic loss        = +5.05276
+  entropy            = +2.83318
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +25.343
+  eval collision     = False
+  eval min distance  = 545.08
+  eval goal distance = 1824.41
+------------------------------------------------------------------------
+Episode 020 | steps=220 | R=  +40.615 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 016/50
+  global step        = 4096
+  loss               = +10.88579
+  actor loss         = -0.00746
+  critic loss        = +21.84317
+  entropy            = +2.83324
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +15.188
+  eval collision     = False
+  eval min distance  = 647.89
+  eval goal distance = 1926.11
+------------------------------------------------------------------------
+Episode 021 | steps=201 | R= -144.568 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 022 | steps=220 | R=  +17.623 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 017/50
+  global step        = 4352
+  loss               = +180.86767
+  actor loss         = +0.00153
+  critic loss        = +361.78894
+  entropy            = +2.83333
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = +19.057
+  eval collision     = False
+  eval min distance  = 620.39
+  eval goal distance = 1887.26
+------------------------------------------------------------------------
+Episode 023 | steps=220 | R=  +64.208 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 018/50
+  global step        = 4608
+  loss               = +10.66070
+  actor loss         = -0.00028
+  critic loss        = +21.37864
+  entropy            = +2.83331
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +25.464
+  eval collision     = False
+  eval min distance  = 575.48
+  eval goal distance = 1822.77
+------------------------------------------------------------------------
+Episode 024 | steps=220 | R=  +46.342 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 019/50
+  global step        = 4864
+  loss               = +5.31938
+  actor loss         = +0.00050
+  critic loss        = +10.69443
+  entropy            = +2.83323
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +41.058
+  eval collision     = False
+  eval min distance  = 477.02
+  eval goal distance = 1665.66
+------------------------------------------------------------------------
+Episode 025 | steps=220 | R=  +34.466 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 020/50
+  global step        = 5120
+  loss               = +4.23766
+  actor loss         = -0.00442
+  critic loss        = +8.54083
+  entropy            = +2.83319
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +77.178
+  eval collision     = False
+  eval min distance  = 310.07
+  eval goal distance = 1298.06
+------------------------------------------------------------------------
+Episode 026 | steps=220 | R=  +60.277 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 021/50
+  global step        = 5376
+  loss               = +5.97288
+  actor loss         = +0.00038
+  critic loss        = +12.00166
+  entropy            = +2.83357
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +77.496
+  eval collision     = False
+  eval min distance  = 222.04
+  eval goal distance = 1040.11
+------------------------------------------------------------------------
+Episode 027 | steps=220 | R=  +20.492 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 028 | steps=151 | R= -139.258 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 022/50
+  global step        = 5632
+  loss               = +220.52486
+  actor loss         = -0.00188
+  critic loss        = +441.11016
+  entropy            = +2.83422
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = +69.788
+  eval collision     = False
+  eval min distance  = 171.59
+  eval goal distance = 877.83
+------------------------------------------------------------------------
+Episode 029 | steps=220 | R=  +56.404 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 023/50
+  global step        = 5888
+  loss               = +10.65866
+  actor loss         = +0.00027
+  critic loss        = +21.37348
+  entropy            = +2.83469
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +68.142
+  eval collision     = False
+  eval min distance  = 160.06
+  eval goal distance = 849.50
+------------------------------------------------------------------------
+Episode 030 | steps=220 | R=   +8.785 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 024/50
+  global step        = 6144
+  loss               = +12.53753
+  actor loss         = -0.00081
+  critic loss        = +25.13337
+  entropy            = +2.83505
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +69.184
+  eval collision     = False
+  eval min distance  = 182.03
+  eval goal distance = 950.29
+------------------------------------------------------------------------
+Episode 031 | steps=220 | R=  +66.721 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 025/50
+  global step        = 6400
+  loss               = +16.62788
+  actor loss         = -0.00357
+  critic loss        = +33.31962
+  entropy            = +2.83566
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +77.446
+  eval collision     = False
+  eval min distance  = 235.54
+  eval goal distance = 1111.58
+------------------------------------------------------------------------
+Episode 032 | steps=158 | R= -132.509 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 033 | steps=220 | R=  +47.510 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 026/50
+  global step        = 6656
+  loss               = +87.24539
+  actor loss         = +0.00098
+  critic loss        = +174.54556
+  entropy            = +2.83618
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = +77.061
+  eval collision     = False
+  eval min distance  = 255.31
+  eval goal distance = 1193.40
+------------------------------------------------------------------------
+Episode 034 | steps=220 | R=  +32.692 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 027/50
+  global step        = 6912
+  loss               = +5.88685
+  actor loss         = +0.00004
+  critic loss        = +11.83035
+  entropy            = +2.83676
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +73.621
+  eval collision     = False
+  eval min distance  = 242.47
+  eval goal distance = 1183.38
+------------------------------------------------------------------------
+Episode 035 | steps=220 | R=  +78.986 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 028/50
+  global step        = 7168
+  loss               = +16.62609
+  actor loss         = -0.00106
+  critic loss        = +33.31104
+  entropy            = +2.83747
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +69.165
+  eval collision     = False
+  eval min distance  = 222.07
+  eval goal distance = 1148.59
+------------------------------------------------------------------------
+Episode 036 | steps=220 | R=  +70.760 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 029/50
+  global step        = 7424
+  loss               = +10.00206
+  actor loss         = -0.00047
+  critic loss        = +20.06182
+  entropy            = +2.83814
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +58.288
+  eval collision     = False
+  eval min distance  = 181.62
+  eval goal distance = 1067.52
+------------------------------------------------------------------------
+Episode 037 | steps=220 | R=  +54.828 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 030/50
+  global step        = 7680
+  loss               = +9.65475
+  actor loss         = -0.00078
+  critic loss        = +19.36784
+  entropy            = +2.83882
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +47.907
+  eval collision     = False
+  eval min distance  = 143.65
+  eval goal distance = 988.17
+------------------------------------------------------------------------
+Episode 038 | steps=220 | R=  +74.055 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 031/50
+  global step        = 7936
+  loss               = +10.31091
+  actor loss         = -0.00006
+  critic loss        = +20.67874
+  entropy            = +2.83949
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = -105.955
+  eval collision     = True
+  eval min distance  = 119.66
+  eval goal distance = 1435.84
+------------------------------------------------------------------------
+Episode 039 | steps=220 | R=  +45.186 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 040 | steps=220 | R=  +56.793 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 032/50
+  global step        = 8192
+  loss               = +7.02052
+  actor loss         = -0.00056
+  critic loss        = +14.09897
+  entropy            = +2.84030
+  rollout episodes   = 2
+  collision rate     = 0.0
+  eval reward        = -112.934
+  eval collision     = True
+  eval min distance  = 113.18
+  eval goal distance = 1437.47
+------------------------------------------------------------------------
+Episode 041 | steps=220 | R=  +53.533 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 033/50
+  global step        = 8448
+  loss               = +10.19099
+  actor loss         = -0.00018
+  critic loss        = +20.43914
+  entropy            = +2.84067
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = -118.114
+  eval collision     = True
+  eval min distance  = 112.77
+  eval goal distance = 1434.75
+------------------------------------------------------------------------
+Episode 042 | steps=140 | R= -150.664 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 034/50
+  global step        = 8704
+  loss               = +252.15768
+  actor loss         = -0.00063
+  critic loss        = +504.37344
+  entropy            = +2.84048
+  rollout episodes   = 1
+  collision rate     = 1.0
+  eval reward        = -122.704
+  eval collision     = True
+  eval min distance  = 121.97
+  eval goal distance = 1435.85
+------------------------------------------------------------------------
+Episode 043 | steps=220 | R=  +42.755 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 044 | steps=162 | R= -112.328 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 035/50
+  global step        = 8960
+  loss               = +213.99178
+  actor loss         = +0.00029
+  critic loss        = +428.03979
+  entropy            = +2.84026
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = -126.461
+  eval collision     = True
+  eval min distance  = 118.37
+  eval goal distance = 1427.73
+------------------------------------------------------------------------
+Episode 045 | steps=125 | R= -130.593 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 036/50
+  global step        = 9216
+  loss               = +242.23621
+  actor loss         = -0.00063
+  critic loss        = +484.53048
+  entropy            = +2.84015
+  rollout episodes   = 1
+  collision rate     = 1.0
+  eval reward        = -122.148
+  eval collision     = True
+  eval min distance  = 117.15
+  eval goal distance = 1433.79
+------------------------------------------------------------------------
+Episode 046 | steps=220 | R=  +62.911 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 047 | steps=134 | R= -132.900 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 037/50
+  global step        = 9472
+  loss               = +229.46711
+  actor loss         = +0.00033
+  critic loss        = +458.99035
+  entropy            = +2.84003
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = -118.551
+  eval collision     = True
+  eval min distance  = 116.49
+  eval goal distance = 1439.05
+------------------------------------------------------------------------
+Episode 048 | steps=137 | R= -153.768 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 049 | steps=136 | R= -133.223 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 038/50
+  global step        = 9728
+  loss               = +472.53561
+  actor loss         = +0.00011
+  critic loss        = +945.12782
+  entropy            = +2.83997
+  rollout episodes   = 2
+  collision rate     = 1.0
+  eval reward        = -119.331
+  eval collision     = True
+  eval min distance  = 111.81
+  eval goal distance = 1436.08
+------------------------------------------------------------------------
+Episode 050 | steps=139 | R= -141.585 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 039/50
+  global step        = 9984
+  loss               = +237.85148
+  actor loss         = -0.00032
+  critic loss        = +475.76040
+  entropy            = +2.83992
+  rollout episodes   = 1
+  collision rate     = 1.0
+  eval reward        = -120.428
+  eval collision     = True
+  eval min distance  = 109.90
+  eval goal distance = 1435.15
+------------------------------------------------------------------------
+Episode 051 | steps=220 | R=  +53.665 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 052 | steps=130 | R= -115.149 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 040/50
+  global step        = 10240
+  loss               = +212.66596
+  actor loss         = -0.00065
+  critic loss        = +425.39002
+  entropy            = +2.83983
+  rollout episodes   = 2
+  collision rate     = 0.5
+  eval reward        = -115.325
+  eval collision     = True
+  eval min distance  = 105.56
+  eval goal distance = 1436.10
+------------------------------------------------------------------------
+Episode 053 | steps=220 | R=  +40.981 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 041/50
+  global step        = 10496
+  loss               = +10.86954
+  actor loss         = -0.00063
+  critic loss        = +21.79714
+  entropy            = +2.83975
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = -104.805
+  eval collision     = True
+  eval min distance  = 120.51
+  eval goal distance = 1443.92
+------------------------------------------------------------------------
+Episode 054 | steps=152 | R=  -98.924 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 055 | steps=140 | R= -107.773 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 042/50
+  global step        = 10752
+  loss               = +382.97916
+  actor loss         = -0.00117
+  critic loss        = +766.01749
+  entropy            = +2.83979
+  rollout episodes   = 2
+  collision rate     = 1.0
+  eval reward        = +61.095
+  eval collision     = False
+  eval min distance  = 154.42
+  eval goal distance = 921.42
+------------------------------------------------------------------------
+Episode 056 | steps=150 | R= -101.173 | collision=True | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 043/50
+  global step        = 11008
+  loss               = +201.80486
+  actor loss         = -0.00078
+  critic loss        = +403.66808
+  entropy            = +2.83981
+  rollout episodes   = 1
+  collision rate     = 1.0
+  eval reward        = +68.860
+  eval collision     = False
+  eval min distance  = 188.39
+  eval goal distance = 987.49
+------------------------------------------------------------------------
+Episode 057 | steps=220 | R=  +49.062 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 058 | steps=220 | R=  +53.478 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 044/50
+  global step        = 11264
+  loss               = +8.64289
+  actor loss         = -0.00006
+  critic loss        = +17.34269
+  entropy            = +2.83977
+  rollout episodes   = 2
+  collision rate     = 0.0
+  eval reward        = +73.101
+  eval collision     = False
+  eval min distance  = 214.85
+  eval goal distance = 1049.25
+------------------------------------------------------------------------
+Episode 059 | steps=220 | R=  +74.525 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 045/50
+  global step        = 11520
+  loss               = +12.41252
+  actor loss         = -0.00158
+  critic loss        = +24.88499
+  entropy            = +2.83956
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +82.921
+  eval collision     = False
+  eval min distance  = 260.01
+  eval goal distance = 1147.81
+------------------------------------------------------------------------
+Episode 060 | steps=220 | R=  +15.012 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 046/50
+  global step        = 11776
+  loss               = +10.04818
+  actor loss         = -0.00251
+  critic loss        = +20.15817
+  entropy            = +2.83917
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +76.830
+  eval collision     = False
+  eval min distance  = 337.28
+  eval goal distance = 1306.19
+------------------------------------------------------------------------
+Episode 061 | steps=220 | R=  +68.016 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 047/50
+  global step        = 12032
+  loss               = +10.61190
+  actor loss         = +0.00061
+  critic loss        = +21.27936
+  entropy            = +2.83865
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +58.579
+  eval collision     = False
+  eval min distance  = 422.66
+  eval goal distance = 1491.18
+------------------------------------------------------------------------
+Episode 062 | steps=220 | R=  +58.944 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 048/50
+  global step        = 12288
+  loss               = +7.13165
+  actor loss         = -0.00326
+  critic loss        = +14.32657
+  entropy            = +2.83828
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +37.602
+  eval collision     = False
+  eval min distance  = 524.36
+  eval goal distance = 1701.68
+------------------------------------------------------------------------
+Episode 063 | steps=220 | R=  +56.739 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 049/50
+  global step        = 12544
+  loss               = +7.09391
+  actor loss         = +0.00224
+  critic loss        = +14.24010
+  entropy            = +2.83791
+  rollout episodes   = 1
+  collision rate     = 0.0
+  eval reward        = +31.282
+  eval collision     = False
+  eval min distance  = 558.36
+  eval goal distance = 1764.95
+------------------------------------------------------------------------
+Episode 064 | steps=220 | R=  +54.604 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Episode 065 | steps=220 | R=  +58.068 | collision=False | goal=False
+Importing scenario...
+Reading file.
+Created simulation
+Importing scenario...
+Reading file.
+Created simulation
+
+UPDATE 050/50
+  global step        = 12800
+  loss               = +6.86875
+  actor loss         = -0.00012
+  critic loss        = +13.79448
+  entropy            = +2.83752
+  rollout episodes   = 2
+  collision rate     = 0.0
+  eval reward        = +36.152
+  eval collision     = False
+  eval min distance  = 530.45
+  eval goal distance = 1716.15
+------------------------------------------------------------------------
+Saved history: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/training_history.json
+Importing scenario...
+Reading file.
+Created simulation
+Saved trajectory data: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/nominal_trajectory.npz
+Saved figure: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/training_curves.png
+Saved figure: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/training_curves.pdf
+Saved figure: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/nominal_trajectory.png
+Saved figure: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/nominal_trajectory.pdf
+Saved figure: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/policy_comparison.png
+Saved figure: /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal/policy_comparison.pdf
+
+========================================================================
+TRAINING COMPLETE
+========================================================================
+Global steps       : 12800
+Episodes           : 65
+Mean reward        : -12.707
+Mean episode len   : 196.77
+Collision rate     : 0.323
+Best eval reward   : +82.921
+Best checkpoint    : /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/checkpoints/ppo_commonocean_best.pt
+Final checkpoint   : /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/checkpoints/ppo_commonocean_final.pt
+Results directory  : /home/jftachack/Documents/ReinforcementLearning/commonocean-sim/experiments/results/ppo_nominal
